@@ -822,8 +822,9 @@
         /* Clean overlay: minimal shadows, no rotation, subtle frame */
         .overlay-container {
             position: relative;
-            width: 640px;
-            height: 420px;
+            width: 100%;
+            max-width: 640px;
+            height: auto;
         }
 
         .overlay-img {
@@ -837,12 +838,13 @@
         }
 
         .overlay-img.back {
-            width: 600px;
-            height: 380px;
+            width: 100%;
+            height: auto;
             left: 0;
             top: 0;
             transform: none;
             z-index: 10;
+            position: relative;
         }
 
         /* simple framed panel for the front image */
@@ -879,6 +881,61 @@
         .overlay-frame:hover .overlay-img.front {
             filter: grayscale(0%);
             transform: translateY(-6px) scale(1.015);
+        }
+
+        /* Mobile responsiveness: ensure mockup stacks neatly and fits one viewport height */
+        @media (max-width: 768px) {
+
+            /* make the mockup container span full width and not overflow */
+            #mockupArea {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                padding-bottom: 0.5rem;
+            }
+
+            .overlay-container {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .overlay-img {
+                position: relative;
+                width: 100%;
+                height: auto;
+                left: 0;
+                top: 0;
+                transform: none;
+            }
+
+            .overlay-frame {
+                position: relative;
+                right: auto;
+                top: auto;
+                width: 86%;
+                margin: 12px auto 0;
+                height: auto;
+                padding: 8px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 8px 30px rgba(11, 15, 20, 0.04);
+            }
+
+            .overlay-frame .overlay-img.front {
+                height: auto;
+            }
+
+            /* hide or shrink the lamp image to avoid large height pushing content off-screen */
+            #lampImg-store {
+                display: none;
+            }
+
+            /* tighten the right text area spacing */
+            #textArea-store {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -991,11 +1048,12 @@
             </div>
             <div class="absolute inset-0 bg-transparent"></div>
         </section>
-        <!-- Store Locator Feature (added) -->
+
+
         <section id="store-locator" class="py-24 relative">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-3 gap-8 items-start">
-                <div class="relative w-[460px] h-[460px] flex-shrink-0 section-hidden" id="mockupArea">
-                    <div class="overlay-container browser-shadow absolute top-0 left-0 z-[1]">
+                <div class="relative w-full max-w-[460px] h-auto flex-shrink-0 section-hidden mx-auto" id="mockupArea">
+                    <div class="overlay-container browser-shadow relative z-[1]">
                         <img src="https://i.pinimg.com/1200x/32/19/63/321963531b044712ba5ddfc916eb0028.jpg"
                             alt="store-hero" class="overlay-img back" />
                         <div class="overlay-frame">
@@ -1028,11 +1086,9 @@
 
                         Whether it's a private residence requiring intimate warmth or a commercial space demanding
                         clarity and focus, our solutions are tailored to the human experience within the built
-                        environment.</p>
+                        environment.
+                    </p>
                     <div class="w-14 h-[2px] bg-ember mb-5"></div>
-                    <!-- <a href="#"
-                        class="view-more text-amber-100 font-semibold text-[14px] border-b-2 border-ember pb-1">View
-                        more <span class="inline-block -rotate-45 text-[17px] leading-none">↗</span></a> -->
                 </div>
             </div>
         </section>
@@ -1099,7 +1155,7 @@
                     </div>
                 </header>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 mb-24">
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 mb-24">
                     <div class="flex gap-4">
                         <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="1.5">
