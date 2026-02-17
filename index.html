@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Lumen House | Lighting Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 80px -20px rgba(212, 163, 115, 0.15)',
+                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'reveal': 'reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        reveal: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        /* Hamburger Menu Styles (from user) */
+        .hamburger-btn {
+            width: 32px;
+            height: 24px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 60;
+            padding: 0;
+            border: none;
+            outline: none;
+        }
+
+        /* Footer CTA: unified visible style */
+        .footer-cta {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 9999px;
+            background: rgba(212, 163, 115, 0.12);
+            color: #ffffff;
+            font-weight: 700;
+            border: 1px solid rgba(212, 163, 115, 0.18);
+            text-decoration: none;
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+        }
+
+        .footer-cta:hover {
+            background: #D4A373;
+            color: #111827;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(212, 163, 115, 0.12);
+        }
+
+        body.light-theme .footer-cta {
+            background: #111827;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.light-theme .footer-cta:hover {
+            background: #C58E5B;
+            color: #ffffff;
+        }
+
+        .hamburger-line {
+            background: #050505;
+            height: 2px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .line-top {
+            width: 32px;
+        }
+
+        .line-mid {
+            width: 24px;
+        }
+
+        .line-bot {
+            width: 16px;
+        }
+
+        /* Animated Close State */
+        .hamburger-btn.active .line-top {
+            transform: rotate(45deg) translate(5px, 5px);
+            width: 32px;
+        }
+
+        .hamburger-btn.active .line-mid {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-btn.active .line-bot {
+            transform: rotate(-45deg) translate(5px, -5px);
+            width: 32px;
+        }
+
+        /* Mobile Menu Transitions (panel behavior preserved) */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Keep panel color rules to ensure contrast in both themes */
+        .mobile-menu-panel {
+            background-color: rgba(5, 5, 5, 0.95);
+            color: #ffffff;
+        }
+
+        .mobile-menu-panel a {
+            color: inherit;
+            text-decoration: none;
+            transition: color .18s ease;
+        }
+
+        .mobile-menu-panel a:hover {
+            color: #D4A373;
+        }
+
+        body.light-theme .mobile-menu-panel {
+            background-color: #f7f4ef;
+            color: #1f1b16;
+        }
+
+        .mobile-menu-panel #mobile-menu-close {
+            color: inherit;
+        }
+
+        .mobile-menu-panel #mobile-menu-close svg {
+            color: inherit;
+        }
+
+
+        /* Default browser scrollbars (removed custom styling to use system defaults) */
+
+        /* Intro Animation Variables */
+        :root {
+            --intro-duration: 4s;
+            --morph-delay: 3.2s;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.light-theme {
+            background-color: #f7f4ef;
+            color: #1f1b16;
+        }
+
+        .light-theme .site-content {
+            color: #1f1b16;
+        }
+
+        .light-theme .text-white {
+            color: #1f1b16 !important;
+        }
+
+        .light-theme .text-gray-400 {
+            color: #6d655c !important;
+        }
+
+        .light-theme .text-gray-500 {
+            color: #7a7167 !important;
+        }
+
+        .light-theme .text-gray-600 {
+            color: #8a7f73 !important;
+        }
+
+        .light-theme .bg-ink {
+            background-color: #f7f4ef !important;
+        }
+
+        .light-theme .bg-charcoal {
+            background-color: #f1ebe3 !important;
+        }
+
+        /* Intro animation disabled: styles commented out to match current HTML comment state
+        .intro-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            pointer-events: none;
+            animation: overlayFade 1s ease-in-out var(--intro-duration) forwards;
+        }
+
+        .intro-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.2rem;
+            width: 100%;
+            animation: containerMorph 1s cubic-bezier(0.7, 0, 0.3, 1) var(--morph-delay) forwards;
+        }
+
+        .lamp-wrapper {
+            position: relative;
+            width: 120px;
+            height: 300px;
+            transform: translateY(-50vh);
+            animation: lampDrop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+        }
+
+        .wire { display:none; }
+        .lamp-wrapper::after { display:none; }
+        .bulb-assembly { display:none; }
+        .bulb-glass { display:none; }
+        .bulb-glow { display:none; }
+        .socket { display:none; }
+        .light-cone { display:none; }
+        .intro-text { display:none; }
+        */
+
+        /* Show site content immediately when intro is disabled */
+        .site-content {
+            opacity: 1;
+        }
+
+        /* Carousel */
+        .carousel {
+            background: #0b0b0c;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+        }
+
+        .carousel-track img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .carousel-track img.active {
+            opacity: 1;
+        }
+
+        /* Footer glow system */
+        .footer-dark {
+            background: #0a0a0b;
+            color: #e9e1d6;
+        }
+
+        .footer-dark .muted {
+            color: #a59b8f;
+        }
+
+        .footer-dark.light-on .glow-text {
+            color: #fff6e2;
+            text-shadow: 0 0 18px rgba(255, 214, 140, 0.4);
+        }
+
+        .footer-dark.light-off .glow-text {
+            color: #c7bdb0;
+            text-shadow: none;
+        }
+
+        .light-stripes {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 24px;
+        }
+
+        .light-stripe {
+            height: 4px;
+            width: 180px;
+            border-radius: 999px;
+            background: rgba(255, 214, 140, 0.25);
+            box-shadow: none;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            /* remove default focus ring so focus doesn't change perceived brightness */
+        }
+
+        .light-stripe:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .light-stripe.active {
+            /* explicit per-button active state to guarantee identical glow for all stripes */
+            background: rgba(255, 214, 140, 0.85);
+            box-shadow: 0 0 18px rgba(255, 198, 120, 0.8), 0 0 40px rgba(255, 198, 120, 0.5);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #c7bdb0;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.45);
+        }
+
+        .footer-dark.light-on .light-stripe {
+            background: rgba(255, 214, 140, 0.85);
+            box-shadow: 0 0 18px rgba(255, 198, 120, 0.8), 0 0 40px rgba(255, 198, 120, 0.5);
+        }
+
+        .footer-dark.light-off .light-stripe {
+            background: rgba(255, 214, 140, 0.15);
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .light-stripe {
+                width: 80px;
+            }
+        }
+
+        /* Keyframes */
+        /* Intro keyframes disabled (intro animation removed)
+        @keyframes swing {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+
+        @keyframes lampDrop {
+            0% { transform: translateY(-50vh); }
+            60% { transform: translateY(20px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes bulbIgnite {
+            0% { filter: brightness(0.2) saturate(0); }
+            50% { filter: brightness(0.8) saturate(0.5); }
+            100% { filter: brightness(1.35) saturate(1.15); }
+        }
+
+        @keyframes glowIn { to { opacity: 1; } }
+
+        @keyframes lightConeOn {
+            0% { opacity: 0; border-bottom-color: rgba(255, 204, 120, 0); }
+            100% { opacity: 0.65; border-bottom-color: rgba(255, 204, 120, 0.28); }
+        }
+
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateY(10px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        @keyframes containerMorph { to { transform: scale(1.1); opacity: 0; filter: blur(20px); } }
+
+        @keyframes overlayFade { to { opacity: 0; visibility: hidden; } }
+        */
+
+        @keyframes siteReveal {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            @keyframes containerMorph {
+                to {
+                    transform: scale(0.8) translateY(-50px);
+                    opacity: 0;
+                    filter: blur(20px);
+                }
+            }
+
+            .light-cone {
+                border-bottom-width: 220px;
+                border-left-width: 60px;
+                border-right-width: 60px;
+            }
+
+            .carousel-track {
+                min-height: 220px;
+            }
+
+            /* Hide heavy intro animation on small screens for faster load and clarity */
+            .intro-overlay {
+                display: none !important;
+            }
+
+            /* Reduce large section paddings for mobile */
+            section#about,
+            section#services,
+            section#projects {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            /* Make mobile menu panel occupy full width with comfortable touch targets */
+            .mobile-menu-panel {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 28px !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            .mobile-menu-panel nav {
+                margin-top: 6px;
+            }
+
+            .mobile-menu-panel nav a {
+                font-size: 1.125rem;
+                padding: 12px 0;
+                display: block;
+            }
+
+            .mobile-menu-panel .inline-block {
+                width: 100%;
+            }
+
+            /* Footer: stack columns on small screens */
+            .footer-dark .max-w-7xl>div {
+                display: block;
+            }
+
+            /* Tappable controls spacing */
+            .light-stripes {
+                gap: 12px;
+            }
+
+            .light-stripe {
+                width: 100px;
+            }
+        }
+
+        /* ===== Store Locator styles ===== */
+        /* Map grid lines */
+        .map-grid {
+            background-image:
+                linear-gradient(rgba(180, 195, 180, 0.35) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180, 195, 180, 0.35) 1px, transparent 1px);
+            background-size: 18px 18px;
+        }
+
+        .map-road {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        .map-road.h1 {
+            top: 30%;
+            left: 0;
+            right: 0;
+            height: 2px;
+        }
+
+        .map-road.h2 {
+            top: 55%;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+        }
+
+        .map-road.h3 {
+            top: 76%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            opacity: .4;
+        }
+
+        .map-road.v1 {
+            left: 25%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+        }
+
+        .map-road.v2 {
+            left: 55%;
+            top: 0;
+            bottom: 0;
+            width: 1.5px;
+        }
+
+        .map-road.v3 {
+            left: 74%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            opacity: .4;
+        }
+
+        /* Pin */
+        .map-pin {
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            background: #e07070;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            border: 1.5px solid #fff;
+        }
+
+        .map-pin.p1 {
+            top: 36%;
+            left: 43%;
+        }
+
+        .map-pin.p2 {
+            top: 66%;
+            left: 28%;
+        }
+
+        /* Hero vertical stripes overlay */
+        .hero-stripes {
+            background: repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(255, 255, 255, 0.055) 6px, rgba(255, 255, 255, 0.055) 7px);
+        }
+
+        @keyframes lampFlyUp {
+            0% {
+                opacity: 0;
+                transform: translateY(180px) scale(0.9);
+            }
+
+            55% {
+                opacity: 1;
+                transform: translateY(-22px) scale(1.02);
+            }
+
+            75% {
+                transform: translateY(10px) scale(0.99);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .lamp-hidden {
+            opacity: 0;
+            transform: translateY(180px) scale(0.9);
+        }
+
+        .lamp-visible {
+            animation: lampFlyUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-visible {
+            animation: fadeUp 0.75s ease forwards;
+        }
+
+        .view-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap .2s ease;
+        }
+
+        .view-more:hover {
+            gap: 16px;
+        }
+
+        .browser-shadow {
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.13);
+        }
+
+        .panel-shadow {
+            box-shadow: 0 6px 34px rgba(0, 0, 0, 0.10);
+        }
+    </style>
+</head>
+
+<body class="bg-ink selection:bg-ember selection:text-ink light-theme">
+
+    <!-- Intro Animation Sequence
+    <div class="intro-overlay">
+        <div class="intro-container">
+            <div class="lamp-wrapper">
+                <div class="wire"></div>
+                <div class="bulb-assembly">
+                    <div class="socket"></div>
+                    <div class="bulb-glass"></div>
+                    <div class="bulb-glow"></div>
+                </div>
+                <div class="light-cone"></div>
+            </div>
+            <h1 class="intro-text">The Lumen House</h1>
+        </div>
+    </div> -->
+
+    <!-- Navigation -->
+    <header class="site-content fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent"
+        id="navbar">
+        <div class="absolute inset-0 bg-white/70 backdrop-blur-md"></div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="Assets/Logo.svg" alt="The Lumen House Logo"
+                    class="w-12 h-12 group-hover:scale-110 transition-transform duration-300">
+                <span class="font-display text-lg tracking-wide text-white group-hover:text-ember transition-colors">The
+                    Lumen House</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-10">
+                <a href="index.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">Home</a>
+                <a href="about.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">About
+                    us</a>
+                <a href="what-we-do.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">What
+                    we do</a>
+                <a href="projects.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">Projects</a>
+                <a href="contact.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">Contact
+                    Us</a>
+            </nav>
+
+            <!-- CTA -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="#contact"
+                    class="px-6 py-2.5 rounded-full border border-white/20 text-sm font-medium text-white hover:border-ember hover:text-ember hover:shadow-glow transition-all duration-300">
+                    Book Consultation
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button (Custom Hamburger) -->
+            <button id="menu-btn" class="lg:hidden hamburger-btn" aria-label="Toggle Menu">
+                <span class="hamburger-line line-top"></span>
+                <span class="hamburger-line line-mid"></span>
+                <span class="hamburger-line line-bot"></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="mobile-menu fixed inset-0 z-40 bg-ink/98 backdrop-blur-lg flex flex-col justify-center items-center gap-8 lg:hidden">
+        <a href="/" class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">Home</a>
+        <a href="about.html" class="text-3xl font-display text-white hover:text-ember transition-colors">About us</a>
+        <a href="what-we-do.html" class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">What we
+            do</a>
+        <a href="projects.html"
+            class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">Projects</a>
+        <a href="contact.html" class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">Contact
+            Us</a>
+
+        <div class="mt-12">
+            <a href="contact.html"
+                class="px-8 py-3 rounded-full border border-ember text-ember text-sm font-medium hover:bg-ember hover:text-ink transition-all duration-300">Book
+                Consultation</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="home" class="site-content pt-20">
+
+        <!-- Hero Section -->
+        <section class="min-h-screen relative overflow-hidden">
+            <div class="carousel absolute inset-0">
+                <div class="carousel-track">
+                    <img class="active" src="https://www.heraled.com/store/images/4673755811651847103.jpg"
+                        alt="Lighting interior 1" loading="eager" />
+                    <img src="https://www.jaquar.com/images/thumbs/0051591_image7.jpeg" alt="Lighting interior 2"
+                        loading="lazy" />
+                    <img src="https://upwardlighting.com/wp-content/uploads/2023/08/facades-lighting-interactive-1024x562.jpg"
+                        alt="Lighting interior 3" loading="lazy" />
+                    <img src="https://oclights.com/wp-content/uploads/2019/05/IMG_1804.jpg" alt="Lighting interior 4"
+                        loading="lazy" />
+                    <img src="https://lightfunc.org/wp-content/uploads/2023/07/000.-Entrance-lobby.jpg"
+                        alt="Lighting interior 5" loading="lazy" />
+                    <img src="https://nirvanalighting.in/wp-content/uploads/2025/09/what-are-facade-lighting-solutions.jpg"
+                        alt="Lighting interior 7" loading="lazy" />
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-transparent"></div>
+        </section>
+        <!-- Store Locator Feature (added) -->
+        <section id="store-locator" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-3 gap-8 items-start">
+                <!-- Left: Mockup Screens -->
+                <div class="relative w-full lg:col-span-1 flex-shrink-0" id="mockupArea-store">
+                    <div class="relative w-[460px] h-[460px] max-w-full mx-auto">
+                        <div
+                            class="browser-shadow absolute top-0 left-0 w-[385px] z-[1] bg-white rounded-md overflow-hidden">
+                            <div class="flex items-center gap-3 px-4 py-[9px] bg-dark text-white">
+                                <span class="text-[10px] font-bold tracking-[2px] uppercase">Lucent</span>
+                                <div class="ml-auto flex gap-3 text-[8px] text-[#aaa]">
+                                    <span>Homepage</span>
+                                    <span>Pages</span>
+                                    <span>Products</span>
+                                </div>
+                            </div>
+
+                            <div class="relative w-full h-[115px] overflow-hidden hero-stripes"
+                                style="background:linear-gradient(135deg,#b0b5a8 0%,#8a8f84 50%,#6d7068 100%)">
+                                <div class="absolute top-0 left-[56%] w-[2px] h-[56px] bg-[rgba(180,140,100,0.65)]">
+                                </div>
+                                <span class="absolute bottom-3 left-4 text-[13px] font-semibold text-white z-10">Store
+                                    Locator</span>
+                            </div>
+
+                            <div class="px-4 pt-4 pb-3">
+                                <p class="text-[10.5px] font-semibold text-[#1a1a1a] text-center leading-[1.55] mb-3">
+                                    There's more than 200+ Lucent stores globally. Find the one next to you easily.
+                                </p>
+
+                                <div class="relative w-full h-[128px] map-grid rounded-sm overflow-hidden bg-mapbg">
+                                    <div class="map-road h1"></div>
+                                    <div class="map-road h2"></div>
+                                    <div class="map-road h3"></div>
+                                    <div class="map-road v1"></div>
+                                    <div class="map-road v2"></div>
+                                    <div class="map-road v3"></div>
+                                    <span class="absolute text-[6px] text-gray-400 font-medium"
+                                        style="top:16%;left:14%">United States</span>
+                                    <div class="map-pin p1"></div>
+                                    <div class="map-pin p2"></div>
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 bg-mapbar px-3 py-[6px] flex items-center justify-between">
+                                        <span class="text-[7.5px] text-[#5a4a3a] font-medium">Search Lucent
+                                            stores</span>
+                                        <span class="text-[#5a4a3a] text-[11px]">⌕</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-shadow absolute bg-white rounded overflow-hidden z-[2]"
+                            style="top:188px;left:152px;width:300px;">
+                            <div class="flex items-center gap-2 px-3 py-2 bg-result border-b border-resultborder">
+                                <span
+                                    class="text-[8px] font-bold tracking-[1.5px] uppercase whitespace-nowrap text-[#1a1a1a]">Search
+                                    Lucent stores</span>
+                                <div
+                                    class="flex-1 border border-[#e0ccc8] rounded-sm bg-white text-[6.5px] text-gray-400 px-2 py-[3px]">
+                                    Choose country you want to search for the store</div>
+                                <div
+                                    class="w-5 h-5 border border-gray-300 rounded-sm flex items-center justify-center text-[10px] text-gray-500 flex-shrink-0">
+                                    ⌕</div>
+                            </div>
+
+                            <div class="px-3 pt-3 pb-2">
+                                <p class="text-[9px] font-bold text-[#1a1a1a] mb-2">Russian Federation</p>
+                                <div
+                                    class="grid grid-cols-[1fr_1fr_1fr_auto] gap-x-2 py-2 border-b border-gray-100 items-start">
+                                    <div class="text-[6.5px] font-semibold text-[#1a1a1a] leading-[1.45]">Boutique of
+                                        furniture and accessories Anna Blumm</div>
+                                    <div class="text-[6px] text-gray-400 leading-[1.6]">Street adress street 20<br>20390
+                                        New<br>Russia Federation</div>
+                                    <div class="text-[6px] text-gray-400 leading-[1.6]">PUT
+                                        0000990A60<br>office@website.com.ru<br>anna@ru.ru</div>
+                                    <div class="text-[6.5px] font-medium text-[#1a1a1a] whitespace-nowrap pt-1">Visit
+                                        Website ↗</div>
+                                </div>
+                                <!-- Repeat rows as desired -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center: Lamp photo -->
+                <div class="relative flex-shrink-0 z-10 self-stretch flex items-end justify-center overflow-hidden lg:col-span-1"
+                    style="width:230px;">
+                    <img id="lampImg-store"
+                        src="https://lucent.qodeinteractive.com/wp-content/uploads/2020/10/landing-img-17.png"
+                        alt="Lucent Floor Lamp" class="lamp-hidden"
+                        style="height:500px; width:auto; object-fit:contain; object-position:bottom; display:block;" />
+                </div>
+
+                <!-- Right: Text Content -->
+                <div class="pl-6 max-w-[490px] flex-shrink-0 section-hidden" id="textArea-store">
+                    <h1 class="text-white font-bold leading-[1.1] tracking-tight mb-7"
+                        style="font-size: clamp(24px, 2.6vw, 36px);">
+                        Feature all your store locations and make them easily searchable with the practical store
+                        locator template.
+                    </h1>
+                    <p class="text-gray-300 text-[15px] leading-relaxed mb-6">Display store addresses, contact info, pin
+                        stores on a map, and more!</p>
+                    <div class="w-14 h-[2px] bg-ember mb-5"></div>
+                    <!-- <a href="#"
+                        class="view-more text-amber-100 font-semibold text-[14px] border-b-2 border-ember pb-1">View
+                        more <span class="inline-block -rotate-45 text-[17px] leading-none">↗</span></a> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 border border-ember/20 rounded-full"></div>
+                    <div class="absolute -bottom-10 -right-10 w-20 h-20 bg-ember/10 rounded-full blur-xl"></div>
+                    <img src="https://picsum.photos/seed/lampdetail/600/700" alt="Studio Detail"
+                        class="relative z-10 w-full rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+
+                <div class="space-y-8">
+                    <h3 class="text-ember text-sm font-bold uppercase tracking-[0.2em]">The Studio</h3>
+                    <h2 class="font-display text-4xl lg:text-5xl tracking-tight leading-tight">
+                        We believe light is the fourth dimension of architecture.
+                    </h2>
+                    <div class="space-y-6 text-gray-400 leading-relaxed font-light text-lg">
+                        <p>
+                            At The Lumen House, we don't just illuminate spaces; we sculpt them. Our approach combines
+                            the rigorous physics of optical design with the fluid emotion of art.
+                        </p>
+                        <p>
+                            Whether it's a private residence requiring intimate warmth or a commercial space demanding
+                            clarity and focus, our solutions are tailored to the human experience within the built
+                            environment.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div
+                            class="p-6 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors">
+                            <h4 class="font-display text-xl mb-2">Engineering</h4>
+                            <p class="text-sm text-gray-500">Precision optics and thermal management.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors">
+                            <h4 class="font-display text-xl mb-2">Artistry</h4>
+                            <p class="text-sm text-gray-500">Color rendering and shadow play.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-32 relative">
+            <div class="max-w-7xl mx-auto px-6 py-12 md:py-20">
+
+                <header class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 items-end">
+                    <div>
+                        <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
+                            Discover Power of<br><span class="text-white">Perfect Lighting</span>
+                        </h1>
+                    </div>
+                    <div class="max-w-md ml-auto">
+                        <p class="text-gray-400 text-lg mb-2">Welcome to our diverse world of lighting solutions.</p>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+                            From ambient to task lighting, our expertise spans a wide range of styles and
+                            functionalities to
+                            suit every space and requirement.
+                        </p>
+                    </div>
+                </header>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 mb-24">
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2v4M5 10l1.5-4h11L19 10M4 10h16v2H4zM12 12v10" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Ceiling
+                                Fixtures
+                            </h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Chandeliers</li>
+                                <li>Flush Mount</li>
+                                <li>Pendant Lights</li>
+                                <li>Track Lighting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 18V6M9 6h6M8 22h8" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Floor
+                                Lamps</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Arc Lamps</li>
+                                <li>Tripod Lamps</li>
+                                <li>Task Lamps</li>
+                                <li>Torchiere Lamps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M7 2h10v4H7zM12 6v16M8 22h8" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Wall
+                                Sconces</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Swing Arm Sconces</li>
+                                <li>Candle Sconces</li>
+                                <li>Picture Lights</li>
+                                <li>Uplight Sconces</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <rect x="9" y="2" width="6" height="20" rx="1" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Wall
+                                Mounted
+                                Lights</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Wall Washers</li>
+                                <li>Vanity Lights</li>
+                                <li>Reading Lights</li>
+                                <li>Outdoor Wall Lights</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="9" r="6" />
+                            <path d="M12 15v7" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Kitchen
+                                Island
+                                Lights</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Linear Pendant Lights</li>
+                                <li>Globe Pendant Lights</li>
+                                <li>Mini Pendant Lights</li>
+                                <li>Recessed Lighting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Modular
+                                Lighting
+                            </h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Modular Track Systems</li>
+                                <li>Magnetic LED Panels</li>
+                                <li>Modular Wall Lights</li>
+                                <li>Adjustable Clusters</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 8v8M8 12h8" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">LED
+                                Lighting</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Recessed Downlights</li>
+                                <li>Strip Lights</li>
+                                <li>Pendant Fixtures</li>
+                                <li>Wall Washers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Smart
+                                Lighting
+                            </h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Smart Bulbs</li>
+                                <li>Smart Light Strips</li>
+                                <li>Smart Dimmer Switches</li>
+                                <li>Smart Lighting Kits</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto md:h-[750px]">
+
+                    <div class="md:col-span-2 flex flex-col gap-4">
+                        <div class="h-1/2 overflow-hidden">
+                            <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/664320289adf860c4d374fc5_optimized_1300_c849x424-225x187.webp"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                                alt="Modern Brass Lamp">
+                        </div>
+                        <div class="h-1/2 overflow-hidden bottom-curve">
+                            <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/6643206790cba8f28142a7c0_optimized_1024_c1024x1024-0x0.webp"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                                alt="Store Interior">
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-1 overflow-hidden">
+                        <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/664320a490cba8f28142a8aa_optimized_1024_c1024x1024-0x0.webp"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                            alt="Hanging Pendant Group">
+                    </div>
+
+                    <div class="md:col-span-1 overflow-hidden custom-arc">
+                        <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/664320cd90cba8f28142a962_optimized_1024_c1024x1024-0x0.webp"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                            alt="Elegant Floor Lamp">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact" class="footer-dark light-on relative overflow-hidden pt-24 pb-16">
+            <div class="absolute inset-0">
+                <div class="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-ember/10 blur-3xl"></div>
+                <div class="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"></div>
+            </div>
+            <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+                <div
+                    class="mb-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 rounded-[28px] border border-white/10 bg-white/5 px-8 py-10">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.35em] muted">Studio intake</p>
+                        <h2 class="glow-text font-display text-4xl lg:text-5xl tracking-tight mt-3">
+                            Tell us about your next space.
+                        </h2>
+                    </div>
+                    <a href="contact.html#contact-form" class="footer-cta">Start a project brief</a>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5">
+                        <div class="mb-8">
+                            <img src="Assets/The-Lumen-House-removebg-preview.png" alt="The Lumen House"
+                                class="w-72 max-w-full opacity-90">
+                        </div>
+                        <p class="mt-6 muted max-w-sm">
+                            The Lumen House – House of Lighting Consultancy crafts architectural lighting experiences
+                            and provides bespoke lighting design solutions. Our expert lighting consultancy combines
+                            technical precision, creative vision, and material finesse to shape ambiance and elevate
+                            spaces.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-7 grid sm:grid-cols-2 gap-10">
+                        <div class="space-y-4">
+                            <p class="text-xs uppercase tracking-[0.3em] muted">Contact</p>
+                            <div class="text-lg glow-text">The.lumen.house.8@gmail.com</div>
+                            <div class="text-lg glow-text">+91 99866 64243</div>
+                            <div class="text-sm muted">Shirur Park link road, opposite Chetan Pre College,<br />above
+                                Focus mart, Akshay Colony,<br />Hubballi, Karnataka 580031</div>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-xs uppercase tracking-[0.3em] muted">Quick Links</p>
+                            <div class="flex flex-col gap-3 text-sm muted">
+                                <a href="/" class="hover:text-ember">Home</a>
+                                <a href="about.html" class="hover:text-ember">About</a>
+                                <a href="what-we-do.html" class="hover:text-ember">What we do</a>
+                                <a href="projects.html" class="hover:text-ember">Projects</a>
+                                <a href="contact.html" class="hover:text-ember">Contact</a>
+                            </div>
+                            <div class="flex gap-4">
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/the_lumen_house.8/"
+                                    class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                    aria-label="Instagram">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                                    </svg>
+                                </a>
+
+                                <!-- LinkedIn -->
+                                <a href="#"
+                                    class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                    aria-label="LinkedIn">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                                    </svg>
+                                </a>
+
+                                <!-- WhatsApp -->
+                                <a href="https://wa.me/919986664243?text=Hello%20The%20Lumen%20House%20Team,%0AI%20would%20like%20to%20enquire%20about%20your%20lighting%20consultancy%20services.%20Please%20share%20your%20process,%20offerings,%20and%20availability.%20Thank%20you."
+                                    class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                    aria-label="WhatsApp">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                                    </svg>
+                                </a>
+
+                                <!-- Email -->
+                                <a href="mailto:The.lumen.house.8@gmail.com"
+                                    class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                    aria-label="Email">
+
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-t border-white/10 pt-8">
+                    <p class="text-xs muted">© 2026 The Lumen House. All rights reserved.</p>
+                    <div class="flex gap-6 text-xs muted">
+                        <a href="privacy-policy.html" class="hover:text-ember">Privacy Policy</a>
+                        <a href="terms-conditions.html" class="hover:text-ember">Terms & Conditions</a>
+                        <a href="disclaimer.html" class="hover:text-ember">Disclaimer</a>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex flex-col items-center gap-6">
+                    <div class="light-stripes" aria-label="Footer light controls">
+                        <button class="light-stripe" data-light-toggle="true" aria-label="Toggle left light"></button>
+                        <button class="light-stripe" data-light-toggle="true" aria-label="Toggle center light"></button>
+                        <button class="light-stripe" data-light-toggle="true" aria-label="Toggle right light"></button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple Navbar interaction to add blur/shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('border-white/10', 'shadow-lg');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('border-white/10', 'shadow-lg');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Hero carousel rotator
+        const carouselImages = document.querySelectorAll('.carousel-track img');
+        let carouselIndex = 0;
+        setInterval(() => {
+            carouselImages[carouselIndex].classList.remove('active');
+            carouselIndex = (carouselIndex + 1) % carouselImages.length;
+            carouselImages[carouselIndex].classList.add('active');
+        }, 3500);
+
+        // Footer light toggle — clicking any stripe toggles ALL footer lights and keeps brightness identical
+        const footer = document.getElementById('contact');
+        const lightButtons = document.querySelectorAll('[data-light-toggle="true"]');
+        lightButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const isOn = footer.classList.contains('light-on');
+                // set footer classes explicitly so all stripes use the same styling
+                footer.classList.toggle('light-on', !isOn);
+                footer.classList.toggle('light-off', isOn);
+
+                // ensure every stripe visually matches and remove focus from clicked button
+                lightButtons.forEach(b => {
+                    b.classList.toggle('active', !isOn);
+                    b.blur();
+                });
+            });
+        });
+
+        // Mobile menu (simple toggle) — use #menu-btn and #mobile-menu
+        (function () {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenuEl = document.getElementById('mobile-menu');
+            if (!menuBtn || !mobileMenuEl) return;
+
+            const menuLinks = mobileMenuEl.querySelectorAll('a');
+
+            menuBtn.addEventListener('click', (e) => {
+                const isOpen = menuBtn.classList.toggle('active');
+                mobileMenuEl.classList.toggle('open', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuBtn.classList.remove('active');
+                    mobileMenuEl.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuEl.classList.contains('open')) {
+                    menuBtn.classList.remove('active');
+                    mobileMenuEl.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }());
+    </script>
+    <script>
+        (function () {
+            const idsToObserve = ['lampImg', 'mockupArea', 'textArea', 'lampImg-store', 'mockupArea-store', 'textArea-store'];
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+
+                    if (el.id && el.id.startsWith('lampImg')) {
+                        // lamp fly-up animation
+                        setTimeout(() => {
+                            el.classList.remove('lamp-hidden');
+                            el.classList.add('lamp-visible');
+                        }, 180);
+                    } else {
+                        // generic section fade-up
+                        el.classList.remove('section-hidden');
+                        el.classList.add('section-visible');
+
+                        // cascade results panel when observing mockup containers
+                        if (el.id && el.id.startsWith('mockupArea')) {
+                            const panel = el.querySelector('.panel-shadow');
+                            if (panel) {
+                                panel.style.opacity = '0';
+                                panel.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    panel.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                                    panel.style.opacity = '1';
+                                    panel.style.transform = 'translateY(0)';
+                                }, 350);
+                            }
+                        }
+                    }
+
+                    io.unobserve(el);
+                });
+            }, { threshold: 0.12 });
+
+            idsToObserve.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) io.observe(el);
+            });
+        })();
+    </script>
+</body>
+
+</html>

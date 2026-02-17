@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What We Do | The Lumen House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                    },
+                    boxShadow: {
+                        'glow': '0 0 80px -20px rgba(212, 163, 115, 0.15)',
+                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        /* Hamburger Menu Styles (No box, white lines for dark header) */
+        .hamburger-btn {
+            width: 32px;
+            height: 24px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 60;
+            padding: 0;
+            border: none;
+            outline: none;
+        }
+
+        .hamburger-line {
+            background: #050505;
+            /* Black lines */
+            height: 2px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .line-top {
+            width: 32px;
+        }
+
+        .line-mid {
+            width: 24px;
+        }
+
+        .line-bot {
+            width: 16px;
+        }
+
+        /* Animated Close State */
+        .hamburger-btn.active .line-top {
+            transform: rotate(45deg) translate(5px, 5px);
+            width: 32px;
+        }
+
+        .hamburger-btn.active .line-mid {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-btn.active .line-bot {
+            transform: rotate(-45deg) translate(5px, -5px);
+            width: 32px;
+        }
+
+        /* Light Theme Body Styling */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.light-theme {
+            background-color: #f7f4ef;
+            color: #1f1b16;
+        }
+
+        /* Light Theme Content Adjustments */
+        .light-theme .site-content {
+            color: #1f1b16;
+        }
+
+        .light-theme .text-white {
+            color: #1f1b16 !important;
+        }
+
+        .light-theme .text-gray-400 {
+            color: #6d655c !important;
+        }
+
+        .light-theme .text-gray-500 {
+            color: #7a7167 !important;
+        }
+
+        .light-theme .text-gray-300 {
+            color: #4a4540 !important;
+        }
+
+        .light-theme .bg-ink {
+            background-color: #f7f4ef !important;
+        }
+
+        .light-theme .bg-charcoal {
+            background-color: #f1ebe3 !important;
+        }
+
+        /* Fix borders for light theme */
+        .light-theme .border-white\/5 {
+            border-color: rgba(31, 27, 22, 0.08) !important;
+        }
+
+        .light-theme .border-white\/10 {
+            border-color: rgba(31, 27, 22, 0.12) !important;
+        }
+
+        .light-theme .border-white\/20 {
+            border-color: rgba(31, 27, 22, 0.2) !important;
+        }
+
+        .light-theme .bg-white\/5 {
+            background-color: rgba(31, 27, 22, 0.03) !important;
+        }
+
+        .light-theme .bg-white\/10 {
+            background-color: rgba(31, 27, 22, 0.06) !important;
+        }
+
+        /* Mobile Menu Transitions */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        .footer-dark {
+            background: #0a0a0b;
+            color: #e9e1d6;
+        }
+
+        .muted {
+            color: #a59b8f;
+        }
+
+        .glow-text {
+            color: #fff6e2;
+        }
+
+        .footer-dark.light-on .glow-text {
+            text-shadow: 0 0 18px rgba(255, 214, 140, 0.4);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #c7bdb0;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.45);
+        }
+
+        .light-stripes {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 24px;
+        }
+
+        .light-stripe {
+            height: 4px;
+            width: 180px;
+            border-radius: 999px;
+            background: rgba(255, 214, 140, 0.25);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            outline: none;
+        }
+
+        .light-stripe.active,
+        .footer-dark.light-on .light-stripe {
+            background: rgba(255, 214, 140, 0.85);
+            box-shadow: 0 0 18px rgba(255, 198, 120, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .light-stripe {
+                width: 80px;
+            }
+        }
+
+        /* Footer CTA: unified visible style */
+        .footer-cta {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 9999px;
+            background: rgba(212, 163, 115, 0.12);
+            color: #ffffff;
+            font-weight: 700;
+            border: 1px solid rgba(212, 163, 115, 0.18);
+            text-decoration: none;
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+        }
+
+        .footer-cta:hover {
+            background: #D4A373;
+            color: #111827;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(212, 163, 115, 0.12);
+        }
+
+        body.light-theme .footer-cta {
+            background: #111827;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.light-theme .footer-cta:hover {
+            background: #C58E5B;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="bg-ink selection:bg-ember selection:text-ink light-theme font-body">
+
+    <!-- Navigation -->
+    <header class="site-content fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent"
+        id="navbar">
+        <div class="absolute inset-0 bg-white/70 backdrop-blur-md"></div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="Assets/Logo.svg" alt="The Lumen House Logo"
+                    class="w-12 h-12 group-hover:scale-110 transition-transform duration-300">
+                <span class="font-display text-lg tracking-wide text-white group-hover:text-ember transition-colors">The
+                    Lumen House</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-10">
+                <a href="index.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">Home</a>
+                <a href="about.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">About
+                    us</a>
+                <a href="what-we-do.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">What
+                    we do</a>
+                <a href="projects.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">Projects</a>
+                <a href="contact.html"
+                    class="text-sm font-medium text-gray-400 hover:text-white hover:tracking-wide transition-all duration-300">Contact
+                    Us</a>
+            </nav>
+
+            <!-- CTA -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="#contact"
+                    class="px-6 py-2.5 rounded-full border border-white/20 text-sm font-medium text-white hover:border-ember hover:text-ember hover:shadow-glow transition-all duration-300">
+                    Book Consultation
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button (Custom Hamburger) -->
+            <button id="menu-btn" class="lg:hidden hamburger-btn" aria-label="Toggle Menu">
+                <span class="hamburger-line line-top"></span>
+                <span class="hamburger-line line-mid"></span>
+                <span class="hamburger-line line-bot"></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="mobile-menu fixed inset-0 z-40 bg-ink/98 backdrop-blur-lg flex flex-col justify-center items-center gap-8 lg:hidden">
+        <a href="index.html" class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">Home</a>
+        <a href="about.html" class="text-3xl font-display text-white hover:text-ember transition-colors">About us</a>
+        <a href="what-we-do.html" class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">What we
+            do</a>
+        <a href="projects.html"
+            class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">Projects</a>
+        <a href="contact.html" class="text-3xl font-display text-gray-300 hover:text-ember transition-colors">Contact
+            Us</a>
+
+        <div class="mt-12">
+            <a href="contact.html"
+                class="px-8 py-3 rounded-full border border-ember text-ember text-sm font-medium hover:bg-ember hover:text-ink transition-all duration-300">Book
+                Consultation</a>
+        </div>
+    </div>
+
+    <main class="site-content pt-20">
+
+        <!-- Page Header -->
+        <section class="relative py-24 md:py-32 overflow-hidden bg-ink">
+            <div class="absolute inset-0 opacity-10">
+                <img src="https://picsum.photos/seed/projects-hero/1920/1080" alt="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/90 to-ink/70"></div>
+            </div>
+            <div class="relative max-w-7xl mx-auto px-6 lg:px-12 text-center">
+                <h3 class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">Our Portfolio</h3>
+                <h1 class="font-display text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight mb-6 text-white">
+                    Sectors We Serve
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    We deliver bespoke lighting solutions across a diverse range of architectural environments.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-32 bg-charcoal/30">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-2xl">
+                        <h3 class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">Services</h3>
+                        <h2 class="font-display text-4xl lg:text-5xl tracking-tight">Comprehensive lighting design.</h2>
+                    </div>
+                    <p class="text-gray-400 max-w-md">
+                        From initial concepts to final commissioning, we provide end-to-end lighting solutions.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <article
+                        class="group p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="font-display text-2xl mb-4">Architectural Lighting</h4>
+                        <p class="text-gray-500 leading-relaxed mb-6">
+                            Integrated lighting plans that enhance structural elements and create seamless flow
+                            throughout residential and commercial spaces.
+                        </p>
+                        <span
+                            class="text-sm text-ember font-medium flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Learn more <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </span>
+                    </article>
+
+                    <!-- Service 2 -->
+                    <article
+                        class="group p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="font-display text-2xl mb-4">Custom Fixtures</h4>
+                        <p class="text-gray-500 leading-relaxed mb-6">
+                            Bespoke design and manufacturing of one-of-a-kind luminaries using premium materials like
+                            bronze, alabaster, and hand-blown glass.
+                        </p>
+                        <span
+                            class="text-sm text-ember font-medium flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Learn more <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </span>
+                    </article>
+
+                    <!-- Service 3 -->
+                    <article
+                        class="group p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-display text-2xl mb-4">Smart Control</h4>
+                        <p class="text-gray-500 leading-relaxed mb-6">
+                            Advanced lighting control systems (Lutron, Crestron) that automate scenes, optimize energy
+                            usage, and simplify interaction.
+                        </p>
+                        <span
+                            class="text-sm text-ember font-medium flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Learn more <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section id="services-grid" class="py-32 bg-ink">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-8">
+                    <h2 class="font-display text-4xl lg:text-5xl tracking-tight text-white">What We Do</h2>
+                    <a href="#contact"
+                        class="hidden md:block text-sm font-medium text-gray-400 hover:text-ember transition-colors">Start
+                        a Project &rarr;</a>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-16">
+
+                    <!-- 1. HOSPITALITY -->
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/hospitality-sector/800/600" alt="Hospitality"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Hospitality</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. INFRASTRUCTURE -->
+                    <div class="group cursor-pointer md:mt-16">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/infrastructure-light/800/600" alt="Infrastructure"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Infrastructure</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. HEALTH CARE -->
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/healthcare-medical/800/600" alt="Health Care"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Health Care</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. RETAIL OFFICE -->
+                    <div class="group cursor-pointer md:mt-16">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/retail-office-space/800/600" alt="Retail Office"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Retail & Office</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. OUTDOOR LANDSCAPE -->
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/outdoor-landscape-garden/800/600"
+                                alt="Outdoor Landscape"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Outdoor Landscape</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. OUTDOOR – URBAN -->
+                    <div class="group cursor-pointer md:mt-16">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/urban-street-light/800/600" alt="Outdoor Urban"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Outdoor – Urban</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. OUTDOOR – FAÇADE -->
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/facade-lighting/800/600" alt="Outdoor Façade"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Outdoor – Façade</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. MUSEUM & GALLERIES -->
+                    <div class="group cursor-pointer md:mt-16">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/museum-gallery-art/800/600" alt="Museum & Galleries"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Museum & Galleries</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. PRIVATE RESIDENCES -->
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/private-residence-luxury/800/600"
+                                alt="Private Residences"
+                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
+                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
+                                    Private Residences</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer-dark light-on relative overflow-hidden pt-24 pb-16">
+        <div class="absolute inset-0">
+            <div class="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-ember/10 blur-3xl"></div>
+            <div class="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+            <div
+                class="mb-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 rounded-[28px] border border-white/10 bg-white/5 px-8 py-10">
+                <div>
+                    <p class="text-xs uppercase tracking-[0.35em] muted">Studio intake</p>
+                    <h2 class="glow-text font-display text-4xl lg:text-5xl tracking-tight mt-3">
+                        Tell us about your next space.
+                    </h2>
+                </div>
+                <a href="contact.html#contact-form" class="footer-cta">Start a project brief</a>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5">
+                    <div class="mb-8">
+                        <img src="Assets/The-Lumen-House-removebg-preview.png" alt="The Lumen House"
+                            class="w-72 max-w-full opacity-90">
+                    </div>
+                    <p class="mt-6 muted max-w-sm">
+                        The Lumen House – House of Lighting Consultancy crafts architectural lighting experiences
+                        and provides bespoke lighting design solutions. Our expert lighting consultancy combines
+                        technical precision, creative vision, and material finesse to shape ambiance and elevate
+                        spaces.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-10">
+                    <div class="space-y-4">
+                        <p class="text-xs uppercase tracking-[0.3em] muted">Contact</p>
+                        <div class="text-lg glow-text">The.lumen.house.8@gmail.com</div>
+                        <div class="text-lg glow-text">+91 99866 64243</div>
+                        <div class="text-sm muted">Shirur Park link road, opposite Chetan Pre College,<br />above
+                            Focus mart, Akshay Colony,<br />Hubballi, Karnataka 580031</div>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-xs uppercase tracking-[0.3em] muted">Quick Links</p>
+                        <div class="flex flex-col gap-3 text-sm muted">
+                            <a href="/" class="hover:text-ember">Home</a>
+                            <a href="about.html" class="hover:text-ember">About</a>
+                            <a href="what-we-do.html" class="hover:text-ember">What we do</a>
+                            <a href="projects.html" class="hover:text-ember">Projects</a>
+                            <a href="contact.html" class="hover:text-ember">Contact</a>
+                        </div>
+                        <div class="flex gap-4">
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/the_lumen_house.8/"
+                                class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                aria-label="Instagram">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                                </svg>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="#"
+                                class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                aria-label="LinkedIn">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                                </svg>
+                            </a>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/919986664243?text=Hello%20The%20Lumen%20House%20Team,%0AI%20would%20like%20to%20enquire%20about%20your%20lighting%20consultancy%20services.%20Please%20share%20your%20process,%20offerings,%20and%20availability.%20Thank%20you."
+                                class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                aria-label="WhatsApp">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                                </svg>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:The.lumen.house.8@gmail.com"
+                                class="social-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-ember hover:border-ember transition-all"
+                                aria-label="Email">
+
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mt-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-t border-white/10 pt-8">
+                <p class="text-xs muted">© 2026 The Lumen House. All rights reserved.</p>
+                <div class="flex gap-6 text-xs muted">
+                    <a href="privacy-policy.html" class="hover:text-ember">Privacy Policy</a>
+                    <a href="terms-conditions.html" class="hover:text-ember">Terms & Conditions</a>
+                    <a href="disclaimer.html" class="hover:text-ember">Disclaimer</a>
+                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col items-center gap-6">
+                <div class="light-stripes" aria-label="Footer light controls">
+                    <button class="light-stripe" data-light-toggle="true" aria-label="Toggle left light"></button>
+                    <button class="light-stripe" data-light-toggle="true" aria-label="Toggle center light"></button>
+                    <button class="light-stripe" data-light-toggle="true" aria-label="Toggle right light"></button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll behavior
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('border-white/10', 'shadow-lg');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('border-white/10', 'shadow-lg');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = mobileMenu.querySelectorAll('a');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = menuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Footer light toggle
+        const footer = document.getElementById('contact');
+        const lightButtons = document.querySelectorAll('[data-light-toggle="true"]');
+        lightButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const isOn = footer.classList.contains('light-on');
+                footer.classList.toggle('light-on', !isOn);
+                footer.classList.toggle('light-off', isOn);
+                lightButtons.forEach(b => { b.classList.toggle('active', !isOn); b.blur(); });
+            });
+        });
+    </script>
+</body>
+
+</html>
