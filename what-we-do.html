@@ -262,6 +262,123 @@
             color: #ffffff;
         }
     </style>
+
+    <style>
+        /* Hover-reveal details for service cards */
+        .sector-details {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.68) 60%);
+            color: #f3f3f3;
+            padding: 0.9rem 1rem;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .28s ease, transform .28s ease;
+            font-size: 0.95rem;
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        .group:hover .sector-details,
+        .group:focus-within .sector-details {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .sector-details ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: block;
+        }
+
+        .sector-details li {
+            margin: 0;
+            padding: 2px 0;
+            color: #f6f6f6;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .sector-details {
+                font-size: 0.88rem;
+                padding: 0.75rem;
+            }
+        }
+
+        /* Accessible hide but remain for screen-readers */
+        .sr-only {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Hover title centered over image */
+        .hover-title {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 0.02em;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .32s ease, transform .32s ease;
+            z-index: 40;
+            padding: 0 1rem;
+            text-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+        }
+
+        .group:hover .hover-title,
+        .group:focus-within .hover-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fly-up reveal when scrolled into view */
+        .fly-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .8s cubic-bezier(.2, .9, .2, 1), transform .8s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .fly-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hover-title {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Card media blur on hover for legibility */
+        .card-media {
+            transition: transform .32s ease, filter .32s ease;
+            display: block;
+        }
+
+        .group:hover .card-media,
+        .group:focus-within .card-media {
+            filter: blur(3px) brightness(0.48) grayscale(40%);
+            transform: scale(1.02);
+        }
+    </style>
 </head>
 
 <body class="bg-ink selection:bg-ember selection:text-ink light-theme font-body">
@@ -377,7 +494,8 @@
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="font-display text-2xl mb-4">Architectural Lighting</h4>
+                        <h4 class="font-display text-2xl mb-4 text-ember group-hover:text-ember transition-colors">
+                            Architectural Lighting</h4>
                         <p class="text-gray-500 leading-relaxed mb-6">
                             Integrated lighting plans that enhance structural elements and create seamless flow
                             throughout residential and commercial spaces.
@@ -402,7 +520,8 @@
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="font-display text-2xl mb-4">Custom Fixtures</h4>
+                        <h4 class="font-display text-2xl mb-4 text-ember group-hover:text-ember transition-colors">
+                            Custom Fixtures</h4>
                         <p class="text-gray-500 leading-relaxed mb-6">
                             Bespoke design and manufacturing of one-of-a-kind luminaries using premium materials like
                             bronze, alabaster, and hand-blown glass.
@@ -426,7 +545,8 @@
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h4 class="font-display text-2xl mb-4">Smart Control</h4>
+                        <h4 class="font-display text-2xl text-ember mb-4 group-hover:text-ember transition-colors">Smart
+                            Control</h4>
                         <p class="text-gray-500 leading-relaxed mb-6">
                             Advanced lighting control systems (Lutron, Crestron) that automate scenes, optimize energy
                             usage, and simplify interaction.
@@ -462,20 +582,19 @@
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/hospitality-sector/800/600" alt="Hospitality"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Hospitality</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Chandeliers & Pendants</li>
+                                    <li>Cove & Recessed Downlights</li>
+                                    <li>Wall Sconces & Accent Lighting</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Hospitality</h4>
-                            </div>
-                            <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
+                                <h4 class="sr-only">Hospitality</h4>
                             </div>
                         </div>
                     </div>
@@ -487,13 +606,20 @@
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/infrastructure-light/800/600" alt="Infrastructure"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Infrastructure</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>High-Bay & Linear Lighting</li>
+                                    <li>Floodlights & Site Illumination</li>
+                                    <li>Wayfinding & Roadway Fixtures</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Infrastructure</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Infrastructure</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -512,13 +638,20 @@
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/healthcare-medical/800/600" alt="Health Care"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Health Care</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Examination & Task Lighting</li>
+                                    <li>Sterile Area Recessed Fixtures</li>
+                                    <li>Emergency & Egress Lighting</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Health Care</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Health Care</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -537,13 +670,20 @@
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/retail-office-space/800/600" alt="Retail Office"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Retail & Office</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Display & Accent Lighting</li>
+                                    <li>Track & Adjustable Fixtures</li>
+                                    <li>Office Task & Ambient Lighting</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Retail & Office</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Retail & Office</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -556,20 +696,27 @@
                     </div>
 
                     <!-- 5. OUTDOOR LANDSCAPE -->
-                    <div class="group cursor-pointer">
+                    <div class="group cursor-pointer fly-up">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/outdoor-landscape-garden/800/600"
                                 alt="Outdoor Landscape"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Outdoor Landscape</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Path & Step Lighting</li>
+                                    <li>Garden Accent Fixtures</li>
+                                    <li>Deck & Terrace Lighting</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Outdoor Landscape</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Outdoor Landscape</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -588,13 +735,20 @@
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/urban-street-light/800/600" alt="Outdoor Urban"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Outdoor – Urban</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Street & Bollard Lighting</li>
+                                    <li>Glare-Controlled Luminaires</li>
+                                    <li>Pedestrian & Plaza Fixtures</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Outdoor – Urban</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Outdoor – Urban</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -613,13 +767,20 @@
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/facade-lighting/800/600" alt="Outdoor Façade"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Outdoor – Façade</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Façade Floodlights</li>
+                                    <li>Wall Grazers & Uplights</li>
+                                    <li>Architectural Accent Fixtures</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Outdoor – Façade</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Outdoor – Façade</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -638,13 +799,20 @@
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
                             </div>
                             <img src="https://picsum.photos/seed/museum-gallery-art/800/600" alt="Museum & Galleries"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Museum & Galleries</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Track & Gallery Accent Lighting</li>
+                                    <li>Color-Critical Spotlights</li>
+                                    <li>Display Case & Conservation Lighting</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Museum & Galleries</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Museum & Galleries</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -664,13 +832,20 @@
                             </div>
                             <img src="https://picsum.photos/seed/private-residence-luxury/800/600"
                                 alt="Private Residences"
-                                class="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Private Residences</div>
+                            <div class="sector-details">
+                                <ul>
+                                    <li>Layered Ambient & Task Lighting</li>
+                                    <li>Decorative Pendants & Sconces</li>
+                                    <li>Landscape & Entry Lighting</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2">Sector</p>
-                                <h4 class="font-display text-2xl text-white group-hover:text-ember transition-colors">
-                                    Private Residences</h4>
+                                <p class="text-ember text-xs font-bold uppercase tracking-widest mb-2"></p>
+                                <h4 class="sr-only">Private Residences</h4>
                             </div>
                             <div
                                 class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
@@ -846,6 +1021,22 @@
                 lightButtons.forEach(b => { b.classList.toggle('active', !isOn); b.blur(); });
             });
         });
+    </script>
+    <script>
+        // IntersectionObserver: reveal fly-up elements when they enter viewport
+        (function () {
+            const items = document.querySelectorAll('.fly-up');
+            if (!items.length) return;
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in-view');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            items.forEach(it => io.observe(it));
+        })();
     </script>
 </body>
 
