@@ -653,6 +653,234 @@
             box-shadow: 0 6px 34px rgba(0, 0, 0, 0.10);
         }
     </style>
+    <style>
+        body {
+            background-color: #e8ddd3;
+        }
+
+        /* Map grid lines */
+        .map-grid {
+            background-image:
+                linear-gradient(rgba(180, 195, 180, 0.35) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180, 195, 180, 0.35) 1px, transparent 1px);
+            background-size: 18px 18px;
+        }
+
+        /* Map roads */
+        .map-road {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        .map-road.h1 {
+            top: 30%;
+            left: 0;
+            right: 0;
+            height: 2px;
+        }
+
+        .map-road.h2 {
+            top: 55%;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+        }
+
+        .map-road.h3 {
+            top: 76%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            opacity: .4;
+        }
+
+        .map-road.v1 {
+            left: 25%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+        }
+
+        .map-road.v2 {
+            left: 55%;
+            top: 0;
+            bottom: 0;
+            width: 1.5px;
+        }
+
+        .map-road.v3 {
+            left: 74%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            opacity: .4;
+        }
+
+        /* Pin */
+        .map-pin {
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            background: #e07070;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            border: 1.5px solid #fff;
+        }
+
+        .map-pin.p1 {
+            top: 36%;
+            left: 43%;
+        }
+
+        .map-pin.p2 {
+            top: 66%;
+            left: 28%;
+        }
+
+        /* Hero vertical stripes overlay */
+        .hero-stripes {
+            background: repeating-linear-gradient(90deg,
+                    transparent, transparent 6px,
+                    rgba(255, 255, 255, 0.055) 6px, rgba(255, 255, 255, 0.055) 7px);
+        }
+
+        /* ────── Lamp fly-up animation ────── */
+        @keyframes lampFlyUp {
+            0% {
+                opacity: 0;
+                transform: translateY(180px) scale(0.9);
+            }
+
+            55% {
+                opacity: 1;
+                transform: translateY(-22px) scale(1.02);
+            }
+
+            75% {
+                transform: translateY(10px) scale(0.99);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .lamp-hidden {
+            opacity: 0;
+            transform: translateY(180px) scale(0.9);
+        }
+
+        .lamp-visible {
+            animation: lampFlyUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* ────── Section fade-up animation ────── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-visible {
+            animation: fadeUp 0.75s ease forwards;
+        }
+
+        /* Hover on view-more */
+        .view-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap .2s ease;
+        }
+
+        .view-more:hover {
+            gap: 16px;
+        }
+
+        /* Shadows */
+        .browser-shadow {
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.13);
+        }
+
+        .panel-shadow {
+            box-shadow: 0 6px 34px rgba(0, 0, 0, 0.10);
+        }
+
+        /* Overlay images for mockup */
+        /* Clean overlay: minimal shadows, no rotation, subtle frame */
+        .overlay-container {
+            position: relative;
+            width: 640px;
+            height: 420px;
+        }
+
+        .overlay-img {
+            position: absolute;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 6px 18px rgba(11, 15, 20, 0.06);
+            transition: transform 0.32s ease, filter 0.32s ease;
+            filter: grayscale(85%) contrast(.98) brightness(.98);
+            will-change: transform, filter;
+        }
+
+        .overlay-img.back {
+            width: 600px;
+            height: 380px;
+            left: 0;
+            top: 0;
+            transform: none;
+            z-index: 10;
+        }
+
+        /* simple framed panel for the front image */
+        .overlay-frame {
+            position: absolute;
+            right: -28px;
+            top: 60px;
+            width: 360px;
+            height: 260px;
+            padding: 12px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px rgba(11, 15, 20, 0.06);
+            z-index: 22;
+            transform: none;
+        }
+
+        .overlay-frame .overlay-img.front {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            left: auto;
+            top: auto;
+            transform: none;
+            border-radius: 6px;
+            box-shadow: none;
+            display: block;
+        }
+
+        /* hover reveals color and gently lifts */
+        .overlay-img:hover,
+        .overlay-img:focus,
+        .overlay-frame:hover .overlay-img.front {
+            filter: grayscale(0%);
+            transform: translateY(-6px) scale(1.015);
+        }
+    </style>
 </head>
 
 <body class="bg-ink selection:bg-ember selection:text-ink light-theme">
@@ -766,83 +994,13 @@
         <!-- Store Locator Feature (added) -->
         <section id="store-locator" class="py-24 relative">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-3 gap-8 items-start">
-                <!-- Left: Mockup Screens -->
-                <div class="relative w-full lg:col-span-1 flex-shrink-0" id="mockupArea-store">
-                    <div class="relative w-[460px] h-[460px] max-w-full mx-auto">
-                        <div
-                            class="browser-shadow absolute top-0 left-0 w-[385px] z-[1] bg-white rounded-md overflow-hidden">
-                            <div class="flex items-center gap-3 px-4 py-[9px] bg-dark text-white">
-                                <span class="text-[10px] font-bold tracking-[2px] uppercase">Lucent</span>
-                                <div class="ml-auto flex gap-3 text-[8px] text-[#aaa]">
-                                    <span>Homepage</span>
-                                    <span>Pages</span>
-                                    <span>Products</span>
-                                </div>
-                            </div>
-
-                            <div class="relative w-full h-[115px] overflow-hidden hero-stripes"
-                                style="background:linear-gradient(135deg,#b0b5a8 0%,#8a8f84 50%,#6d7068 100%)">
-                                <div class="absolute top-0 left-[56%] w-[2px] h-[56px] bg-[rgba(180,140,100,0.65)]">
-                                </div>
-                                <span class="absolute bottom-3 left-4 text-[13px] font-semibold text-white z-10">Store
-                                    Locator</span>
-                            </div>
-
-                            <div class="px-4 pt-4 pb-3">
-                                <p class="text-[10.5px] font-semibold text-[#1a1a1a] text-center leading-[1.55] mb-3">
-                                    There's more than 200+ Lucent stores globally. Find the one next to you easily.
-                                </p>
-
-                                <div class="relative w-full h-[128px] map-grid rounded-sm overflow-hidden bg-mapbg">
-                                    <div class="map-road h1"></div>
-                                    <div class="map-road h2"></div>
-                                    <div class="map-road h3"></div>
-                                    <div class="map-road v1"></div>
-                                    <div class="map-road v2"></div>
-                                    <div class="map-road v3"></div>
-                                    <span class="absolute text-[6px] text-gray-400 font-medium"
-                                        style="top:16%;left:14%">United States</span>
-                                    <div class="map-pin p1"></div>
-                                    <div class="map-pin p2"></div>
-                                    <div
-                                        class="absolute bottom-0 left-0 right-0 bg-mapbar px-3 py-[6px] flex items-center justify-between">
-                                        <span class="text-[7.5px] text-[#5a4a3a] font-medium">Search Lucent
-                                            stores</span>
-                                        <span class="text-[#5a4a3a] text-[11px]">⌕</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="panel-shadow absolute bg-white rounded overflow-hidden z-[2]"
-                            style="top:188px;left:152px;width:300px;">
-                            <div class="flex items-center gap-2 px-3 py-2 bg-result border-b border-resultborder">
-                                <span
-                                    class="text-[8px] font-bold tracking-[1.5px] uppercase whitespace-nowrap text-[#1a1a1a]">Search
-                                    Lucent stores</span>
-                                <div
-                                    class="flex-1 border border-[#e0ccc8] rounded-sm bg-white text-[6.5px] text-gray-400 px-2 py-[3px]">
-                                    Choose country you want to search for the store</div>
-                                <div
-                                    class="w-5 h-5 border border-gray-300 rounded-sm flex items-center justify-center text-[10px] text-gray-500 flex-shrink-0">
-                                    ⌕</div>
-                            </div>
-
-                            <div class="px-3 pt-3 pb-2">
-                                <p class="text-[9px] font-bold text-[#1a1a1a] mb-2">Russian Federation</p>
-                                <div
-                                    class="grid grid-cols-[1fr_1fr_1fr_auto] gap-x-2 py-2 border-b border-gray-100 items-start">
-                                    <div class="text-[6.5px] font-semibold text-[#1a1a1a] leading-[1.45]">Boutique of
-                                        furniture and accessories Anna Blumm</div>
-                                    <div class="text-[6px] text-gray-400 leading-[1.6]">Street adress street 20<br>20390
-                                        New<br>Russia Federation</div>
-                                    <div class="text-[6px] text-gray-400 leading-[1.6]">PUT
-                                        0000990A60<br>office@website.com.ru<br>anna@ru.ru</div>
-                                    <div class="text-[6.5px] font-medium text-[#1a1a1a] whitespace-nowrap pt-1">Visit
-                                        Website ↗</div>
-                                </div>
-                                <!-- Repeat rows as desired -->
-                            </div>
+                <div class="relative w-[460px] h-[460px] flex-shrink-0 section-hidden" id="mockupArea">
+                    <div class="overlay-container browser-shadow absolute top-0 left-0 z-[1]">
+                        <img src="https://i.pinimg.com/1200x/32/19/63/321963531b044712ba5ddfc916eb0028.jpg"
+                            alt="store-hero" class="overlay-img back" />
+                        <div class="overlay-frame">
+                            <img src="https://i.pinimg.com/1200x/ea/8c/61/ea8c61c85b499c8f11f18ab042d4fdd6.jpg"
+                                alt="panel-img" class="overlay-img front" />
                         </div>
                     </div>
                 </div>
@@ -860,11 +1018,17 @@
                 <div class="pl-6 max-w-[490px] flex-shrink-0 section-hidden" id="textArea-store">
                     <h1 class="text-white font-bold leading-[1.1] tracking-tight mb-7"
                         style="font-size: clamp(24px, 2.6vw, 36px);">
-                        Feature all your store locations and make them easily searchable with the practical store
-                        locator template.
+                        We believe light is the fourth dimension of architecture.
                     </h1>
-                    <p class="text-gray-300 text-[15px] leading-relaxed mb-6">Display store addresses, contact info, pin
-                        stores on a map, and more!</p>
+                    <p class="text-gray-300 text-[15px] leading-relaxed mb-6">At The Lumen House, we don't just
+                        illuminate spaces; we sculpt them. Our approach combines the rigorous physics of optical design
+                        with the fluid emotion of art.
+
+                        <br>
+
+                        Whether it's a private residence requiring intimate warmth or a commercial space demanding
+                        clarity and focus, our solutions are tailored to the human experience within the built
+                        environment.</p>
                     <div class="w-14 h-[2px] bg-ember mb-5"></div>
                     <!-- <a href="#"
                         class="view-more text-amber-100 font-semibold text-[14px] border-b-2 border-ember pb-1">View
@@ -873,7 +1037,7 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- About Section
         <section id="about" class="py-32 relative">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-20 items-center">
                 <div class="relative">
@@ -914,7 +1078,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <section id="about" class="py-32 relative">
             <div class="max-w-7xl mx-auto px-6 py-12 md:py-20">
