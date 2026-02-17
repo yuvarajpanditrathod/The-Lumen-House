@@ -353,7 +353,8 @@
         .fly-up {
             opacity: 0;
             transform: translateY(28px);
-            transition: opacity .8s cubic-bezier(.2, .9, .2, 1), transform .8s cubic-bezier(.2, .9, .2, 1);
+            will-change: transform, opacity;
+            transition: opacity 1s cubic-bezier(.2, .9, .2, 1), transform 1s cubic-bezier(.2, .9, .2, 1);
         }
 
         .fly-up.in-view {
@@ -485,7 +486,7 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Service 1 -->
                     <article
-                        class="group p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        class="group fly-up p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
                         <div
                             class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -511,7 +512,7 @@
 
                     <!-- Service 2 -->
                     <article
-                        class="group p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        class="group fly-up p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
                         <div
                             class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -537,7 +538,7 @@
 
                     <!-- Service 3 -->
                     <article
-                        class="group p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        class="group fly-up p-8 rounded-3xl bg-[#0a0a0c] border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
                         <div
                             class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -576,7 +577,7 @@
                 <div class="grid md:grid-cols-2 gap-x-8 gap-y-16">
 
                     <!-- 1. HOSPITALITY -->
-                    <div class="group cursor-pointer">
+                    <div class="group cursor-pointer fly-up">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
@@ -600,7 +601,7 @@
                     </div>
 
                     <!-- 2. INFRASTRUCTURE -->
-                    <div class="group cursor-pointer md:mt-16">
+                    <div class="group cursor-pointer fly-up md:mt-16">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
@@ -632,7 +633,7 @@
                     </div>
 
                     <!-- 3. HEALTH CARE -->
-                    <div class="group cursor-pointer">
+                    <div class="group cursor-pointer fly-up">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
@@ -664,7 +665,7 @@
                     </div>
 
                     <!-- 4. RETAIL OFFICE -->
-                    <div class="group cursor-pointer md:mt-16">
+                    <div class="group cursor-pointer fly-up md:mt-16">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
@@ -729,7 +730,7 @@
                     </div>
 
                     <!-- 6. OUTDOOR – URBAN -->
-                    <div class="group cursor-pointer md:mt-16">
+                    <div class="group cursor-pointer fly-up md:mt-16">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
@@ -761,7 +762,7 @@
                     </div>
 
                     <!-- 7. OUTDOOR – FAÇADE -->
-                    <div class="group cursor-pointer">
+                    <div class="group cursor-pointer fly-up">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
@@ -793,7 +794,7 @@
                     </div>
 
                     <!-- 8. MUSEUM & GALLERIES -->
-                    <div class="group cursor-pointer md:mt-16">
+                    <div class="group cursor-pointer fly-up md:mt-16">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
@@ -825,7 +826,7 @@
                     </div>
 
                     <!-- 9. PRIVATE RESIDENCES -->
-                    <div class="group cursor-pointer">
+                    <div class="group cursor-pointer fly-up">
                         <div class="overflow-hidden rounded-2xl mb-6 relative">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
