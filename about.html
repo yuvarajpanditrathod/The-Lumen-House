@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | The Lumen House - Architectural Lighting Design Studio</title>
+    <meta name="description"
+        content="The Lumen House is a premier architectural lighting design studio specializing in luxury residential, hospitality, and commercial lighting solutions.">
+    <meta name="keywords"
+        content="Lighting Design Studio, Architectural Lighting, Luxury Lighting Solutions, Interior Lighting Experts">
+    <link rel="canonical" href="https://www.thelumenhouse.com/about" />
+    <meta property="og:title" content="About Us | The Lumen House" />
+    <meta property="og:description"
+        content="A lighting atelier shaping atmosphere through precise engineering and warm materiality." />
+    <meta property="og:type" content="website" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                    },
+                    boxShadow: {
+                        'glow': '0 0 80px -20px rgba(212, 163, 115, 0.15)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.5)'
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "The Lumen House",
+      "url": "https://www.thelumenhouse.com",
+      "logo": "https://www.thelumenhouse.com/Assets/Logo.svg",
+      "description": "A lighting atelier shaping atmosphere through precise engineering and warm materiality.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Shirur Park link road, opposite Chetan Pre College",
+        "addressLocality": "Hubballi",
+        "addressRegion": "Karnataka",
+        "postalCode": "580031",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9986664243",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+
+    <style>
+        * {
+            font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.light-theme {
+            background-color: #f7f4ef;
+            color: #1f1b16;
+        }
+
+        .light-theme .site-content {
+            color: #1f1b16;
+        }
+
+        .light-theme .text-white {
+            color: #1f1b16 !important;
+        }
+
+        .light-theme .text-gray-400 {
+            color: #6d655c !important;
+        }
+
+        .light-theme .bg-ink {
+            background-color: #f7f4ef !important;
+        }
+
+        /* ===== PROFESSIONAL HAMBURGER (ANIMATED, MINIMAL) ===== */
+        .hamburger-box {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            transition: all 0.3s ease;
+            z-index: 60;
+        }
+
+        .hamburger-box:hover {
+            border-color: rgba(212, 163, 115, 0.6);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hamburger-inner {
+            width: 22px;
+            height: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 2px;
+            background: #D4A373;
+            /* ember */
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform-origin: left center;
+        }
+
+        .hamburger-box.active .line-1 {
+            transform: rotate(45deg) translate(3px, -2px);
+            width: 120%;
+        }
+
+        .hamburger-box.active .line-2 {
+            opacity: 0;
+            transform: scaleX(0.5);
+        }
+
+        .hamburger-box.active .line-3 {
+            transform: rotate(-45deg) translate(3px, 2px);
+            width: 120%;
+        }
+
+        /* ===== LEFT-SIDE MENU (DARK, ELEGANT) ===== */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 45;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: min(85vw, 400px);
+            height: 100vh;
+            background: #0C0B0A;
+            /* deep charcoal with warmth */
+            border-right: 1px solid rgba(212, 163, 115, 0.15);
+            box-shadow: 20px 0 50px -20px rgba(0, 0, 0, 0.8);
+            z-index: 50;
+            transform: translateX(-100%);
+            transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.55, 1);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* hide native scrollbars inside the menu for a cleaner look */
+        #menu-panel,
+        .menu-footer {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        #menu-panel::-webkit-scrollbar,
+        .menu-footer::-webkit-scrollbar {
+            display: none;
+            /* Safari and Chrome */
+            width: 0;
+            height: 0;
+        }
+
+        .menu-panel.open {
+            transform: translateX(0);
+        }
+
+        /* menu header (logo / close hint) */
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: none;
+            /* removed thin divider for a cleaner look */
+            position: relative;
+        }
+
+        /* decorative animated gradient line under header */
+        .menu-header::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 6px;
+            height: 2px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, rgba(212, 163, 115, 0.06) 0%, rgba(212, 163, 115, 0.35) 50%, rgba(212, 163, 115, 0.06) 100%);
+            background-size: 200% 100%;
+            opacity: 0.9;
+            transform: translateY(4px);
+            animation: shimmer 4.5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .menu-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .menu-close {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(212, 163, 115, 0.28);
+            color: #D4A373;
+            cursor: pointer;
+            transition: transform 260ms cubic-bezier(.2, .9, .2, 1), box-shadow 260ms ease, background 220ms ease, opacity 260ms ease;
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            /* keep the close button inside the panel */
+            z-index: 60;
+            box-shadow: 0 6px 28px rgba(9, 10, 10, 0.35);
+            opacity: 0;
+            transform: translateY(-6px) scale(.94);
+        }
+
+        .menu-close:hover {
+            transform: translateY(-2px) scale(1.03);
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(212, 163, 115, 0.9);
+            box-shadow: 0 10px 36px rgba(9, 10, 10, 0.45);
+        }
+
+        .menu-close svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            opacity: 0.95;
+        }
+
+        /* show state for polished close button */
+        .menu-close.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* animated hide for header hamburger so it fades/slides out instead of disappearing instantly */
+        .hamburger-box.hidden-anim {
+            opacity: 0 !important;
+            transform: translateY(-6px) scale(.96) !important;
+            pointer-events: none !important;
+        }
+
+        /* Also hide the original #menu-btn when menu is open (keeps behavior consistent with index.html) */
+        #menu-btn.hidden-anim {
+            opacity: 0 !important;
+            transform: translateY(-6px) scale(.96) !important;
+            pointer-events: none !important;
+        }
+
+        /* menu items: staggered “lights on” animation */
+        .menu-item {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: rgba(255, 255, 240, 0.6);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            margin: 0.2rem 0;
+            display: inline-block;
+            transition: color 0.25s, transform 0.25s, text-shadow 0.25s;
+            transform: translateX(0);
+            border-bottom: 1px solid transparent;
+            opacity: 0;
+            animation: fadeSlideIn 0.4s forwards cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        }
+
+        /* animated ember underline effect for menu items */
+        .menu-item::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(90deg, rgba(212, 163, 115, 0.0), rgba(212, 163, 115, 0.85), rgba(212, 163, 115, 0.0));
+            border-radius: 6px;
+            margin-top: 18px;
+            transition: width 280ms cubic-bezier(.2, .9, .2, 1), opacity 200ms ease;
+            opacity: 0;
+        }
+
+        .menu-item:hover::after,
+        .menu-item.active::after {
+            width: 84%;
+            opacity: 1;
+        }
+
+        .menu-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .menu-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .menu-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .menu-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .menu-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .menu-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .menu-cta-item {
+            animation: fadeSlideIn 0.4s forwards cubic-bezier(0.2, 0.9, 0.3, 1.1);
+            animation-delay: 0.7s;
+            opacity: 0;
+            margin-top: 1.5rem;
+        }
+
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .menu-item:hover {
+            color: #D4A373;
+            transform: translateX(8px);
+            text-shadow: 0 0 10px rgba(212, 163, 115, 0.3);
+        }
+
+        .menu-item.active {
+            color: #D4A373;
+            font-weight: 500;
+            border-bottom-color: #D4A373;
+        }
+
+        /* menu footer (subtle social / hint) */
+        .menu-footer {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 240, 0.6);
+            display: flex;
+            gap: 1.6rem;
+            align-items: center;
+            flex-wrap: nowrap;
+            /* keep icons on a single line */
+            justify-content: center;
+            /* center icons evenly */
+            border-top: 1px solid rgba(212, 163, 115, 0.06);
+            padding-bottom: 1rem;
+            overflow-x: auto;
+            /* small fallback for very narrow screens */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu-footer a {
+            color: rgba(255, 255, 240, 0.7);
+            transition: color 0.18s ease, transform 0.18s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            white-space: nowrap;
+        }
+
+        .menu-footer a:hover {
+            color: #D4A373;
+            transform: translateY(-2px);
+        }
+
+        .menu-footer svg {
+            opacity: 0.92;
+            color: rgba(212, 163, 115, 0.9);
+        }
+
+        @media (max-width: 420px) {
+            .menu-footer {
+                justify-content: flex-start;
+                gap: 0.8rem;
+                padding-left: 1rem;
+            }
+
+            .menu-footer a {
+                font-size: 0.9rem;
+                gap: 0.4rem;
+            }
+
+            .menu-footer svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        /* ===== existing styles from original (keep consistency) ===== */
+        .footer-dark {
+            background: #0a0a0b;
+            color: #e9e1d6;
+        }
+
+        .muted {
+            color: #a59b8f;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #c7bdb0;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.45);
+        }
+
+        .values-card {
+            transition: transform 260ms cubic-bezier(.2, .9, .2, 1), box-shadow 260ms ease, border-color 260ms ease;
+        }
+
+        .values-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(212, 163, 115, 0.4);
+        }
+
+        .light-stripe {
+            height: 4px;
+            width: 180px;
+            border-radius: 999px;
+            background: rgba(255, 214, 140, 0.25);
+            transition: all 0.4s ease;
+        }
+
+        .light-stripe.active,
+        .footer-dark.light-on .light-stripe {
+            background: rgba(255, 214, 140, 0.85);
+            box-shadow: 0 0 18px rgba(255, 198, 120, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .light-stripe {
+                width: 80px;
+            }
+        }
+
+        .footer-cta {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 9999px;
+            background: rgba(212, 163, 115, 0.12);
+            color: #ffffff;
+            font-weight: 700;
+            border: 1px solid rgba(212, 163, 115, 0.18);
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+
+        .footer-cta:hover {
+            background: #D4A373;
+            color: #111827;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(212, 163, 115, 0.12);
+        }
+
+        /* ===== Redesigned Footer (professional, compact, responsive) ===== */
+        .footer-new {
+            background: linear-gradient(180deg, #070606 0%, #0a0a0b 100%);
+            color: #e9e1d6;
+            padding-top: 4rem;
+            padding-bottom: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-new .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
+            }
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: .5rem;
+        }
+
+        .footer-brand p {
+            color: rgba(233, 225, 214, 0.85);
+            max-width: 36ch;
+        }
+
+        .footer-contact .muted {
+            color: rgba(165, 155, 143, 0.9);
+        }
+
+        .footer-contact a {
+            display: block;
+            color: #fff;
+            margin-top: .4rem;
+            text-decoration: none;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(233, 225, 214, 0.9);
+            margin: .45rem 0;
+            text-decoration: none;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: .6rem;
+            margin-top: .8rem;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            color: rgba(212, 163, 115, 0.95);
+            transition: transform .18s ease, background .18s ease;
+        }
+
+        .footer-social a:hover {
+            transform: translateY(-4px);
+            background: rgba(212, 163, 115, 0.06);
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: .6rem;
+            margin-top: .6rem;
+        }
+
+        .subscribe-form input[type="email"] {
+            flex: 1;
+            padding: .7rem .9rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: transparent;
+            color: #fff;
+            outline: none;
+        }
+
+        .subscribe-form button {
+            padding: .7rem .9rem;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 163, 115, 0.18);
+            background: rgba(212, 163, 115, 0.12);
+            color: #D4A373;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .subscribe-form button:hover {
+            background: #D4A373;
+            color: #0c0b0a;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-small {
+            color: rgba(233, 225, 214, 0.7);
+            font-size: .9rem;
+        }
+
+        /* Header & nav styles copied from index.html */
+        .nav-link {
+            position: relative;
+            padding: 8px 10px;
+            color: #050505;
+            transition: color .18s ease, transform .12s ease;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            font-size: 0.95rem;
+            text-transform: none;
+            display: inline-block;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -7px;
+            transform: translateX(-50%) scaleX(0);
+            transform-origin: center;
+            width: 48%;
+            height: 3px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, rgba(212, 163, 115, 0.0), rgba(212, 163, 115, 0.95));
+            opacity: 0;
+            transition: transform .22s cubic-bezier(.2, .9, .3, 1), opacity .18s;
+        }
+
+        .nav-link:hover {
+            color: #D4A373;
+            transform: translateY(-1px);
+        }
+
+        .nav-link:hover::after {
+            transform: translateX(-50%) scaleX(1);
+            opacity: 1;
+        }
+
+        .nav-link:focus {
+            outline: none;
+        }
+
+        .nav-link:focus-visible {
+            box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.15);
+            border-radius: 6px;
+        }
+
+        .nav-link.active,
+        .nav-link[aria-current="page"] {
+            color: #D4A373;
+            font-weight: 700;
+        }
+
+        .nav-link.active::after,
+        .nav-link[aria-current="page"]::after {
+            transform: translateX(-50%) scaleX(1);
+            opacity: 1;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #333333;
+            letter-spacing: .06em;
+            font-weight: 600;
+        }
+
+        .brand-tagline {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            color: #6b6b6b;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        .site-content {
+            will-change: transform;
+            transition: transform .28s cubic-bezier(.2, .9, .3, 1);
+        }
+
+        .site-content.hide {
+            transform: translateY(-110%);
+        }
+
+        /* Ensure hamburger lines are visible and styled */
+        #menu-btn span {
+            background-color: #050505 !important;
+            display: block;
+            width: 24px !important;
+            height: 3px !important;
+            border-radius: 2px !important;
+            margin: 4px 0 !important;
+        }
+
+        /* ── NEW SITE FOOTER OVERRIDES ── */
+        .site-footer, .site-footer * {
+            font-family: 'Manrope', sans-serif !important;
+        }
+        .site-footer {
+            background: #0e0c0a !important;
+            color: rgba(255, 255, 240, 0.7) !important;
+            padding: 64px 0 0;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.08);
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 240, 0.9) !important;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .footer-desc {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 240, 0.5) !important;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-social-icons {
+            display: flex;
+            gap: 8px;
+        }
+        .footer-social {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid rgba(212, 163, 115, 0.15) !important;
+            color: rgba(212, 163, 115, 0.7) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .footer-social svg {
+            width: 15px;
+            height: 15px;
+        }
+        .footer-social:hover {
+            background: rgba(212, 163, 115, 0.12) !important;
+            color: #D4A373 !important;
+            border-color: rgba(212, 163, 115, 0.4) !important;
+        }
+        .footer-col-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: rgba(255, 255, 240, 0.4) !important;
+            margin-bottom: 1.25rem;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 240, 0.6) !important;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover {
+            color: #D4A373 !important;
+        }
+        .footer-contact-item {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+        .footer-contact-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: rgba(212, 163, 115, 0.08) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .footer-contact-icon svg {
+            width: 13px;
+            height: 13px;
+            color: #D4A373 !important;
+        }
+        .footer-contact-text-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 240, 0.35) !important;
+            margin-bottom: 0.2rem;
+        }
+        .footer-contact-text-value {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 240, 0.65) !important;
+            line-height: 1.5;
+        }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 240, 0.3) !important;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .footer-bottom a {
+            color: rgba(255, 255, 240, 0.4) !important;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-bottom a:hover {
+            color: #D4A373 !important;
+        }
+
+        @media (max-width: 767px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-ink selection:bg-ember selection:text-ink font-body light-theme">
+
+    <header id="navbar"
+        class="site-content fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3 group" aria-label="The Lumen House - Home">
+                <img src="Assets/The-Lumen-House.svg" alt="The Lumen House Logo"
+                    class="w-25 h-12 rounded-md shadow-sm" />
+
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="what-we-do.html" class="nav-link">What We Do</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="contact.html"
+                    class="px-5 py-2 rounded-full bg-ember text-ink font-medium hover:brightness-95 shadow-sm transition">Book
+                    Consultation</a>
+            </div>
+
+            <button id="menu-btn" class="lg:hidden p-2 rounded-md" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="mobile-menu">
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink rounded"></span>
+            </button>
+        </div>
+    </header>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+    <div id="menu-panel" class="menu-panel">
+        <div class="menu-header">
+            <span class="menu-logo">The Lumen House</span>
+        </div>
+        <div id="menu-close-btn" class="menu-close" aria-label="Close menu" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <nav class="flex flex-col">
+            <a href="index.html" class="menu-item">Home</a>
+            <a href="about.html" class="menu-item">About us</a>
+            <a href="what-we-do.html" class="menu-item">What we do</a>
+            <a href="projects.html" class="menu-item">Projects</a>
+            <a href="contact.html" class="menu-item">Contact Us</a>
+            <div class="menu-cta-item mt-6">
+                <a href="#contact"
+                    class="inline-block px-6 py-3 rounded-full border border-ember/40 text-ember text-sm font-medium hover:bg-ember hover:text-ink transition-all duration-300 w-full text-center">
+                    Book Consultation
+                </a>
+            </div>
+        </nav>
+        <div class="menu-footer">
+            <a href="https://www.instagram.com/the_lumen_house.8/" target="_blank" aria-label="Instagram"
+                class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/the-lumen-house/" target="_blank" aria-label="LinkedIn" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                </svg>
+            </a>
+            <a href="https://wa.me/919986664243?text=Hello%20The%20Lumen%20House%20Team" target="_blank"
+                aria-label="WhatsApp" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                </svg>
+            </a>
+            <a href="mailto:The.lumen.house.8@gmail.com" aria-label="Email" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content (same as original, no change) -->
+    <main class="site-content pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-24 md:py-32 overflow-hidden bg-ink">
+            <div class="absolute inset-0 opacity-10">
+                <img src="https://picsum.photos/seed/studio-abstract/1920/1080" alt=""
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/90 to-ink/70"></div>
+            </div>
+            <div class="relative max-w-7xl mx-auto px-6 lg:px-12 text-center">
+                <h1 class="font-display text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight mb-6 text-white">
+                    Illuminating Architecture<br />with Precision & Soul
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    We are a boutique lighting atelier founded on the belief that light is both a technical system and a
+                    sculptural medium.
+                </p>
+            </div>
+        </section>
+
+        <!-- Lighting Design / About Us -->
+        <section id="lighting-design" class="py-20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-display text-3xl lg:text-4xl tracking-tight mb-4">Lighting Design</h2>
+                        <p class="text-gray-400 leading-relaxed mb-6">Lighting design is the art of shaping emotions,
+                            creating atmosphere, and enhancing experiences. We are dedicated to illuminating your world
+                            with inspired designs that innovate, inspire, and elevate the way spaces are experienced.
+                        </p>
+                        <h3 class="font-display text-2xl lg:text-3xl tracking-tight mt-6 mb-3">About Us</h3>
+                        <div class="space-y-4 text-gray-400 leading-relaxed">
+                            <p><strong>The Lumen House is proud to be among the pioneers of architectural and lighting
+                                    design in
+                                    North Karnataka</strong>, bringing specialized lighting expertise to the region from
+                                the very
+                                beginning.</p>
+                            <p>We are committed to revolutionizing spaces through innovative lighting design solutions.
+                                We uphold the highest standards of quality, energy efficiency, and compliance with
+                                lighting design regulations in every project we undertake.</p>
+                            <p>Our vision is to be a driving force in the lighting design industry, setting new
+                                benchmarks for creativity, quality, and sustainability. We aspire to transform spaces
+                                into extraordinary environments that inspire, captivate, and enhance human experiences.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="rounded-2xl border border-white/5 bg-white/5 p-6 shadow-card">
+                            <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/66431f798b3314c2ad0e223c_optimized_1024_c984x984-15x0.webp"
+                                alt="Lighting design showcase" class="w-full h-auto rounded-lg object-cover mb-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="py-24 relative bg-ink">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <h3 class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">Our Philosophy</h3>
+                    <h2 class="font-display text-3xl lg:text-4xl tracking-tight leading-tight mb-8 text-white">Light is
+                        the fourth dimension of architecture.</h2>
+                    <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+                        <p>At The Lumen House, we don't just illuminate spaces; we sculpt them. Our approach combines
+                            the rigorous physics of optical design with the fluid emotion of art.</p>
+                        <p>Founded on the principle that lighting defines how we experience the built environment, we
+                            strive to create atmospheres that are both functional and deeply moving.</p>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 relative">
+                    <div class="absolute -top-6 -left-6 w-40 h-40 border border-ember/20 rounded-full blur-xl"></div>
+                    <img src="https://picsum.photos/seed/lamp-closeup/600/700"
+                        alt="Close up of architectural lighting detail"
+                        class="relative z-10 w-full rounded-2xl shadow-card grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Grid -->
+        <section class="py-24 bg-charcoal/30">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-3xl lg:text-4xl tracking-tight text-white">Why We Are Different</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <article
+                        class="p-8 rounded-3xl bg-ink border border-white/5 hover:border-ember/30 transition-all duration-500 values-card">
+                        <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6 text-ember">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl mb-3 text-white">Engineering Precision</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm">We balance color rendering, thermal management,
+                            and optical physics to ensure every fixture performs as beautifully as it looks.</p>
+                    </article>
+                    <!-- Card 2 -->
+                    <article
+                        class="p-8 rounded-3xl bg-ink border border-white/5 hover:border-ember/30 transition-all duration-500 values-card">
+                        <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6 text-ember">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl mb-3 text-white">Human-Centric Design</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm">We design for circadian rhythms and emotional
+                            well-being, creating spaces that feel intimate, considered, and enduring.</p>
+                    </article>
+                    <!-- Card 3 -->
+                    <article
+                        class="p-8 rounded-3xl bg-ink border border-white/5 hover:border-ember/30 transition-all duration-500 values-card">
+                        <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6 text-ember">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl mb-3 text-white">Material Mastery</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm">From hand-blown glass to brushed bronze, we
+                            select materials that age gracefully and interact beautifully with light.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section (condensed) -->
+        <section class="py-32 bg-ink">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 border-b border-white/10 pb-8">
+                    <div>
+                        <h3 class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-3">The Team</h3>
+                        <h2 class="font-display text-4xl lg:text-5xl tracking-tight text-white">Expertise & Craft</h2>
+                    </div>
+                    <p class="text-gray-400 max-w-md text-sm">A multidisciplinary collective of optical engineers,
+                        architects, and material specialists.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <p class="text-lg text-black-300 leading-relaxed">Our team brings together decades of expertise
+                            in optical engineering and interior architecture. Through close collaboration with leading
+                            global manufacturers, we deliver bespoke lighting fixtures and sophisticated control systems
+                            tailored uniquely to each project.</p>
+                        <div class="grid grid-cols-2 gap-8 pt-4">
+                            <div>
+                                <h4 class="text-4xl font-display text-ember">..+</h4>
+                                <p class="text-sm text-gray-500 mt-1">Years of Combined Experience</p>
+                            </div>
+                            <div>
+                                <h4 class="text-4xl font-display text-ember">..+</h4>
+                                <p class="text-sm text-gray-500 mt-1">Projects Delivered Globally</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid gap-4"><img
+                            src="https://i.pinimg.com/736x/52/4a/c0/524ac040c37c7163e9ada763879d2d51.jpg"
+                            alt="Team member" class="rounded-2xl w-full h-full object-cover"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-32 relative">
+            <div class="max-w-7xl mx-auto px-6 py-12 md:py-20">
+
+                <header class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 items-end">
+                    <div>
+                        <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
+                            Kinds of Lights<br><span class="text-white">We Use</span>
+                        </h1>
+                    </div>
+                    <div class="max-w-md ml-auto">
+                        <p class="text-gray-400 text-lg mb-2">Welcome to our diverse world of lighting solutions.</p>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+                            From ambient to task lighting, our expertise spans a wide range of styles and
+                            functionalities to
+                            suit every space and requirement.
+                        </p>
+                    </div>
+                </header>
+
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 mb-24">
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2v4M5 10l1.5-4h11L19 10M4 10h16v2H4zM12 12v10" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Ceiling
+                                Fixtures
+                            </h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Chandeliers</li>
+                                <li>Flush Mount</li>
+                                <li>Pendant Lights</li>
+                                <li>Track Lighting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 18V6M9 6h6M8 22h8" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Floor
+                                Lamps</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Arc Lamps</li>
+                                <li>Tripod Lamps</li>
+                                <li>Task Lamps</li>
+                                <li>Torchiere Lamps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M7 2h10v4H7zM12 6v16M8 22h8" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Wall
+                                Sconces</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Swing Arm Sconces</li>
+                                <li>Candle Sconces</li>
+                                <li>Picture Lights</li>
+                                <li>Uplight Sconces</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <rect x="9" y="2" width="6" height="20" rx="1" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Wall
+                                Mounted
+                                Lights</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Wall Washers</li>
+                                <li>Vanity Lights</li>
+                                <li>Reading Lights</li>
+                                <li>Outdoor Wall Lights</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="9" r="6" />
+                            <path d="M12 15v7" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Kitchen
+                                Island
+                                Lights</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Linear Pendant Lights</li>
+                                <li>Globe Pendant Lights</li>
+                                <li>Mini Pendant Lights</li>
+                                <li>Recessed Lighting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Modular
+                                Lighting
+                            </h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Modular Track Systems</li>
+                                <li>Magnetic LED Panels</li>
+                                <li>Modular Wall Lights</li>
+                                <li>Adjustable Clusters</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 8v8M8 12h8" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">LED
+                                Lighting</h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Recessed Downlights</li>
+                                <li>Strip Lights</li>
+                                <li>Pendant Fixtures</li>
+                                <li>Wall Washers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <svg class="w-10 h-10 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                        </svg>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-orange-600 uppercase tracking-[0.2em] mb-3">Smart
+                                Lighting
+                            </h3>
+                            <ul class="text-gray-400 space-y-1 text-sm">
+                                <li>Smart Bulbs</li>
+                                <li>Smart Light Strips</li>
+                                <li>Smart Dimmer Switches</li>
+                                <li>Smart Lighting Kits</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto md:h-[750px]">
+
+                    <div class="md:col-span-2 flex flex-col gap-4">
+                        <div class="h-1/2 overflow-hidden">
+                            <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/664320289adf860c4d374fc5_optimized_1300_c849x424-225x187.webp"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                                alt="Modern Brass Lamp">
+                        </div>
+                        <div class="h-1/2 overflow-hidden bottom-curve">
+                            <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/6643206790cba8f28142a7c0_optimized_1024_c1024x1024-0x0.webp"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                                style="border-bottom-left-radius:200px; display:block;" alt="Store Interior">
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-1 overflow-hidden">
+                        <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/664320a490cba8f28142a8aa_optimized_1024_c1024x1024-0x0.webp"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                            alt="Hanging Pendant Group">
+                    </div>
+
+                    <div class="md:col-span-1 overflow-hidden custom-arc">
+                        <img src="https://res2.weblium.site/res/6625f3daa34368000ff1e235/664320cd90cba8f28142a962_optimized_1024_c1024x1024-0x0.webp"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                            style="border-top-right-radius:200px; display:block;" alt="Elegant Floor Lamp">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+        <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <img src="Assets/The-Lumen-House.svg" alt="The Lumen House" class="h-9 w-auto mb-4 opacity-[0.85]">
+                    <p class="footer-desc">
+                        Crafting architectural lighting experiences and bespoke design solutions. We shape ambiance and
+                        elevate spaces with technical precision and creative vision.
+                    </p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.instagram.com/the_lumen_house.8/" class="footer-social"
+                            aria-label="Instagram" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/919986664243" class="footer-social" aria-label="WhatsApp"
+                            target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:The.lumen.house.8@gmail.com" class="footer-social" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Studio</h4>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Address</div>
+                            <div class="footer-contact-text-value">Shirur Park link road, above Focus mart, Akshay
+                                Colony, Karnataka 580031</div>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.93 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.85 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Phone</div>
+                            <div class="footer-contact-text-value">+91 99866 64243</div>
+                            <div class="footer-contact-text-value">+91 74067 50233</div>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Email</div>
+                            <div class="footer-contact-text-value">The.lumen.house.8@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <p style="margin:0;">© 2026 The Lumen House. All Rights Reserved.</p>
+                <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-conditions.html">Terms &amp; Conditions</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu: professional left-side with staggered lights-on effect (copied from index.html)
+        (function () {
+            function initMobileMenu() {
+                const menuBtn = document.getElementById('menu-btn');
+                const menuPanel = document.getElementById('menu-panel');
+                const menuOverlay = document.getElementById('menu-overlay');
+                const closeBtn = document.getElementById('menu-close-btn');
+                const menuLinks = document.querySelectorAll('.menu-item');
+
+                function openMenu() {
+                    if (menuPanel) menuPanel.classList.add('open');
+                    if (menuOverlay) menuOverlay.classList.add('open');
+                    if (menuBtn) menuBtn.classList.add('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+                    // animate-hide the header hamburger while panel is open so only the polished close button shows
+                    if (menuBtn) menuBtn.classList.add('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'true');
+                    if (closeBtn) closeBtn.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeMenu() {
+                    if (menuPanel) menuPanel.classList.remove('open');
+                    if (menuOverlay) menuOverlay.classList.remove('open');
+                    if (menuBtn) menuBtn.classList.remove('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+                    if (menuBtn) menuBtn.classList.remove('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'false');
+                    if (closeBtn) closeBtn.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+
+                if (menuBtn) {
+                    menuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (menuPanel && menuPanel.classList.contains('open')) closeMenu(); else openMenu();
+                    });
+                }
+
+                if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+                if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+
+                // Close on Escape
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && menuPanel && menuPanel.classList.contains('open')) {
+                        closeMenu();
+                        if (menuBtn) menuBtn.focus();
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+        })();
+    </script>
+
+    <script>
+        // Navbar scroll effects and footer light toggle (moved here to avoid duplicate handlers)
+        // navbar scroll effect
+        (function () {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (!navbar) return;
+                if (window.scrollY > 50) {
+                    navbar.classList.add('border-white/10', 'shadow-lg');
+                    navbar.classList.remove('border-transparent');
+                } else {
+                    navbar.classList.remove('border-white/10', 'shadow-lg');
+                    navbar.classList.add('border-transparent');
+                }
+            });
+
+            // Footer light toggle
+            const footer = document.getElementById('contact');
+            const lightButtons = document.querySelectorAll('[data-light-toggle="true"]');
+            lightButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const isOn = footer && footer.classList.contains('light-on');
+                    if (footer) footer.classList.toggle('light-on', !isOn);
+                    if (footer) footer.classList.toggle('light-off', isOn);
+                    lightButtons.forEach(b => { b.classList.toggle('active', !isOn); b.blur(); });
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

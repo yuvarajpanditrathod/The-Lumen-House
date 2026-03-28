@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Residences Lighting | The Lumen House</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                    },
+                },
+            },
+        };
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.8) 100%);
+        }
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script src="transition.js"></script>
+</head>
+
+<body class="bg-ink text-white font-body selection:bg-ember/30">
+
+    <!-- Header -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-ink/80 backdrop-blur-md">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="Assets/The-Lumen-House.svg" alt="Lumen House" class="h-10 w-auto group-hover:scale-105 transition-transform duration-500">
+            </a>
+
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="index.html" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-ember transition-colors">Home</a>
+                <a href="about.html" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-ember transition-colors">About</a>
+                <a href="what-we-do.html" class="text-xs uppercase tracking-[0.2em] font-medium hover:text-ember transition-colors">What We Do</a>
+                <a href="projects.html" class="text-xs uppercase tracking-[0.2em] font-medium text-ember">Projects</a>
+                <a href="contact.html" class="px-6 py-2.5 bg-ember text-ink text-xs font-bold uppercase tracking-widest rounded-full hover:bg-white transition-all duration-300">Contact</a>
+            </div>
+            
+            <a href="projects.html" class="lg:hidden text-ember font-medium text-xs uppercase tracking-widest flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="relative h-[80vh] flex items-end overflow-hidden">
+            <img src="C:\Users\Yuvaraj\.gemini\antigravity\brain\90ad35ee-1073-4280-b560-102dc368a0b7\private_residence_1_1774260530164.png" alt="Private Residence Lighting" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full">
+                <div class="max-w-3xl">
+                    <span class="text-ember text-xs font-bold uppercase tracking-[0.3em] mb-4 block reveal-up">Sectors</span>
+                    <h1 class="font-display text-6xl md:text-8xl text-white mb-8 reveal-up">Private Residences</h1>
+                    <p class="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl reveal-up">
+                        The sanctuary of light. We design bespoke residential lighting that enhances architecture, supports wellness, and creates the ultimate luxury sanctuary.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 bg-ink">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-20 items-start mb-32">
+                    <div class="reveal-up">
+                        <h2 class="font-display text-4xl lg:text-5xl text-white mb-8">Personalized Sanctuary</h2>
+                        <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+                            <p>
+                                A home is a reflection of its owner's life. Our residential lighting designs are 
+                                deeply personal, focusing on creating comfort, atmospheric depth, and 
+                                functional excellence for every room.
+                            </p>
+                            <p>
+                                By integrating warm dimming technologies and smart home controls, we provide 
+                                residents with the ability to instantly transform their environment—from 
+                                vibrant social spaces to quiet, restful retreats.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 reveal-up">
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10">
+                            <span class="text-ember font-display text-4xl block mb-2">01</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Wellness Focused</h3>
+                            <p class="text-sm text-gray-500">Lighting that mimics natural cycles to support circadian health.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10 mt-8">
+                            <span class="text-ember font-display text-4xl block mb-2">02</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Architectural Cove</h3>
+                            <p class="text-sm text-gray-500">Hidden lighting that accentuates high ceilings and structural forms.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10 -mt-8">
+                            <span class="text-ember font-display text-4xl block mb-2">03</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Smart Living</h3>
+                            <p class="text-sm text-gray-500">Intuitive control panels and app-based management for every room.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10">
+                            <span class="text-ember font-display text-4xl block mb-2">04</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Art Illumination</h3>
+                            <p class="text-sm text-gray-500">Precision spots to highlight personal collections with gallery quality.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-32 p-12 lg:p-20 rounded-[2.5rem] bg-ember/5 border border-ember/20 text-center reveal-up">
+                    <h2 class="font-display text-4xl lg:text-6xl text-white mb-8">Refine your retreat</h2>
+                    <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+                        Inquire about our premium residential lighting design packages for your home.
+                    </p>
+                    <a href="contact.html" class="inline-flex items-center gap-4 bg-ember text-ink px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all duration-300">
+                        Discuss a Project
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-20 bg-charcoal border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <img src="Assets/The-Lumen-House.svg" alt="Lumen House" class="h-8 w-auto mx-auto mb-8 opacity-50">
+            <p class="text-gray-500 text-sm max-w-sm mx-auto mb-12 leading-relaxed">
+                The Lumen House - Architectural lighting experiences and bespoke design solutions.
+            </p>
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="projects.html" class="text-gray-400 hover:text-ember transition-colors text-xs uppercase tracking-widest font-medium">All Projects</a>
+                <a href="about.html" class="text-gray-400 hover:text-ember transition-colors text-xs uppercase tracking-widest font-medium">Our Story</a>
+                <a href="contact.html" class="text-gray-400 hover:text-ember transition-colors text-xs uppercase tracking-widest font-medium">Studio</a>
+            </div>
+            <div class="text-[10px] uppercase tracking-[0.3em] text-gray-600">
+                © 2026 THE LUMEN HOUSE. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const revealItems = document.querySelectorAll('.reveal-up');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.1 });
+        revealItems.forEach(item => io.observe(item));
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('border-white/10', 'shadow-lg');
+            } else {
+                navbar.classList.remove('border-white/10', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>

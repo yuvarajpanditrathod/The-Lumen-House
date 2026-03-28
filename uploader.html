@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumen House — Content Studio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0D0F12;
+            --surface: #13161B;
+            --surface2: #1A1E25;
+            --border: rgba(255, 255, 255, 0.07);
+            --border-h: rgba(255, 255, 255, 0.14);
+            --gold: #C9A96E;
+            --gold-dim: rgba(201, 169, 110, 0.12);
+            --gold-glow: rgba(201, 169, 110, 0.25);
+            --text: #E8E4DC;
+            --muted: #7A7D85;
+            --subtle: rgba(255, 255, 255, 0.04);
+            --danger: #E05C5C;
+            --success: #5CB88A;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 14px;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px 80px;
+            line-height: 1.6;
+        }
+
+        /* ── Background texture ──────────────────────── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 40% at 70% 10%, rgba(201, 169, 110, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(201, 169, 110, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Layout ──────────────────────────────────── */
+        .page-wrapper {
+            width: 100%;
+            max-width: 680px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Header ──────────────────────────────────── */
+        .page-header {
+            text-align: center;
+            margin-bottom: 36px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .wordmark {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .wordmark-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold) 0%, #A07840 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #1a1000;
+            box-shadow: 0 4px 12px var(--gold-glow);
+        }
+
+        .wordmark-text {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 0.04em;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .page-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .page-subtitle {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--muted);
+        }
+
+        /* ── Card ────────────────────────────────────── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .card-title .step-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold-dim);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            color: var(--gold);
+            font-size: 9px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* ── Field label ─────────────────────────────── */
+        .field-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        /* ── Select ──────────────────────────────────── */
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper select {
+            width: 100%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px 44px 14px 18px;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            appearance: none;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .select-wrapper select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        .select-wrapper select option {
+            background: #1A1E25;
+        }
+
+        .select-wrapper .chevron {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        /* ── Mode Toggle ─────────────────────────────── */
+        .mode-toggle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            border-radius: calc(var(--radius-md) - 4px);
+            padding: 11px 16px;
+            color: var(--muted);
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .mode-btn i {
+            font-size: 13px;
+        }
+
+        .mode-btn.active {
+            background: var(--gold);
+            color: #1a1000;
+            box-shadow: 0 2px 12px var(--gold-glow);
+        }
+
+        .mode-btn:not(.active):hover {
+            color: var(--text);
+            background: var(--subtle);
+        }
+
+        /* ── Drop Zone ───────────────────────────────── */
+        .drop-zone {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-lg);
+            padding: 48px 24px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            background: var(--surface2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drop-zone.has-image {
+            padding: 12px;
+            border-style: solid;
+            border-color: var(--gold-glow);
+            min-height: 420px;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            border-color: rgba(201, 169, 110, 0.45);
+            background: var(--gold-dim);
+        }
+
+        .drop-icon-wrap {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.15) 0%, rgba(201, 169, 110, 0.05) 100%);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .drop-icon-wrap i {
+            font-size: 28px;
+            color: var(--gold);
+            filter: drop-shadow(0 0 8px var(--gold-glow));
+        }
+
+        .drop-main-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .drop-sub-text {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .drop-note {
+            margin-top: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(201, 169, 110, 0.08);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 10px;
+            color: rgba(201, 169, 110, 0.7);
+            letter-spacing: 0.04em;
+        }
+
+        /* Preview inside drop zone */
+        #preview-container {
+            width: 100%;
+            height: 100%;
+            border-radius: calc(var(--radius-lg) - 10px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            opacity: 0;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-direction: column;
+        }
+
+        #preview-container:hover .preview-overlay {
+            opacity: 1;
+        }
+
+        .preview-overlay i {
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .preview-overlay span {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+        }
+
+        /* ── Text Input ──────────────────────────────── */
+        .text-input {
+            width: 100%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .text-input::placeholder {
+            color: #3E424D;
+        }
+
+        .text-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        /* ── Manual path info box ────────────────────── */
+        .info-box {
+            background: rgba(201, 169, 110, 0.06);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            font-size: 12px;
+            color: rgba(201, 169, 110, 0.75);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .info-box i {
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── Submit Button ───────────────────────────── */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold) 0%, #B8882A 100%);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: 16px 24px;
+            color: #18100A;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
+            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.3);
+        }
+
+        .submit-btn i {
+            font-size: 15px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(201, 169, 110, 0.4);
+            filter: brightness(1.05);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ── Path hint ───────────────────────────────── */
+        .path-hint {
+            text-align: center;
+            font-size: 10px;
+            color: #3A3D46;
+            margin-top: 14px;
+            letter-spacing: 0.05em;
+        }
+
+        .path-hint span {
+            color: rgba(201, 169, 110, 0.4);
+        }
+
+        /* ── Divider ─────────────────────────────────── */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 32px 0 28px;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-divider-label {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-style: italic;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        /* ── Manage Assets ───────────────────────────── */
+        .assets-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .assets-title {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .assets-count-badge {
+            background: var(--gold-dim);
+            border: 1px solid rgba(201, 169, 110, 0.25);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            padding: 5px 12px;
+            border-radius: 100px;
+        }
+
+        /* ── Assets Grid ─────────────────────────────── */
+        #assets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .asset-thumb {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            transition: border-color 0.2s;
+        }
+
+        .asset-thumb:hover {
+            border-color: var(--border-h);
+        }
+
+        .asset-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .asset-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 50%);
+            opacity: 0;
+            transition: opacity 0.22s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        .asset-thumb:hover .asset-overlay {
+            opacity: 1;
+        }
+
+        .asset-caption {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .asset-filename {
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.45);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 8px;
+        }
+
+        .asset-delete-btn {
+            align-self: flex-end;
+            width: 28px;
+            height: 28px;
+            background: rgba(224, 92, 92, 0.85);
+            border: 1px solid rgba(224, 92, 92, 0.4);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+        }
+
+        .asset-delete-btn:hover {
+            background: #E05C5C;
+            transform: scale(1.1);
+        }
+
+        /* ── Empty state ─────────────────────────────── */
+        #no-assets {
+            padding: 48px 24px;
+            text-align: center;
+            border: 1px dashed var(--border);
+            border-radius: var(--radius-lg);
+        }
+
+        .no-assets-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--subtle);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+        }
+
+        .no-assets-icon i {
+            font-size: 20px;
+            color: var(--muted);
+        }
+
+        #no-assets p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: #3A3D46;
+        }
+
+        /* ── Footer link ─────────────────────────────── */
+        .footer-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 32px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-link a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: color 0.2s;
+        }
+
+        .footer-link a:hover {
+            color: var(--gold);
+        }
+
+        /* ── Toast ───────────────────────────────────── */
+        #toast-container {
+            position: fixed;
+            top: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .toast {
+            pointer-events: all;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            max-width: 380px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            animation: toastIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .toast.hiding {
+            animation: toastOut 0.28s ease forwards;
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes toastOut {
+            from {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(20px) scale(0.96);
+            }
+        }
+
+        .toast-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .toast-icon.success {
+            background: rgba(92, 184, 138, 0.15);
+            color: var(--success);
+        }
+
+        .toast-icon.error {
+            background: rgba(224, 92, 92, 0.15);
+            color: var(--danger);
+        }
+
+        .toast-body {
+            flex: 1;
+        }
+
+        .toast-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            margin-bottom: 2px;
+        }
+
+        .toast-label.success {
+            color: var(--success);
+        }
+
+        .toast-label.error {
+            color: var(--danger);
+        }
+
+        .toast-msg {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 12px;
+            padding: 4px;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .toast-close:hover {
+            color: var(--text);
+        }
+
+        /* ── Toast left accent border ────────────────── */
+        .toast.success-toast {
+            border-left: 3px solid var(--success);
+        }
+
+        .toast.error-toast {
+            border-left: 3px solid var(--danger);
+        }
+
+        /* ── Utility ─────────────────────────────────── */
+        .hidden {
+            display: none !important;
+        }
+
+        .space-y>*+* {
+            margin-top: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="toast-container"></div>
+
+    <div class="page-wrapper">
+
+        <!-- Header -->
+        <div class="page-header">
+            <div class="wordmark">
+                <div class="wordmark-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <span class="wordmark-text">Lumen House</span>
+            </div>
+            <h1 class="page-title">Content <em>Studio</em></h1>
+            <p class="page-subtitle">Digital Asset Management</p>
+        </div>
+
+        <!-- Upload Card -->
+        <div class="card">
+
+            <!-- Step 1: Sector -->
+            <div class="card-title">
+                <span class="step-dot">1</span>
+                Select Sector
+            </div>
+            <div class="select-wrapper" style="margin-bottom: 28px;">
+                <select id="category">
+                    <option value="hospitality">Hospitality</option>
+                    <option value="infrastructure">Infrastructure</option>
+                    <option value="retail">Retail</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="private-residences">Private Residences</option>
+                    <option value="museums">Museums</option>
+                    <option value="outdoor-urban">Outdoor Urban</option>
+                    <option value="outdoor-facade">Outdoor Facade</option>
+                    <option value="outdoor-landscape">Outdoor Landscape</option>
+                </select>
+                <i class="fas fa-chevron-down chevron"></i>
+            </div>
+
+            <!-- Step 2: Upload Mode -->
+            <div class="card-title">
+                <span class="step-dot">2</span>
+                Upload Method
+            </div>
+            <div class="mode-toggle" style="margin-bottom: 20px;">
+                <button type="button" id="mode-auto" class="mode-btn active">
+                    <i class="fas fa-cloud-arrow-up"></i> Auto Upload
+                </button>
+                <button type="button" id="mode-manual" class="mode-btn">
+                    <i class="fas fa-folder-open"></i> Manual Path
+                </button>
+            </div>
+
+            <!-- Auto Zone -->
+            <div id="auto-upload-zone" style="margin-bottom: 28px;">
+                <input type="file" id="image-input" class="hidden" accept="image/*">
+                <div id="drop-zone" class="drop-zone">
+                    <div id="preview-container" class="hidden">
+                        <img id="preview" alt="Preview">
+                        <div class="preview-overlay">
+                            <i class="fas fa-rotate-right"></i>
+                            <span>Replace Image</span>
+                        </div>
+                    </div>
+                    <div id="upload-prompt">
+                        <div class="drop-icon-wrap">
+                            <i class="fas fa-cloud-arrow-up"></i>
+                        </div>
+                        <p class="drop-main-text">Drop image here or click to browse</p>
+                        <p class="drop-sub-text">PNG, JPG, WEBP supported</p>
+                        <div class="drop-note">
+                            <i class="fas fa-circle-info"></i>
+                            Large images may hit browser storage limits
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Zone -->
+            <div id="manual-path-zone" class="hidden" style="margin-bottom: 28px;">
+                <div class="info-box">
+                    <i class="fas fa-circle-info"></i>
+                    <span>Enter the filename stored in your <strong>photo/</strong> directory. The path will be resolved
+                        automatically based on the selected sector.</span>
+                </div>
+                <input type="text" id="path-input" class="text-input" placeholder="e.g. hero-lighting.jpg">
+            </div>
+
+            <!-- Step 3: Caption -->
+            <div class="card-title">
+                <span class="step-dot">3</span>
+                Image Caption
+            </div>
+            <input type="text" id="caption-input" class="text-input" style="margin-bottom: 28px;"
+                placeholder="Describe this scene (e.g. Modern Atrium Lighting)">
+
+            <!-- Submit -->
+            <button type="button" id="submit-btn" class="submit-btn">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                Publish to Sector
+            </button>
+
+            <p class="path-hint">
+                Assets stored at: <span>photo/[sector]/[filename]</span>
+            </p>
+        </div>
+
+        <!-- Manage Assets -->
+        <div class="card">
+            <div class="assets-header">
+                <h2 class="assets-title">Manage Assets</h2>
+                <span id="asset-count" class="assets-count-badge">0 Images</span>
+            </div>
+
+            <div id="assets-grid"></div>
+
+            <div id="no-assets" class="hidden">
+                <div class="no-assets-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <p>No assets in this sector</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-link">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Return to Studio
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // ─── Element refs ─────────────────────────────
+        const imageInput = document.getElementById('image-input');
+        const pathInput = document.getElementById('path-input');
+        const dropZone = document.getElementById('drop-zone');
+        const preview = document.getElementById('preview');
+        const previewContainer = document.getElementById('preview-container');
+        const uploadPrompt = document.getElementById('upload-prompt');
+        const captionInput = document.getElementById('caption-input');
+        const categorySelect = document.getElementById('category');
+        const assetsGrid = document.getElementById('assets-grid');
+        const noAssetsMsg = document.getElementById('no-assets');
+        const assetCount = document.getElementById('asset-count');
+        const autoZone = document.getElementById('auto-upload-zone');
+        const manualZone = document.getElementById('manual-path-zone');
+        const modeAutoBtn = document.getElementById('mode-auto');
+        const modeManualBtn = document.getElementById('mode-manual');
+        const submitBtn = document.getElementById('submit-btn');
+
+        let currentMode = 'auto';
+
+        // ─── Mode toggle ──────────────────────────────
+        function setMode(mode) {
+            currentMode = mode;
+            if (mode === 'auto') {
+                autoZone.classList.remove('hidden');
+                manualZone.classList.add('hidden');
+                modeAutoBtn.classList.add('active');
+                modeManualBtn.classList.remove('active');
+            } else {
+                autoZone.classList.add('hidden');
+                manualZone.classList.remove('hidden');
+                modeManualBtn.classList.add('active');
+                modeAutoBtn.classList.remove('active');
+            }
+        }
+
+        modeAutoBtn.addEventListener('click', () => setMode('auto'));
+        modeManualBtn.addEventListener('click', () => setMode('manual'));
+
+        // ─── Drop zone ────────────────────────────────
+        dropZone.addEventListener('click', () => imageInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length) handleFile(files[0]);
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            if (e.target.files.length) handleFile(e.target.files[0]);
+        });
+
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                showToast('Please select a valid image file', 'error');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                preview.src = e.target.result;
+                previewContainer.classList.remove('hidden');
+                uploadPrompt.classList.add('hidden');
+                dropZone.classList.add('has-image');
+                pathInput.value = file.name;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ─── Category change ──────────────────────────
+        categorySelect.addEventListener('change', loadAssets);
+
+        // ─── Submit ───────────────────────────────────
+        submitBtn.addEventListener('click', () => {
+            const category = categorySelect.value;
+            const caption = captionInput.value.trim();
+            let imageData = '';
+
+            if (currentMode === 'auto') {
+                imageData = preview.src;
+                if (!imageData || imageData === window.location.href) {
+                    showToast('Please select an image first', 'error');
+                    return;
+                }
+            } else {
+                const filename = pathInput.value.trim();
+                if (!filename) {
+                    showToast('Please enter a valid filename', 'error');
+                    return;
+                }
+                imageData = `photo/${category}/${filename}`;
+            }
+
+            try {
+                const galleryData = JSON.parse(localStorage.getItem('lumen-house-gallery') || '{}');
+                if (!galleryData[category]) galleryData[category] = [];
+
+                galleryData[category].push({
+                    src: imageData,
+                    caption: caption || 'Untitled Asset'
+                });
+
+                localStorage.setItem('lumen-house-gallery', JSON.stringify(galleryData));
+                showToast(`Published to ${category.replace(/-/g, ' ')}`, 'success');
+                loadAssets();
+
+                captionInput.value = '';
+                if (currentMode === 'auto') {
+                    previewContainer.classList.add('hidden');
+                    uploadPrompt.classList.remove('hidden');
+                    dropZone.classList.remove('has-image');
+                    preview.src = '';
+                    imageInput.value = '';
+                } else {
+                    pathInput.value = '';
+                }
+
+            } catch (err) {
+                showToast('Storage limit reached. Try Manual Path mode instead.', 'error');
+            }
+        });
+
+        // ─── Load assets ──────────────────────────────
+        function loadAssets() {
+            const category = categorySelect.value;
+            const galleryData = JSON.parse(localStorage.getItem('lumen-house-gallery') || '{}');
+            const images = galleryData[category] || [];
+
+            assetsGrid.innerHTML = '';
+            assetCount.textContent = `${images.length} Image${images.length !== 1 ? 's' : ''}`;
+
+            if (images.length === 0) {
+                noAssetsMsg.classList.remove('hidden');
+            } else {
+                noAssetsMsg.classList.add('hidden');
+                images.forEach((imgObj, index) => {
+                    const imgData = typeof imgObj === 'string' ? imgObj : imgObj.src;
+                    const imgCaption = typeof imgObj === 'string' ? 'Untitled' : (imgObj.caption || 'Untitled');
+                    const isPath = !imgData.startsWith('data:');
+                    const nameLabel = isPath ? imgData.split('/').pop() : 'Browser Data';
+
+                    const div = document.createElement('div');
+                    div.className = 'asset-thumb';
+                    div.innerHTML = `
+                        <img src="${imgData}" alt="${imgCaption}" loading="lazy" onerror="this.style.opacity='0.2'">
+                        <div class="asset-overlay">
+                            <p class="asset-caption">${imgCaption}</p>
+                            <p class="asset-filename">${nameLabel}</p>
+                        </div>
+                        <button class="asset-delete-btn" onclick="deleteAsset(${index})" title="Delete asset">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+                    assetsGrid.appendChild(div);
+                });
+            }
+        }
+
+        window.deleteAsset = function (index) {
+            if (!confirm('Permanently remove this asset?')) return;
+            const category = categorySelect.value;
+            const galleryData = JSON.parse(localStorage.getItem('lumen-house-gallery') || '{}');
+            if (galleryData[category]) {
+                galleryData[category].splice(index, 1);
+                localStorage.setItem('lumen-house-gallery', JSON.stringify(galleryData));
+                loadAssets();
+                showToast('Asset removed from gallery', 'success');
+            }
+        };
+
+        // ─── Toast ────────────────────────────────────
+        function showToast(msg, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+            const label = type === 'success' ? 'Success' : 'Error';
+
+            toast.className = `toast ${type}-toast`;
+            toast.innerHTML = `
+                <div class="toast-icon ${type}">
+                    <i class="fas ${icon}"></i>
+                </div>
+                <div class="toast-body">
+                    <p class="toast-label ${type}">${label}</p>
+                    <p class="toast-msg">${msg}</p>
+                </div>
+                <button class="toast-close" onclick="this.closest('.toast').remove()">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('hiding');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // ─── Init ─────────────────────────────────────
+        loadAssets();
+    </script>
+</body>
+
+</html>

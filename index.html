@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Lumen House | Lighting Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="Assets/Logo.svg" type="image/icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 80px -20px rgba(212, 163, 115, 0.15)',
+                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'reveal': 'reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        reveal: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-ink selection:bg-ember selection:text-ink light-theme">
+
+    <header id="navbar"
+        class="site-content fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3 group" aria-label="The Lumen House - Home">
+                <img src="Assets/The-Lumen-House.svg" alt="The Lumen House Logo"
+                    class="w-25 h-12 rounded-md shadow-sm" />
+
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="what-we-do.html" class="nav-link">What We Do</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="contact.html"
+                    class="px-5 py-2 rounded-full bg-ember text-ink font-medium hover:brightness-95 shadow-sm transition">Book
+                    Consultation</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden p-2 rounded-md" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="mobile-menu">
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink rounded"></span>
+            </button>
+        </div>
+    </header>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <!-- Left-Side Menu Panel with staggered "lights on" items -->
+    <div id="menu-panel" class="menu-panel">
+        <div class="menu-header">
+            <span class="menu-logo">The Lumen House</span>
+        </div>
+        <div id="menu-close-btn" class="menu-close" aria-label="Close menu" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+
+        <!-- Navigation links (animated one by one) -->
+        <nav class="flex flex-col">
+            <a href="index.html" class="menu-item">Home</a>
+            <a href="about.html" class="menu-item">About us</a>
+            <a href="what-we-do.html" class="menu-item">What we do</a>
+            <a href="projects.html" class="menu-item">Projects</a>
+            <a href="contact.html" class="menu-item">Contact Us</a>
+            <div class="menu-cta-item mt-6">
+                <a href="#contact"
+                    class="inline-block px-6 py-3 rounded-full border border-ember/40 text-ember text-sm font-medium hover:bg-ember hover:text-ink transition-all duration-300 w-full text-center">
+                    Book Consultation
+                </a>
+            </div>
+        </nav>
+
+        <!-- subtle menu footer (optional) -->
+        <div class="menu-footer">
+            <a href="https://www.instagram.com/the_lumen_house.8/" target="_blank" aria-label="Instagram"
+                class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                </svg>
+            </a>
+            <a href="https://wa.me/919986664243?text=Hello%20The%20Lumen%20House%20Team" target="_blank"
+                aria-label="WhatsApp" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                </svg>
+            </a>
+            <a href="mailto:The.lumen.house.8@gmail.com" aria-label="Email" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="home" class="site-content pt-20">
+
+        <!-- Hero Section -->
+        <section class="min-h-screen relative overflow-hidden">
+            <div class="carousel absolute inset-0">
+                <div class="carousel-track">
+                    <img class="active" src="https://www.heraled.com/store/images/4673755811651847103.jpg"
+                        alt="Lighting interior 1" loading="eager" />
+                    <img src="https://www.jaquar.com/images/thumbs/0051591_image7.jpeg" alt="Lighting interior 2"
+                        loading="lazy" />
+                    <img src="https://upwardlighting.com/wp-content/uploads/2023/08/facades-lighting-interactive-1024x562.jpg"
+                        alt="Lighting interior 3" loading="lazy" />
+                    <img src="https://oclights.com/wp-content/uploads/2019/05/IMG_1804.jpg" alt="Lighting interior 4"
+                        loading="lazy" />
+                    <img src="https://lightfunc.org/wp-content/uploads/2023/07/000.-Entrance-lobby.jpg"
+                        alt="Lighting interior 5" loading="lazy" />
+                    <img src="https://nirvanalighting.in/wp-content/uploads/2025/09/what-are-facade-lighting-solutions.jpg"
+                        alt="Lighting interior 7" loading="lazy" />
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-transparent"></div>
+        </section>
+
+
+        <section id="store-locator" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-3 gap-8 items-start">
+                <div class="relative w-full max-w-[460px] h-auto flex-shrink-0 section-hidden mx-auto" id="mockupArea">
+                    <div class="overlay-container browser-shadow relative z-[1]">
+                        <img src="https://i.pinimg.com/1200x/32/19/63/321963531b044712ba5ddfc916eb0028.jpg"
+                            alt="store-hero" class="overlay-img back" />
+                        <div class="overlay-frame">
+                            <img src="https://i.pinimg.com/1200x/ea/8c/61/ea8c61c85b499c8f11f18ab042d4fdd6.jpg"
+                                alt="panel-img" class="overlay-img front" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center: Lamp photo -->
+                <div class="relative flex-shrink-0 z-10 self-stretch flex items-end justify-center overflow-hidden lg:col-span-1"
+                    style="width:230px;">
+                    <img id="lampImg-store"
+                        src="https://lucent.qodeinteractive.com/wp-content/uploads/2020/10/landing-img-17.png"
+                        alt="Lucent Floor Lamp" class="lamp-hidden"
+                        style="height:500px; width:auto; object-fit:contain; object-position:bottom; display:block;" />
+                </div>
+
+                <!-- Right: Text Content -->
+                <div class="pl-6 max-w-[490px] flex-shrink-0 section-hidden" id="textArea-store">
+                    <h1 class="text-white font-bold leading-[1.1] tracking-tight mb-7"
+                        style="font-size: clamp(24px, 2.6vw, 36px);">
+                        We believe light is the fourth dimension of architecture.
+                    </h1>
+                    <p class="text-black-300 text-[15px] leading-relaxed mb-6">At The Lumen House, we don't just
+                        illuminate spaces; we sculpt them. Our approach combines the rigorous physics of optical design
+                        with the fluid emotion of art.
+
+                        <br>
+
+                        Whether it's a private residence requiring intimate warmth or a commercial space demanding
+                        clarity and focus, our solutions are tailored to the human experience within the built
+                        environment.
+                    </p>
+                    <div class="w-18 h-[2px] bg-ember mb-5"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="cost-advantages">
+            <div class="ca-card">
+
+                <p class="ca-eyebrow"><i class="fas fa-chart-line"></i> Cost Advantages</p>
+                <h3 class="ca-title">Cost Advantages of Lighting Design Service &amp; Product</h3>
+                <p class="ca-subtitle">Professional lighting design vs. standard / DIY approach</p>
+
+                <!-- Column headers -->
+                <div class="ca-col-headers">
+                    <span class="ca-col-label">Category</span>
+                    <span class="ca-col-label diy"><i class="fas fa-hammer"></i> DIY / Standard</span>
+                    <span class="ca-col-label pro"><i class="fas fa-star"></i> Pro Design</span>
+                </div>
+
+                <!-- Energy Bills -->
+                <div class="ca-row">
+                    <div class="ca-category">Energy Bills</div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-red"><i class="fas fa-arrow-up"></i> High</span>
+                    </div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-green"><i class="fas fa-arrow-down"></i> Low</span>
+                    </div>
+                </div>
+
+                <!-- Fixture Costs -->
+                <div class="ca-row">
+                    <div class="ca-category">Fixture Costs</div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-red"><i class="fas fa-layer-group"></i> More fixtures</span>
+                    </div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-green"><i class="fas fa-microchip"></i> Fewer, optimized</span>
+                    </div>
+                </div>
+
+                <!-- Maintenance -->
+                <div class="ca-row">
+                    <div class="ca-category">Maintenance</div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-amber"><i class="fas fa-clock"></i> Frequent</span>
+                    </div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-green"><i class="fas fa-gem"></i> Rare, long-lasting</span>
+                    </div>
+                </div>
+
+                <!-- Compliance -->
+                <div class="ca-row">
+                    <div class="ca-category">Compliance &amp; Incentives</div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-red"><i class="fas fa-times-circle"></i> Often missed</span>
+                    </div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-green"><i class="fas fa-check-circle"></i> Codes met, rebates</span>
+                    </div>
+                </div>
+
+                <!-- Property Value -->
+                <div class="ca-row">
+                    <div class="ca-category">Property Value</div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-gray"><i class="fas fa-minus-circle"></i> Neutral</span>
+                    </div>
+                    <div class="ca-cell">
+                        <span class="ca-badge badge-green"><i class="fas fa-arrow-trend-up"></i> Higher resale
+                            value</span>
+                    </div>
+                </div>
+
+                <!-- Footer note -->
+                <div class="ca-footer">
+                    <i class="fas fa-lightbulb"></i>
+                    <p><strong>Professional lighting design pays for itself.</strong> Optimised fixtures, lower energy
+                        consumption and compliance incentives typically recover the design fee within the first 1–2
+                        years of operation.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="benefits" class="py-28 bg-ink">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 text-white">
+                <div class="text-center mb-16">
+                    <p class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-3">Insights</p>
+                    <h2 class="font-display text-4xl lg:text-5xl text-white font-light mb-3">Benefits of Good Lighting
+                    </h2>
+                    <p class="muted max-w-3xl mx-auto">Thoughtfully designed lighting enhances human comfort,
+                        strengthens architecture, and delivers measurable operational value.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                    <!-- Card 1 -->
+                    <div
+                        class="theme-card group hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-ember/10 hover:border-ember/30">
+                        <div class="flex items-start">
+                            <div
+                                class="badge group-hover:bg-ember group-hover:text-white transition-colors duration-300">
+                                01</div>
+                            <div class="flex-1">
+                                <div class="benefit-title group-hover:text-ember transition-colors duration-300">Human
+                                    Needs & Comfort</div>
+                                <p class="benefit-desc">Improves visibility, task performance and visual comfort while
+                                    supporting mood and wellbeing.</p>
+                                <ul class="benefit-list">
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">visibility
+                                    </li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">task
+                                        performance</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">visual
+                                        comfort</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">social
+                                        communication</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">mood &
+                                        atmosphere</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">health,
+                                        safety, well being</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">aesthetic
+                                        judgment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="theme-card group hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-ember/10 hover:border-ember/30">
+                        <div class="flex items-start">
+                            <div
+                                class="badge group-hover:bg-ember group-hover:text-white transition-colors duration-300">
+                                02</div>
+                            <div class="flex-1">
+                                <div class="benefit-title group-hover:text-ember transition-colors duration-300">
+                                    Architectural Integration</div>
+                                <p class="benefit-desc">Enhances form, material expression and daylight coordination to
+                                    support the design intent.</p>
+                                <ul class="benefit-list">
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">form</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">composition
+                                    </li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">style</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">codes &
+                                        standards</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">safety &
+                                        security</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">daylighting
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 - Centered -->
+                    <div
+                        class="theme-card group hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-ember/10 hover:border-ember/30 md:col-span-2 md:max-w-lg md:mx-auto">
+                        <div class="flex items-start">
+                            <div
+                                class="badge group-hover:bg-ember group-hover:text-white transition-colors duration-300">
+                                03</div>
+                            <div class="flex-1">
+                                <div class="benefit-title group-hover:text-ember transition-colors duration-300">
+                                    Operational & Economic Value</div>
+                                <p class="benefit-desc">Reduces lifecycle costs through efficient systems, controls and
+                                    maintainable design.</p>
+                                <ul class="benefit-list">
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">smart
+                                        controls & automation</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">predictable
+                                        maintenance</li>
+                                    <li class="group-hover:translate-x-1 transition-transform duration-200">lower
+                                        environmental impact</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-grid">
+                    <div>
+                        <img src="Assets/The-Lumen-House.svg" alt="The Lumen House"
+                            class="h-9 w-auto mb-4 opacity-[0.85]">
+                        <p class="footer-desc">
+                            Crafting architectural lighting experiences and bespoke design solutions. We shape ambiance
+                            and
+                            elevate spaces with technical precision and creative vision.
+                        </p>
+                        <div class="footer-social-icons">
+                            <a href="https://www.instagram.com/the_lumen_house.8/" class="footer-social"
+                                aria-label="Instagram" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="footer-social" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                                </svg>
+                            </a>
+                            <a href="https://wa.me/919986664243" class="footer-social" aria-label="WhatsApp"
+                                target="_blank">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                                </svg>
+                            </a>
+                            <a href="mailto:The.lumen.house.8@gmail.com" class="footer-social" aria-label="Email">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="footer-col-title">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="what-we-do.html">What We Do</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="footer-col-title">Studio</h4>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="footer-contact-text-title">Address</div>
+                                <div class="footer-contact-text-value">Shirur Park link road, above Focus mart, Akshay
+                                    Colony, Karnataka 580031</div>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.93 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.85 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="footer-contact-text-title">Phone</div>
+                                <div class="footer-contact-text-value">+91 99866 64243</div>
+                                <div class="footer-contact-text-value">+91 74067 50233</div>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="footer-contact-text-title">Email</div>
+                                <div class="footer-contact-text-value">The.lumen.house.8@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom bar -->
+                <div class="footer-bottom">
+                    <p style="margin:0;">© 2026 The Lumen House. All Rights Reserved.</p>
+                    <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+                        <a href="disclaimer.html">Disclaimer</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        (function () {
+            const idsToObserve = ['lampImg', 'mockupArea', 'textArea', 'lampImg-store', 'mockupArea-store', 'textArea-store'];
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+
+                    if (el.id && el.id.startsWith('lampImg')) {
+                        setTimeout(() => {
+                            el.classList.remove('lamp-hidden');
+                            el.classList.add('lamp-visible');
+                        }, 180);
+                    } else {
+                        el.classList.remove('section-hidden');
+                        el.classList.add('section-visible');
+
+                        if (el.id && el.id.startsWith('mockupArea')) {
+                            const panel = el.querySelector('.panel-shadow');
+                            if (panel) {
+                                panel.style.opacity = '0';
+                                panel.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    panel.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                                    panel.style.opacity = '1';
+                                    panel.style.transform = 'translateY(0)';
+                                }, 350);
+                            }
+                        }
+                    }
+
+                    io.unobserve(el);
+                });
+            }, { threshold: 0.12 });
+
+            idsToObserve.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) io.observe(el);
+            });
+        })();
+    </script>
+    <script>
+        // Mobile menu: professional left-side with staggered lights-on effect (copied from about.html)
+        (function () {
+            function initMobileMenu() {
+                const menuBtn = document.getElementById('menu-btn');
+                const menuPanel = document.getElementById('menu-panel');
+                const menuOverlay = document.getElementById('menu-overlay');
+                const closeBtn = document.getElementById('menu-close-btn');
+                const menuLinks = document.querySelectorAll('.menu-item');
+
+                function openMenu() {
+                    if (menuPanel) menuPanel.classList.add('open');
+                    if (menuOverlay) menuOverlay.classList.add('open');
+                    if (menuBtn) menuBtn.classList.add('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+                    // animate-hide the header hamburger while panel is open so only the polished close button shows
+                    if (menuBtn) menuBtn.classList.add('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'true');
+                    if (closeBtn) closeBtn.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeMenu() {
+                    if (menuPanel) menuPanel.classList.remove('open');
+                    if (menuOverlay) menuOverlay.classList.remove('open');
+                    if (menuBtn) menuBtn.classList.remove('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+                    if (menuBtn) menuBtn.classList.remove('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'false');
+                    if (closeBtn) closeBtn.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+
+                if (menuBtn) {
+                    menuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (menuPanel && menuPanel.classList.contains('open')) closeMenu(); else openMenu();
+                    });
+                }
+
+                if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+                if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+
+                // Close on Escape
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && menuPanel && menuPanel.classList.contains('open')) {
+                        closeMenu();
+                        if (menuBtn) menuBtn.focus();
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospitality Lighting | The Lumen House</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.2) 0%, rgba(5, 5, 5, 0.8) 100%);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-ink text-white font-body selection:bg-ember/30">
+
+    <!-- Header (Consistent with main pages) -->
+    <header id="navbar"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-ink/80 backdrop-blur-md">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="Assets/The-Lumen-House.svg" alt="Lumen House"
+                    class="h-10 w-auto group-hover:scale-105 transition-transform duration-500">
+            </a>
+
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="index.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium hover:text-ember transition-colors">Home</a>
+                <a href="about.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium hover:text-ember transition-colors">About</a>
+                <a href="what-we-do.html"
+                    class="text-xs uppercase tracking-[0.2em] font-medium hover:text-ember transition-colors">What We
+                    Do</a>
+                <a href="projects.html" class="text-xs uppercase tracking-[0.2em] font-medium text-ember">Projects</a>
+                <a href="contact.html"
+                    class="px-6 py-2.5 bg-ember text-ink text-xs font-bold uppercase tracking-widest rounded-full hover:bg-white transition-all duration-300">Contact</a>
+            </div>
+
+            <a href="projects.html"
+                class="lg:hidden text-ember font-medium text-xs uppercase tracking-widest flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Dedicated Sector Hero -->
+        <section class="relative h-[80vh] flex items-end overflow-hidden">
+            <img src="C:\Users\Yuvaraj\.gemini\antigravity\brain\90ad35ee-1073-4280-b560-102dc368a0b7\hospitality_lighting_1_1774260322002.png"
+                alt="Hospitality Lighting" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full">
+                <div class="max-w-3xl">
+                    <span
+                        class="text-ember text-xs font-bold uppercase tracking-[0.3em] mb-4 block reveal-up">Sectors</span>
+                    <h1 class="font-display text-6xl md:text-8xl text-white mb-8 reveal-up">Hospitality</h1>
+                    <p class="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl reveal-up">
+                        Transforming hotels, resorts, and restaurants into sensory experiences through technical
+                        precision and artistic vision.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="py-32 bg-ink">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-20 items-start mb-32">
+                    <div class="reveal-up">
+                        <h2 class="font-display text-4xl lg:text-5xl text-white mb-8">Elevating the Guest Experience
+                        </h2>
+                        <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+                            <p>
+                                In the hospitality sector, lighting is more than just utility—it's the silent architect
+                                of mood.
+                                We work closely with architects and interior designers to create lighting schemes that
+                                define the
+                                character of a brand and the comfort of the guest.
+                            </p>
+                            <p>
+                                From grand lobbies that demand a sense of arrival to intimate bars where warmth is
+                                paramount,
+                                our solutions integrate seamless controls and bespoke fixtures to ensure every square
+                                inch
+                                contributes to an unforgettable stay.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 reveal-up">
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10">
+                            <span class="text-ember font-display text-4xl block mb-2">01</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Ambiance Control</h3>
+                            <p class="text-sm text-gray-500">Dynamic scene-setting for morning transitions to evening
+                                moods.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10 mt-8">
+                            <span class="text-ember font-display text-4xl block mb-2">02</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Guest Comfort</h3>
+                            <p class="text-sm text-gray-500">Glare-free environments designed for relaxation and visual
+                                ease.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10 -mt-8">
+                            <span class="text-ember font-display text-4xl block mb-2">03</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Brand Identity</h3>
+                            <p class="text-sm text-gray-500">Using light to highlight signature structural and design
+                                elements.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white/5 border border-white/10">
+                            <span class="text-ember font-display text-4xl block mb-2">04</span>
+                            <h3 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Sustainability</h3>
+                            <p class="text-sm text-gray-500">High-efficiency LED systems with intelligent energy
+                                management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Type specific Projects/Images -->
+                <div class="grid md:grid-cols-2 gap-12 pt-20 border-t border-white/10">
+                    <div class="reveal-up group">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl mb-6">
+                            <img src="photo/hospitality/hospitality_1.png" alt="Featured Project"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <h4 class="text-white font-display text-2xl mb-2">The Emerald Atrium</h4>
+                        <p class="text-gray-500">Bespoke lighting design for a flagship hotel lobby in the heart of the
+                            city.</p>
+                    </div>
+                    <div class="reveal-up group pt-12 md:pt-24">
+                        <div class="aspect-[16/10] overflow-hidden rounded-2xl mb-6">
+                            <img src="photo/hospitality/hospitality_2.png" alt="Featured Project"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <h4 class="text-white font-display text-2xl mb-2">Azure Resort & Spa</h4>
+                        <p class="text-gray-500">Comprehensive outdoor and underwater lighting solutions for a luxury
+                            mountain retreat.</p>
+                    </div>
+                </div>
+
+                <!-- Photo Gallery Section -->
+                <div class="mt-32 reveal-up">
+                    <div class="flex items-end justify-between mb-12">
+                        <div>
+                            <span
+                                class="text-ember text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Archive</span>
+                            <h2 class="font-display text-5xl text-white">Photo Gallery</h2>
+                        </div>
+                        <p class="text-gray-500 max-w-md text-right hidden lg:block"> A curated collection of moments
+                            and details from our hospitality portfolio.</p>
+                    </div>
+
+                    <!-- Dynamic Gallery Grid -->
+                    <div id="hospitality-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Custom uploaded images will appear here -->
+                    </div>
+
+                    <div id="no-images-msg"
+                        class="text-center py-20 border border-dashed border-white/10 rounded-3xl mt-8">
+                        <p class="text-gray-600 text-sm uppercase tracking-widest">No additional gallery images yet.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-32 p-12 lg:p-20 rounded-[2.5rem] bg-ember/5 border border-ember/20 text-center reveal-up">
+                    <h2 class="font-display text-4xl lg:text-6xl text-white mb-8">Ready to illuminate your space?</h2>
+                    <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+                        Speak with our consultants about bringing specialized lighting to your hospitality project.
+                    </p>
+                    <a href="contact.html"
+                        class="inline-flex items-center gap-4 bg-ember text-ink px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all duration-300">
+                        Start a Project
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <footer class="py-20 bg-charcoal border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <img src="Assets/The-Lumen-House.svg" alt="Lumen House" class="h-8 w-auto mx-auto mb-8 opacity-50">
+            <p class="text-gray-500 text-sm max-w-sm mx-auto mb-12 leading-relaxed">
+                The Lumen House - Architectural lighting experiences and bespoke design solutions.
+            </p>
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="projects.html"
+                    class="text-gray-400 hover:text-ember transition-colors text-xs uppercase tracking-widest font-medium">All
+                    Projects</a>
+                <a href="about.html"
+                    class="text-gray-400 hover:text-ember transition-colors text-xs uppercase tracking-widest font-medium">Our
+                    Story</a>
+                <a href="contact.html"
+                    class="text-gray-400 hover:text-ember transition-colors text-xs uppercase tracking-widest font-medium">Studio</a>
+            </div>
+            <div class="text-[10px] uppercase tracking-[0.3em] text-gray-600">
+                © 2026 THE LUMEN HOUSE. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Reveal elements on scroll
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
+
+            // Photo Gallery Logic
+            const gallery = document.getElementById('hospitality-gallery');
+            const noImagesMsg = document.getElementById('no-images-msg');
+            const category = 'hospitality';
+
+            function loadGallery() {
+                const storedImages = JSON.parse(localStorage.getItem('lumen-house-gallery') || '{}');
+                const images = storedImages[category] || [];
+
+                if (images.length > 0) {
+                    noImagesMsg.style.display = 'none';
+                    gallery.innerHTML = '';
+                    images.forEach((imgObj, index) => {
+                        const div = document.createElement('div');
+                        div.className = 'group relative aspect-square overflow-hidden rounded-xl border border-white/5 reveal-up';
+
+                        // Handle both string (legacy) and object (with caption)
+                        const imgData = typeof imgObj === 'string' ? imgObj : imgObj.src;
+                        const imgCaption = typeof imgObj === 'string' ? 'Lumen House Detail' : (imgObj.caption || 'Lumen House Detail');
+
+                        const imgSrc = imgData.startsWith('data:') ? imgData : imgData;
+
+                        div.innerHTML = `
+                            <img src="${imgSrc}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
+                                <span class="text-ember text-[10px] uppercase tracking-widest font-bold mb-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">Detail</span>
+                                <p class="text-white text-sm font-medium leading-tight translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-75">${imgCaption}</p>
+                            </div>
+                        `;
+                        gallery.appendChild(div);
+                        io.observe(div);
+                    });
+                }
+            }
+
+            loadGallery();
+        });
+
+        // Navbar blur on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('border-white/10', 'shadow-lg');
+            } else {
+                navbar.classList.remove('border-white/10', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+
+</html>

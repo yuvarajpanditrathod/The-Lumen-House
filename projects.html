@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Projects | The Lumen House - Portfolio</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A curated selection of our finest lighting design work across the globe." />
+    <link rel="canonical" href="https://www.thelumenhouse.com/projects" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Projects | The Lumen House" />
+    <meta property="og:description"
+        content="A curated selection of our finest lighting design work across the globe." />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts & Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                    },
+                    boxShadow: {
+                        'glow': '0 0 80px -20px rgba(212, 163, 115, 0.15)',
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.5)'
+                    },
+                },
+            },
+        };
+    </script>
+
+    <script>
+        // Mobile menu: professional left-side with staggered lights-on effect
+        (function () {
+            function initMobileMenu() {
+                const menuBtn = document.getElementById('menu-btn');
+                const menuPanel = document.getElementById('menu-panel');
+                const menuOverlay = document.getElementById('menu-overlay');
+                const closeBtn = document.getElementById('menu-close-btn');
+                const menuLinks = document.querySelectorAll('.menu-item');
+
+                function openMenu() {
+                    if (menuPanel) menuPanel.classList.add('open');
+                    if (menuOverlay) menuOverlay.classList.add('open');
+                    if (menuBtn) menuBtn.classList.add('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+                    if (menuBtn) menuBtn.classList.add('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'true');
+                    if (closeBtn) closeBtn.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeMenu() {
+                    if (menuPanel) menuPanel.classList.remove('open');
+                    if (menuOverlay) menuOverlay.classList.remove('open');
+                    if (menuBtn) menuBtn.classList.remove('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+                    if (menuBtn) menuBtn.classList.remove('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'false');
+                    if (closeBtn) closeBtn.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+
+                if (menuBtn) {
+                    menuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (menuPanel && menuPanel.classList.contains('open')) closeMenu(); else openMenu();
+                    });
+                }
+
+                if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+                if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+
+                // Close on Escape
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && menuPanel && menuPanel.classList.contains('open')) {
+                        closeMenu();
+                        if (menuBtn) menuBtn.focus();
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+        })();
+    </script>
+
+
+
+    <style>
+        /* Filter Menu Styles */
+        .filter-menu-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            font-family: 'Manrope', sans-serif;
+            outline: none;
+        }
+
+        .filter-btn.active {
+            background-color: rgba(212, 163, 115, 0.15) !important;
+            border-color: rgba(212, 163, 115, 0.4) !important;
+            color: #D4A373 !important;
+        }
+
+        .portfolio-item {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* â”€â”€ Nav Links â”€â”€ */
+        .nav-link {
+            position: relative;
+            padding: 8px 10px;
+            color: #050505;
+            transition: color .18s ease, transform .12s ease;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            font-size: 0.95rem;
+            text-transform: none;
+            display: inline-block;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -7px;
+            transform: translateX(-50%) scaleX(0);
+            transform-origin: center;
+            width: 48%;
+            height: 3px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, rgba(212, 163, 115, 0.0), rgba(212, 163, 115, 0.95));
+            opacity: 0;
+            transition: transform .22s cubic-bezier(.2, .9, .3, 1), opacity .18s;
+        }
+
+        .nav-link:hover {
+            color: #D4A373;
+            transform: translateY(-1px);
+        }
+
+        .nav-link:hover::after {
+            transform: translateX(-50%) scaleX(1);
+            opacity: 1;
+        }
+
+        .nav-link:focus {
+            outline: none;
+        }
+
+        .nav-link:focus-visible {
+            box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.15);
+            border-radius: 6px;
+        }
+
+        .nav-link.active,
+        .nav-link[aria-current="page"] {
+            color: #D4A373;
+            font-weight: 700;
+        }
+
+        .nav-link.active::after,
+        .nav-link[aria-current="page"]::after {
+            transform: translateX(-50%) scaleX(1);
+            opacity: 1;
+        }
+
+        /* â”€â”€ Brand text â”€â”€ */
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #333;
+            letter-spacing: .06em;
+            font-weight: 600;
+        }
+
+        .brand-tagline {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            color: #6b6b6b;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        /* â”€â”€ Auto-hide header on scroll â”€â”€ */
+        .site-content {
+            will-change: transform;
+            transition: transform .28s cubic-bezier(.2, .9, .3, 1);
+        }
+
+        .site-content.hide {
+            transform: translateY(-110%);
+        }
+
+        /* â”€â”€ Hamburger button lines â”€â”€ */
+        #menu-btn span {
+            background-color: #050505 !important;
+            display: block;
+            width: 24px !important;
+            height: 3px !important;
+            border-radius: 2px !important;
+            margin: 4px 0 !important;
+        }
+
+        /* â”€â”€ Professional Hamburger (animated) â”€â”€ */
+        .hamburger-box {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            transition: all 0.3s ease;
+            z-index: 60;
+        }
+
+        .hamburger-box:hover {
+            border-color: rgba(212, 163, 115, 0.6);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hamburger-inner {
+            width: 22px;
+            height: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 2px;
+            background: #D4A373;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform-origin: left center;
+        }
+
+        .hamburger-box.active .line-1 {
+            transform: rotate(45deg) translate(3px, -2px);
+            width: 120%;
+        }
+
+        .hamburger-box.active .line-2 {
+            opacity: 0;
+            transform: scaleX(0.5);
+        }
+
+        .hamburger-box.active .line-3 {
+            transform: rotate(-45deg) translate(3px, 2px);
+            width: 120%;
+        }
+
+        /* â”€â”€ Left-Side Menu (dark, elegant) â”€â”€ */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 45;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: min(85vw, 400px);
+            height: 100vh;
+            background: #0C0B0A;
+            border-right: 1px solid rgba(212, 163, 115, 0.15);
+            box-shadow: 20px 0 50px -20px rgba(0, 0, 0, 0.8);
+            z-index: 50;
+            transform: translateX(-100%);
+            transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.55, 1);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #menu-panel,
+        .menu-footer {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        #menu-panel::-webkit-scrollbar,
+        .menu-footer::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        .menu-panel.open {
+            transform: translateX(0);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: none;
+            position: relative;
+        }
+
+        .menu-header::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 6px;
+            height: 2px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, rgba(212, 163, 115, 0.06) 0%, rgba(212, 163, 115, 0.35) 50%, rgba(212, 163, 115, 0.06) 100%);
+            background-size: 200% 100%;
+            opacity: 0.9;
+            transform: translateY(4px);
+            animation: shimmer 4.5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .menu-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .menu-close {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(212, 163, 115, 0.28);
+            color: #D4A373;
+            cursor: pointer;
+            transition: transform 260ms cubic-bezier(.2, .9, .2, 1), box-shadow 260ms ease, background 220ms ease, opacity 260ms ease;
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 60;
+            box-shadow: 0 6px 28px rgba(9, 10, 10, 0.35);
+            opacity: 0;
+            transform: translateY(-6px) scale(.94);
+        }
+
+        .menu-close:hover {
+            transform: translateY(-2px) scale(1.03);
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(212, 163, 115, 0.9);
+            box-shadow: 0 10px 36px rgba(9, 10, 10, 0.45);
+        }
+
+        .menu-close svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            opacity: 0.95;
+        }
+
+        .menu-close.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .hamburger-box.hidden-anim {
+            opacity: 0 !important;
+            transform: translateY(-6px) scale(.96) !important;
+            pointer-events: none !important;
+        }
+
+        #menu-btn.hidden-anim {
+            opacity: 0 !important;
+            transform: translateY(-6px) scale(.96) !important;
+            pointer-events: none !important;
+        }
+
+        /* â”€â”€ Menu items (staggered "lights on" animation) â”€â”€ */
+        .menu-item {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: rgba(255, 255, 240, 0.6);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            margin: 0.2rem 0;
+            display: inline-block;
+            transition: color 0.25s, transform 0.25s, text-shadow 0.25s;
+            transform: translateX(0);
+            border-bottom: 1px solid transparent;
+            opacity: 0;
+            animation: fadeSlideIn 0.4s forwards cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        }
+
+        .menu-item::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(90deg, rgba(212, 163, 115, 0.0), rgba(212, 163, 115, 0.85), rgba(212, 163, 115, 0.0));
+            border-radius: 6px;
+            margin-top: 18px;
+            transition: width 280ms cubic-bezier(.2, .9, .2, 1), opacity 200ms ease;
+            opacity: 0;
+        }
+
+        .menu-item:hover::after,
+        .menu-item.active::after {
+            width: 84%;
+            opacity: 1;
+        }
+
+        .menu-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .menu-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .menu-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .menu-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .menu-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .menu-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .menu-cta-item {
+            animation: fadeSlideIn 0.4s forwards cubic-bezier(0.2, 0.9, 0.3, 1.1);
+            animation-delay: 0.7s;
+            opacity: 0;
+            margin-top: 1.5rem;
+        }
+
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .menu-item:hover {
+            color: #D4A373;
+            transform: translateX(8px);
+            text-shadow: 0 0 10px rgba(212, 163, 115, 0.3);
+        }
+
+        .menu-item.active {
+            color: #D4A373;
+            font-weight: 500;
+            border-bottom-color: #D4A373;
+        }
+
+        .menu-footer {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 240, 0.6);
+            display: flex;
+            gap: 1.6rem;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: center;
+            border-top: 1px solid rgba(212, 163, 115, 0.06);
+            padding-bottom: 1rem;
+            overflow-x: auto;
+        }
+
+        .menu-footer a {
+            color: rgba(255, 255, 240, 0.7);
+            transition: color 0.18s ease, transform 0.18s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            white-space: nowrap;
+        }
+
+        .menu-footer a:hover {
+            color: #D4A373;
+            transform: translateY(-2px);
+        }
+
+        .menu-footer svg {
+            opacity: 0.92;
+            color: rgba(212, 163, 115, 0.9);
+        }
+
+        @media (max-width: 420px) {
+            .menu-footer {
+                justify-content: flex-start;
+                gap: 0.8rem;
+                padding-left: 1rem;
+            }
+
+            .menu-footer a {
+                font-size: 0.9rem;
+                gap: 0.4rem;
+            }
+
+            .menu-footer svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        /* â”€â”€ Page-specific styles â”€â”€ */
+        .footer-dark {
+            background: #0a0a0b;
+            color: #e9e1d6;
+        }
+
+        .muted {
+            color: #a59b8f;
+        }
+
+        .glow-text {
+            color: #fff6e2;
+        }
+
+        .footer-dark.light-on .glow-text {
+            text-shadow: 0 0 18px rgba(255, 214, 140, 0.4);
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #c7bdb0;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.45);
+        }
+
+        .light-stripes {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 24px;
+        }
+
+        .light-stripe {
+            height: 4px;
+            width: 180px;
+            border-radius: 999px;
+            background: rgba(255, 214, 140, 0.25);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            outline: none;
+        }
+
+        .light-stripe.active,
+        .footer-dark.light-on .light-stripe {
+            background: rgba(255, 214, 140, 0.85);
+            box-shadow: 0 0 18px rgba(255, 198, 120, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .light-stripe {
+                width: 80px;
+            }
+        }
+
+        .footer-cta {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 999px;
+            background: #D4A373;
+            color: #050505;
+            font-weight: 600;
+            font-size: .95rem;
+            transition: all .25s ease;
+        }
+
+        .footer-cta:hover {
+            background: #c58e5b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 163, 115, 0.3);
+        }
+
+        /* â”€â”€ NEW SITE FOOTER â”€â”€ */
+        .site-footer,
+        .site-footer * {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .site-footer {
+            background: #0e0c0a;
+            color: rgba(255, 255, 240, 0.7);
+            padding: 64px 0 0;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.08);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 240, 0.9);
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 240, 0.5);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .footer-social {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 163, 115, 0.15);
+            color: rgba(212, 163, 115, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .footer-social svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .footer-social:hover {
+            background: rgba(212, 163, 115, 0.12);
+            color: #D4A373;
+            border-color: rgba(212, 163, 115, 0.4);
+        }
+
+        .footer-col-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: rgba(255, 255, 240, 0.4);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 240, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #D4A373;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-contact-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: rgba(212, 163, 115, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .footer-contact-icon svg {
+            width: 13px;
+            height: 13px;
+            color: #D4A373;
+        }
+
+        .footer-contact-text-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 240, 0.35);
+            margin-bottom: 0.2rem;
+        }
+
+        .footer-contact-text-value {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 240, 0.65);
+            line-height: 1.5;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 240, 0.3);
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 240, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: #D4A373;
+        }
+
+        @media (max-width: 767px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Hover-reveal details for service cards */
+        .sector-details {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.68) 60%);
+            color: #f3f3f3;
+            padding: 0.9rem 1rem;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .28s ease, transform .28s ease;
+            font-size: 0.95rem;
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        .group:hover .sector-details,
+        .group:focus-within .sector-details {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .sector-details ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: block;
+        }
+
+        .sector-details li {
+            margin: 0;
+            padding: 2px 0;
+            color: #f6f6f6;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .sector-details {
+                font-size: 0.88rem;
+                padding: 0.75rem;
+            }
+        }
+
+        .sr-only {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Hover title centered over image */
+        .hover-title {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 0.02em;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .32s ease, transform .32s ease;
+            z-index: 40;
+            padding: 0 1rem;
+            text-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+        }
+
+        .group:hover .hover-title,
+        .group:focus-within .hover-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fly-up reveal */
+        .fly-up {
+            opacity: 0;
+            transform: translateY(28px);
+            will-change: transform, opacity;
+            transition: opacity 1s cubic-bezier(.2, .9, .2, 1), transform 1s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .fly-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Clean professional reveal: subtler, faster, with slight scale */
+        .clean-reveal {
+            opacity: 0;
+            transform: translateY(18px) scale(.995);
+            will-change: transform, opacity;
+            transition: opacity 560ms cubic-bezier(.22, 1, .36, 1), transform 560ms cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .clean-reveal.in-view {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Hover lift for clean reveal cards */
+        .group:hover .clean-reveal,
+        .group:focus-within .clean-reveal {
+            transform: translateY(-4px) scale(1.002);
+            transition-duration: 360ms;
+        }
+
+        /* Bottom-left 'spot' light effect (appears on hover and when in-view) */
+        .group.clean-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .group.clean-reveal::before {
+            content: "";
+            position: absolute;
+            left: -12%;
+            bottom: -18%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at 30% 70%, rgba(212, 163, 115, 0.28) 0%, rgba(212, 163, 115, 0.18) 20%, rgba(212, 163, 115, 0.08) 38%, rgba(212, 163, 115, 0.02) 55%, transparent 70%);
+            filter: blur(28px);
+            transform: translateY(8px) scale(0.9);
+            opacity: 0;
+            transition: opacity 420ms ease, transform 560ms cubic-bezier(.22, 1, .36, 1);
+            pointer-events: none;
+            z-index: 10;
+            mix-blend-mode: screen;
+        }
+
+        /* visible when hovered or when element has been revealed */
+        .group.clean-reveal:hover::before,
+        .group.clean-reveal.in-view::before {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .group.clean-reveal::before {
+                transition: none;
+                opacity: 1;
+            }
+        }
+
+        /* Light card style to match provided image */
+        .svc-card-light {
+            background: #fbf8f4;
+            /* warm off-white */
+            border: 1px solid rgba(31, 27, 22, 0.06);
+            box-shadow: 0 8px 18px rgba(4, 6, 8, 0.06);
+            color: #1f1b16;
+        }
+
+        .svc-num {
+            font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+            font-size: 42px;
+            line-height: 1;
+            color: rgba(60, 56, 54, 0.85);
+            font-weight: 400;
+            min-width: 56px;
+        }
+
+        .svc-title {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .svc-desc {
+            color: rgba(31, 27, 22, 0.62);
+            font-size: 14px;
+        }
+
+        .svc-card-light:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212, 163, 115, 0.28);
+            box-shadow: 0 20px 40px rgba(11, 15, 20, 0.06), 0 6px 22px rgba(212, 163, 115, 0.04);
+        }
+
+        /* Icon styling and hover glow for a cleaner, professional look */
+        .svc-card-light .icon-wrap {
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+            color: rgba(236, 158, 91, 0.95);
+            flex-shrink: 0;
+        }
+
+        .svc-card-light .icon-wrap svg {
+            transition: transform .28s ease, filter .28s ease, opacity .28s ease;
+            opacity: 0.95;
+        }
+
+        .svc-card-light:hover .icon-wrap {
+            transform: translateY(-4px) scale(1.06);
+            box-shadow: 0 10px 30px rgba(236, 158, 91, 0.12), 0 0 18px rgba(236, 158, 91, 0.10);
+            background: linear-gradient(180deg, rgba(236, 158, 91, 0.06), rgba(236, 158, 91, 0.03));
+        }
+
+        .svc-card-light:hover .icon-wrap svg {
+            filter: drop-shadow(0 6px 18px rgba(236, 158, 91, 0.18));
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* Tweak title/desc for clarity on these cards */
+        .svc-card-light .svc-title {
+            color: #0f1724;
+            font-weight: 700;
+        }
+
+        .svc-card-light .svc-desc {
+            color: rgba(15, 23, 36, 0.65);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hover-title {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Card media blur */
+        .card-media {
+            transition: transform .32s ease, filter .32s ease;
+            display: block;
+        }
+
+        .group:hover .card-media,
+        .group:focus-within .card-media {
+            filter: blur(3px) brightness(0.48) grayscale(40%);
+            transform: scale(1.02);
+        }
+
+        /* Light card style to match provided image */
+        .svc-card-light {
+            background: linear-gradient(180deg, rgba(255, 252, 247, 0.96) 0%, rgba(255, 250, 244, 0.96) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 8px 30px rgba(11, 14, 16, 0.18);
+            color: #111827;
+        }
+
+        .svc-num {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            font-size: 56px;
+            line-height: 1;
+            color: rgba(16, 24, 40, 0.14);
+            letter-spacing: -1px;
+            min-width: 72px;
+            text-align: left;
+        }
+
+        .svc-title {
+            color: #0f172a;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            font-weight: 600;
+        }
+
+        .svc-desc {
+            color: #334155;
+            font-size: 0.95rem;
+            margin-top: 6px;
+        }
+
+        /* Clean reveal animation */
+        .clean-reveal {
+            transform: translateY(12px) scale(.998);
+            opacity: 0;
+            will-change: transform, opacity;
+            transition: transform 560ms cubic-bezier(.2, .9, .25, 1), opacity 420ms ease;
+        }
+
+        .clean-reveal.in-view {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        /* Bottom-left soft spotlight */
+        .group.clean-reveal::before {
+            content: "";
+            position: absolute;
+            left: -40px;
+            bottom: -40px;
+            width: 260px;
+            height: 260px;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(closest-side, rgba(255, 236, 214, 0.9), rgba(255, 236, 214, 0.45) 30%, rgba(255, 236, 214, 0.05) 60%, transparent 70%);
+            transform: translate3d(0, 12px, 0) scale(.98);
+            filter: blur(18px);
+            opacity: 0;
+            mix-blend-mode: screen;
+            transition: opacity 420ms ease, transform 420ms ease;
+            z-index: 0;
+        }
+
+        .group.clean-reveal.in-view::before,
+        .group.clean-reveal:hover::before {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .clean-reveal,
+            .group.clean-reveal::before {
+                transition: none !important;
+            }
+        }
+    </style>
+    <script src="transition.js"></script>
+</head>
+
+<body class="bg-ink selection:bg-ember selection:text-ink light-theme">
+
+    <header id="navbar"
+        class="site-content fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3 group" aria-label="The Lumen House - Home">
+                <img src="Assets/The-Lumen-House.svg" alt="The Lumen House Logo"
+                    class="w-25 h-12 rounded-md shadow-sm" />
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="what-we-do.html" class="nav-link">What We Do</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="contact.html"
+                    class="px-5 py-2 rounded-full bg-ember text-ink font-medium hover:brightness-95 shadow-sm transition">Book
+                    Consultation</a>
+            </div>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="menu-btn" class="lg:hidden p-2 rounded-md" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="mobile-menu">
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink rounded"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <div id="menu-panel" class="menu-panel">
+        <div class="menu-header">
+            <span class="menu-logo">The Lumen House</span>
+        </div>
+        <div id="menu-close-btn" class="menu-close" aria-label="Close menu" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+
+        <!-- Navigation links (animated one by one) -->
+        <nav class="flex flex-col">
+            <a href="index.html" class="menu-item">Home</a>
+            <a href="about.html" class="menu-item">About us</a>
+            <a href="what-we-do.html" class="menu-item">What we do</a>
+            <a href="projects.html" class="menu-item">Projects</a>
+            <a href="contact.html" class="menu-item">Contact Us</a>
+            <div class="menu-cta-item mt-6">
+                <a href="#contact"
+                    class="inline-block px-6 py-3 rounded-full border border-ember/40 text-ember text-sm font-medium hover:bg-ember hover:text-ink transition-all duration-300 w-full text-center">
+                    Book Consultation
+                </a>
+            </div>
+        </nav>
+
+        <!-- Menu footer (social icons) -->
+        <div class="menu-footer">
+            <a href="https://www.instagram.com/the_lumen_house.8/" target="_blank" aria-label="Instagram"
+                class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                </svg>
+            </a>
+            <a href="https://wa.me/919986664243?text=Hello%20The%20Lumen%20House%20Team" target="_blank"
+                aria-label="WhatsApp" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                </svg>
+            </a>
+            <a href="mailto:The.lumen.house.8@gmail.com" aria-label="Email" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+
+        <!-- Static Hero -->
+        <section class="relative py-24 md:py-32 overflow-hidden bg-ink">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/90 to-ink/70"></div>
+            </div>
+            <div class="relative max-w-7xl mx-auto px-6 lg:px-12 text-center">
+                <h3 class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">Our Portfolio</h3>
+                <h1 class="font-display text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight mb-6 text-white">
+                    Selected Works
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    A curated collection of our completed lighting design projects across residential, hospitality,
+                    and commercial sectors.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- Projects Grid -->
+        <section id="services-grid" class="py-32 bg-ink">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-8">
+                    <h2 class="font-display text-4xl lg:text-5xl tracking-tight text-white">What We Do</h2>
+                    <a href="#contact"
+                        class="hidden md:block text-sm font-medium text-gray-400 hover:text-ember transition-colors">Start
+                        a Project &rarr;</a>
+                </div>
+                <!-- Filter Menu -->
+                <div class="filter-menu-container flex flex-wrap pb-6 mb-10 gap-3 justify-center"
+                    style="-webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
+                    <button
+                        class="filter-btn active px-6 py-2.5 rounded-full border border-white/20 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 transition-all uppercase tracking-wider"
+                        data-filter="all">All</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="hospitality">Hospitality</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="infrastructure">Infrastructure</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="healthcare">Health Care</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="retail">Retail & Office</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="outdoor-landscape">Outdoor Landscape</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="outdoor-urban">Outdoor Urban</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="outdoor-facade">Outdoor Facade</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="museums">Museum & Galleries</button>
+                    <button
+                        class="filter-btn px-6 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                        data-filter="private-residences">Private Residences</button>
+                </div>
+
+
+
+
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-16">
+                    <!-- 1. HOSPITALITY -->
+                    <a href="hospitality.html" class="group cursor-pointer fly-up portfolio-item"
+                        data-category="hospitality">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/hospitality-sector/800/600" alt="Hospitality"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Hospitality</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Hospitality</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 2. INFRASTRUCTURE -->
+                    <a href="infrastructure.html" class="group cursor-pointer fly-up md:mt-16 portfolio-item"
+                        data-category="infrastructure">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/infrastructure-light/800/600" alt="Infrastructure"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Infrastructure</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Infrastructure</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 3. HEALTH CARE -->
+                    <a href="healthcare.html" class="group cursor-pointer fly-up portfolio-item"
+                        data-category="healthcare">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/healthcare-medical/800/600" alt="Health Care"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Health Care</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Health Care</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 4. RETAIL OFFICE -->
+                    <a href="retail.html" class="group cursor-pointer fly-up md:mt-16 portfolio-item"
+                        data-category="retail">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/retail-office-space/800/600" alt="Retail Office"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Retail & Office</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Retail & Office</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 5. OUTDOOR LANDSCAPE -->
+                    <a href="outdoor-landscape.html" class="group cursor-pointer fly-up portfolio-item"
+                        data-category="outdoor-landscape">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/outdoor-landscape-garden/800/600"
+                                alt="Outdoor Landscape"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Outdoor Landscape</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Outdoor Landscape</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 6. OUTDOOR â€“ URBAN -->
+                    <a href="outdoor-urban.html" class="group cursor-pointer fly-up md:mt-16 portfolio-item"
+                        data-category="outdoor-urban">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/urban-street-light/800/600" alt="Outdoor Urban"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Outdoor â€“ Urban</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Outdoor â€“ Urban</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 7. OUTDOOR â€“ FAcADE -->
+                    <a href="outdoor-facade.html" class="group cursor-pointer fly-up portfolio-item"
+                        data-category="outdoor-facade">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/facade-lighting/800/600" alt="Outdoor Facade"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Outdoor â€“ Facade</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Outdoor â€“ Facade</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 8. MUSEUM & GALLERIES -->
+                    <a href="museums.html" class="group cursor-pointer fly-up md:mt-16 portfolio-item"
+                        data-category="museums">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/museum-gallery-art/800/600" alt="Museum & Galleries"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Museum & Galleries</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Museum & Galleries</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+
+
+                    <!-- 9. PRIVATE RESIDENCES -->
+                    <a href="private-residences.html" class="group cursor-pointer fly-up md:mt-16 portfolio-item"
+                        data-category="private-residences">
+                        <div class="overflow-hidden rounded-2xl mb-6 relative">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500">
+                            </div>
+                            <img src="https://picsum.photos/seed/private-residence-luxury/800/600"
+                                alt="Private Residences"
+                                class="card-media w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="hover-title">Private Residences</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="sr-only">Private Residences</h4>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <img src="Assets/The-Lumen-House.svg" alt="The Lumen House" class="h-9 w-auto mb-4 opacity-[0.85]">
+                    <p class="footer-desc">
+                        Crafting architectural lighting experiences and bespoke design solutions. We shape ambiance and
+                        elevate spaces with technical precision and creative vision.
+                    </p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.instagram.com/the_lumen_house.8/" class="footer-social"
+                            aria-label="Instagram" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/919986664243" class="footer-social" aria-label="WhatsApp"
+                            target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:The.lumen.house.8@gmail.com" class="footer-social" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Studio</h4>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Address</div>
+                            <div class="footer-contact-text-value">Shirur Park link road, above Focus mart, Akshay
+                                Colony, Karnataka 580031</div>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.93 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.85 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Phone</div>
+                            <div class="footer-contact-text-value">+91 99866 64243</div>
+                            <div class="footer-contact-text-value">+91 74067 50233</div>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Email</div>
+                            <div class="footer-contact-text-value">The.lumen.house.8@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p style="margin:0;">© 2026 The Lumen House. All Rights Reserved.</p>
+                <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-conditions.html">Terms &amp; Conditions</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Navbar interaction to add blur/shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('border-white/10', 'shadow-lg');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('border-white/10', 'shadow-lg');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Footer light toggle
+        const footer = document.getElementById('contact');
+        const lightButtons = document.querySelectorAll('[data-light-toggle="true"]');
+        lightButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const isOn = footer.classList.contains('light-on');
+                footer.classList.toggle('light-on', !isOn);
+                footer.classList.toggle('light-off', isOn);
+                lightButtons.forEach(b => {
+                    b.classList.toggle('active', !isOn);
+                    b.blur();
+                });
+            });
+        });
+
+        // IntersectionObserver: reveal elements (supports both legacy .fly-up and new .clean-reveal)
+        (function () {
+            const items = document.querySelectorAll('.fly-up, .clean-reveal');
+            if (!items.length) return;
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // stagger based on position in the list for a clean, professional cascade
+                        const index = Array.from(items).indexOf(entry.target);
+                        const delay = Math.min(index * 90, 450); // cap delay so it stays snappy
+                        setTimeout(() => {
+                            entry.target.classList.add('in-view');
+                        }, delay);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            items.forEach(it => io.observe(it));
+        })();
+
+        // Portfolio Filtering Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active states purely via class toggles
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'border-white/20', 'bg-white/10', 'text-white');
+                        b.classList.add('border-white/10', 'text-gray-400');
+                    });
+                    btn.classList.add('active', 'border-white/20', 'text-white');
+                    btn.classList.remove('border-white/10', 'text-gray-400');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    portfolioItems.forEach(item => {
+                        const match = filter === 'all' || item.getAttribute('data-category') === filter;
+                        if (match) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.96)';
+                            setTimeout(() => {
+                                // Only set display none if it matches this exact filter click's intention
+                                if (item.style.opacity === '0') {
+                                    item.style.display = 'none';
+                                }
+                            }, 400); // Matches transition duration
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | The Lumen House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Manrope", "sans-serif"],
+                    },
+                    colors: {
+                        ink: "#050505",
+                        charcoal: "#0F0F11",
+                        ember: "#D4A373",
+                        warm: "#F5EBE0",
+                        stone: "#2C2C2E",
+                        accent: "#C58E5B",
+                        sand: "#F9F5F0",
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 80px -20px rgba(212, 163, 115, 0.15)',
+                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                        'input': '0 0 15px -5px rgba(212, 163, 115, 0.1)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'reveal': 'reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        reveal: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* ── HERO SECTION ── */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 163, 115, 0.04) 0%, rgba(212, 163, 115, 0.01) 100%);
+            pointer-events: none;
+        }
+
+        /* ── CONTACT INFO CARDS ── */
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: #fff;
+            border: 1px solid rgba(212, 163, 115, 0.1);
+            border-radius: 16px;
+            transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 8px 32px rgba(212, 163, 115, 0.12);
+            transform: translateY(-2px);
+            border-color: rgba(212, 163, 115, 0.25);
+        }
+
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(212, 163, 115, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #D4A373;
+        }
+
+        .info-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #9e9189;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1a1714;
+            line-height: 1.5;
+        }
+
+        /* ── CONTACT FORM ── */
+        .form-card {
+            background: #fff;
+            border: 1px solid rgba(26, 23, 20, 0.06);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 16px 64px rgba(26, 23, 20, 0.06), 0 4px 16px rgba(26, 23, 20, 0.04);
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #6d5f55;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            background: #F9F5F0;
+            border: 1.5px solid rgba(26, 23, 20, 0.08);
+            border-radius: 12px;
+            padding: 13px 16px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            color: #1a1714;
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: rgba(26, 23, 20, 0.35);
+        }
+
+        .form-input:focus {
+            border-color: #D4A373;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.1);
+        }
+
+        select.form-input {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23D4A373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 42px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px 24px;
+            border-radius: 100px;
+            background: #1a1714;
+            color: #F9F5F0;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            background: #D4A373;
+            color: #1a1714;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3);
+        }
+
+        /* ── SOCIAL LINKS ── */
+        .social-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px 8px 10px;
+            border-radius: 100px;
+            background: #fff;
+            border: 1px solid rgba(212, 163, 115, 0.15);
+            color: #4d4540;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: all 0.2s ease;
+        }
+
+        .social-pill svg {
+            width: 18px;
+            height: 18px;
+            color: #D4A373;
+            flex-shrink: 0;
+        }
+
+        .social-pill:hover {
+            background: #D4A373;
+            border-color: #D4A373;
+            color: #1a1714;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(212, 163, 115, 0.25);
+        }
+
+        .social-pill:hover svg {
+            color: #1a1714;
+        }
+
+        /* ── DIVIDER ORNAMENT ── */
+        .divider-ornament {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .divider-ornament::before,
+        .divider-ornament::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 163, 115, 0.25));
+        }
+
+        .divider-ornament::after {
+            background: linear-gradient(90deg, rgba(212, 163, 115, 0.25), transparent);
+        }
+
+        .divider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(212, 163, 115, 0.45);
+        }
+
+        /* ── MAP SECTION ── */
+        .map-section {
+            padding: 0 0 80px;
+        }
+
+        .map-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(26, 23, 20, 0.08);
+            border: 1px solid rgba(212, 163, 115, 0.12);
+        }
+
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 420px;
+            border: none;
+        }
+
+        /* ── FOOTER ── */
+        .site-footer,
+        .site-footer * {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .site-footer {
+            background: #0e0c0a;
+            color: rgba(255, 255, 240, 0.7);
+            padding: 64px 0 0;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.08);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 240, 0.9);
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 240, 0.5);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .footer-social {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 163, 115, 0.15);
+            color: rgba(212, 163, 115, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .footer-social svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .footer-social:hover {
+            background: rgba(212, 163, 115, 0.12);
+            color: #D4A373;
+            border-color: rgba(212, 163, 115, 0.4);
+        }
+
+        .footer-col-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: rgba(255, 255, 240, 0.4);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 240, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #D4A373;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-contact-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: rgba(212, 163, 115, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .footer-contact-icon svg {
+            width: 13px;
+            height: 13px;
+            color: #D4A373;
+        }
+
+        .footer-contact-text-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 240, 0.35);
+            margin-bottom: 0.2rem;
+        }
+
+        .footer-contact-text-value {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 240, 0.65);
+            line-height: 1.5;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 240, 0.3);
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 240, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: #D4A373;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .fade-up-1 {
+            animation-delay: 0.1s;
+        }
+
+        .fade-up-2 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-up-3 {
+            animation-delay: 0.3s;
+        }
+
+        .fade-up-4 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-up-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* ── EYEBROW LABEL ── */
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #D4A373;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 20px;
+            height: 1.5px;
+            background: #D4A373;
+            display: block;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1023px) {
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+
+            .form-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-section {
+                padding: 90px 0 50px;
+            }
+
+            .form-card {
+                padding: 1.5rem;
+            }
+
+            .map-wrapper iframe {
+                height: 280px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F9F5F0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(212, 163, 115, 0.3);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body class="bg-ink selection:bg-ember selection:text-ink light-theme">
+
+    <!-- ══════════ HEADER ══════════ -->
+    <header id="navbar"
+        class="site-content fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3 group" aria-label="The Lumen House - Home">
+                <img src="Assets/The-Lumen-House.svg" alt="The Lumen House Logo"
+                    class="w-25 h-12 rounded-md shadow-sm" />
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="what-we-do.html" class="nav-link">What We Do</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="contact.html"
+                    class="px-5 py-2 rounded-full bg-ember text-ink font-medium hover:brightness-95 shadow-sm transition">Book
+                    Consultation</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden p-2 rounded-md" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="mobile-menu">
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
+                <span class="block w-6 h-0.5 bg-ink rounded"></span>
+            </button>
+        </div>
+    </header>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <!-- Left-Side Menu Panel with staggered "lights on" items -->
+    <div id="menu-panel" class="menu-panel">
+        <div class="menu-header">
+            <span class="menu-logo">The Lumen House</span>
+        </div>
+        <div id="menu-close-btn" class="menu-close" aria-label="Close menu" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+
+        <!-- Navigation links (animated one by one) -->
+        <nav class="flex flex-col">
+            <a href="index.html" class="menu-item">Home</a>
+            <a href="about.html" class="menu-item">About us</a>
+            <a href="what-we-do.html" class="menu-item">What we do</a>
+            <a href="projects.html" class="menu-item">Projects</a>
+            <a href="contact.html" class="menu-item">Contact Us</a>
+            <div class="menu-cta-item mt-6">
+                <a href="#contact"
+                    class="inline-block px-6 py-3 rounded-full border border-ember/40 text-ember text-sm font-medium hover:bg-ember hover:text-ink transition-all duration-300 w-full text-center">
+                    Book Consultation
+                </a>
+            </div>
+        </nav>
+
+        <!-- Menu footer (social icons) -->
+        <div class="menu-footer">
+            <a href="https://www.instagram.com/the_lumen_house.8/" target="_blank" aria-label="Instagram"
+                class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                </svg>
+            </a>
+            <a href="https://wa.me/919986664243?text=Hello%20The%20Lumen%20House%20Team" target="_blank"
+                aria-label="WhatsApp" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                </svg>
+            </a>
+            <a href="mailto:The.lumen.house.8@gmail.com" aria-label="Email" class="flex items-center gap-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════ MAIN ═══════════════════ -->
+    <main>
+        <section class="hero-section">
+            <div style="max-width:1280px; margin:0 auto; padding:0 2rem; width:100%;">
+
+                <div style="margin-bottom:4rem;" class="fade-up fade-up-1">
+                    <span class="eyebrow" style="margin-bottom:1rem; display:inline-flex;">Get in Touch</span>
+                    <h1
+                        style="font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:500; line-height:1.12; letter-spacing:-0.02em; color:#1a1714; margin-top:0.75rem; margin-bottom:0;">
+                        Let's illuminate<br>
+                        <em style="font-style:italic; color:#D4A373;">your next project.</em>
+                    </h1>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;"
+                    class="contact-grid">
+
+                    <div class="fade-up fade-up-2">
+                        <p
+                            style="font-size:1rem; line-height:1.75; color:#6d5f55; font-weight:400; max-width:420px; margin-bottom:2.5rem;">
+                            Whether you're an architect, designer, or homeowner — we're ready to collaborate on creating
+                            spaces that breathe with light. Tell us about your vision.
+                        </p>
+
+                        <div style="display:flex; flex-direction:column; gap:0.875rem; margin-bottom:2.5rem;">
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="3" />
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="info-label">Email</div>
+                                    <a href="mailto:The.lumen.house.8@gmail.com" class="info-value"
+                                        style="text-decoration:none; color:inherit; transition:color 0.2s;"
+                                        onmouseover="this.style.color='#D4A373'"
+                                        onmouseout="this.style.color='#1a1714'">
+                                        The.lumen.house.8@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.93 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.85 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="info-label">Phone</div>
+                                    <a href="tel:+919986664243" class="info-value"
+                                        style="text-decoration:none; color:inherit; transition:color 0.2s;"
+                                        onmouseover="this.style.color='#D4A373'"
+                                        onmouseout="this.style.color='#1a1714'">
+                                        +91 99866 64243 <br>
+                                        +91 74067 50233
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="info-label">Studio</div>
+                                    <div class="info-value">Shirur Park link road, above Focus mart, Akshay Colony,
+                                        Karnataka 580031</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Divider ornament -->
+                        <div class="divider-ornament">
+                            <div class="divider-dot"></div>
+                            <div class="divider-dot"></div>
+                            <div class="divider-dot"></div>
+                        </div>
+
+                        <!-- Social links -->
+                        <div style="margin-bottom:0.75rem;">
+                            <p
+                                style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:#9e9189; margin-bottom:1rem;">
+                                Follow our journey</p>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
+                                <a href="https://www.instagram.com/the_lumen_house.8/" class="social-pill"
+                                    aria-label="Instagram" target="_blank">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                                    </svg>
+                                    Instagram
+                                </a>
+                                <a href="https://wa.me/919986664243" class="social-pill" aria-label="WhatsApp"
+                                    target="_blank">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                                    </svg>
+                                    WhatsApp
+                                </a>
+                                <a href="#" class="social-pill" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                                    </svg>
+                                    LinkedIn
+                                </a>
+                                <a href="mailto:The.lumen.house.8@gmail.com" class="social-pill" aria-label="Email">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                                    </svg>
+                                    Email Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN — FORM -->
+                    <div class="form-card fade-up fade-up-3">
+                        <div style="margin-bottom:2rem;">
+                            <h2
+                                style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:600; color:#1a1714; margin:0 0 0.4rem;">
+                                Send us a message</h2>
+                            <p style="font-size:0.875rem; color:#9e9189; margin:0;">We typically respond within 24
+                                hours.</p>
+                        </div>
+
+                        <form id="contact-form" novalidate>
+                            <div
+                                style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" class="form-input" placeholder="John Doe"
+                                        autocomplete="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-input" placeholder="john@example.com"
+                                        autocomplete="email">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1.25rem;">
+                                <label for="phone">Phone Number <span
+                                        style="color:#b8a899; font-weight:400; text-transform:none; letter-spacing:0; font-size:0.8rem;">(Optional)</span></label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210"
+                                    autocomplete="tel">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1.25rem;">
+                                <label for="subject">Project Type</label>
+                                <select id="subject" class="form-input">
+                                    <option value="" disabled selected>Select a project type</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="residential">Residential Project</option>
+                                    <option value="commercial">Commercial Project</option>
+                                    <option value="hospitality">Hospitality / Hotel</option>
+                                    <option value="custom">Custom Fixture Design</option>
+                                    <option value="consultation">Lighting Consultation</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:2rem;">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" rows="5" class="form-input"
+                                    placeholder="Tell us about your space, timeline, and vision…"
+                                    style="resize:vertical;"></textarea>
+                            </div>
+
+                            <!-- Privacy note -->
+                            <p style="font-size:0.75rem; color:#b8a899; margin-bottom:1.25rem; line-height:1.6;">
+                                By submitting, you agree to our <a href="privacy-policy.html"
+                                    style="color:#D4A373; text-decoration:none;">Privacy Policy</a>. We'll never share
+                                your information.
+                            </p>
+
+                            <button type="submit" class="btn-submit" id="submit-btn">
+                                <span id="btn-text">Send Message</span>
+                                <svg id="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </form>
+
+                        <!-- Success state (hidden) -->
+                        <div id="success-msg" style="display:none; text-align:center; padding:2rem 1rem;">
+                            <div
+                                style="width:56px; height:56px; border-radius:50%; background:rgba(212,163,115,0.1); border:1.5px solid rgba(212,163,115,0.3); display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; color:#D4A373;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <h3
+                                style="font-family:'Playfair Display',serif; font-size:1.25rem; color:#1a1714; margin:0 0 0.5rem;">
+                                Message Received!</h3>
+                            <p style="font-size:0.875rem; color:#9e9189; margin:0;">Thank you for reaching out. We'll
+                                get back to you within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── MAP SECTION ── -->
+        <section class="map-section">
+            <div style="max-width:1280px; margin:0 auto; padding:0 2rem; width:100%;">
+                <!-- Map label -->
+                <div
+                    style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+                    <div>
+                        <span class="eyebrow" style="margin-bottom:0.5rem; display:inline-flex;">Find Us</span>
+                        <h2
+                            style="font-family:'Playfair Display',serif; font-size:1.75rem; font-weight:500; color:#1a1714; margin:0.5rem 0 0;">
+                            Our Studio in Hubballi</h2>
+                    </div>
+                    <a href="https://maps.google.com/?q=The+Lumen+House+Hubballi" target="_blank" class="btn-primary"
+                        style="font-size:0.82rem;">
+                        Get Directions
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.2856607542994!2d75.1101410748886!3d15.361007985220521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8d73cb6e6240d%3A0x4e0cc6a86330ebfb!2sThe%20Lumen%20House..%2C%20Architectural%20Lights%20and%20Lighting%20design%20solutions.!5e0!3m2!1sen!2sin!4v1771331524197!5m2!1sen!2sin"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <img src="Assets/The-Lumen-House.svg" alt="The Lumen House" class="h-9 w-auto mb-4 opacity-[0.85]">
+                    <p class="footer-desc">
+                        Crafting architectural lighting experiences and bespoke design solutions. We shape ambiance and
+                        elevate spaces with technical precision and creative vision.
+                    </p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.instagram.com/the_lumen_house.8/" class="footer-social"
+                            aria-label="Instagram" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/919986664243" class="footer-social" aria-label="WhatsApp"
+                            target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:The.lumen.house.8@gmail.com" class="footer-social" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Studio</h4>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Address</div>
+                            <div class="footer-contact-text-value">Shirur Park link road, above Focus mart, Akshay
+                                Colony, Karnataka 580031</div>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.93 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.85 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Phone</div>
+                            <div class="footer-contact-text-value">+91 99866 64243</div>
+                            <div class="footer-contact-text-value">+91 74067 50233</div>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="footer-contact-text-title">Email</div>
+                            <div class="footer-contact-text-value">The.lumen.house.8@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p style="margin:0;">© 2026 The Lumen House. All Rights Reserved.</p>
+                <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-conditions.html">Terms &amp; Conditions</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('border-white/10', 'shadow-lg');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('border-white/10', 'shadow-lg');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        (function () {
+            function initMobileMenu() {
+                const menuBtn = document.getElementById('menu-btn');
+                const menuPanel = document.getElementById('menu-panel');
+                const menuOverlay = document.getElementById('menu-overlay');
+                const closeBtn = document.getElementById('menu-close-btn');
+                const menuLinks = document.querySelectorAll('.menu-item');
+
+                function openMenu() {
+                    if (menuPanel) menuPanel.classList.add('open');
+                    if (menuOverlay) menuOverlay.classList.add('open');
+                    if (menuBtn) menuBtn.classList.add('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+                    if (menuBtn) menuBtn.classList.add('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'true');
+                    if (closeBtn) closeBtn.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeMenu() {
+                    if (menuPanel) menuPanel.classList.remove('open');
+                    if (menuOverlay) menuOverlay.classList.remove('open');
+                    if (menuBtn) menuBtn.classList.remove('active');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+                    if (menuBtn) menuBtn.classList.remove('hidden-anim');
+                    if (menuBtn) menuBtn.setAttribute('aria-hidden', 'false');
+                    if (closeBtn) closeBtn.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+
+                if (menuBtn) {
+                    menuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (menuPanel && menuPanel.classList.contains('open')) closeMenu(); else openMenu();
+                    });
+                }
+
+                if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+                if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+
+                // Close on Escape
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && menuPanel && menuPanel.classList.contains('open')) {
+                        closeMenu();
+                        if (menuBtn) menuBtn.focus();
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+        })();
+
+        // Form submission (UI only)
+        const form = document.getElementById('contact-form');
+        const successMsg = document.getElementById('success-msg');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnArrow = document.getElementById('btn-arrow');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Loading state
+            btnText.textContent = 'Sending…';
+            btnArrow.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+
+            // Simulate send
+            setTimeout(() => {
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+            }, 1500);
+        });
+
+        // Responsive grid
+        function applyResponsive() {
+            const grid = document.querySelector('.contact-grid');
+            if (!grid) return;
+            if (window.innerWidth < 1024) {
+                grid.style.gridTemplateColumns = '1fr';
+                grid.style.gap = '2rem';
+            } else {
+                grid.style.gridTemplateColumns = '1fr 1fr';
+                grid.style.gap = '4rem';
+            }
+        }
+
+        applyResponsive();
+        window.addEventListener('resize', applyResponsive);
+    </script>
+
+</body>
+
+</html>
