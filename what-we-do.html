@@ -6,36 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>What We Do | The Lumen House</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Assets/Logo.svg" type="image/icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        display: ["Playfair Display", "serif"],
-                        body: ["Manrope", "sans-serif"],
-                    },
-                    colors: {
-                        ink: "#050505",
-                        charcoal: "#0F0F11",
-                        ember: "#D4A373",
-                        warm: "#F5EBE0",
-                        stone: "#2C2C2E",
-                        accent: "#C58E5B",
-                    },
-                    boxShadow: {
-                        'glow': '0 0 80px -20px rgba(212, 163, 115, 0.15)',
-                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
-                    },
-                },
-            },
-        };
-    </script>
     <style>
         /* Light card style to match provided image */
         .svc-card-light {
@@ -572,12 +551,11 @@
 
         .group:hover .card-media,
         .group:focus-within .card-media {
-            filter: blur(3px) brightness(0.48) grayscale(40%);
+            filter: brightness(0.7);
             transform: scale(1.02);
         }
     </style>
     <script>
-        // Mobile menu: professional left-side with staggered lights-on effect (copied from index.html)
         (function () {
             function initMobileMenu() {
                 const menuBtn = document.getElementById('menu-btn');
@@ -644,126 +622,49 @@
 <body class="bg-ink selection:bg-ember selection:text-ink light-theme font-body">
 
     <!-- Navigation -->
-    <header id="navbar"
-        class="site-content fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
-        <div class="absolute inset-0 bg-white"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-3 group" aria-label="The Lumen House - Home">
-                <img src="Assets/The-Lumen-House.svg" alt="The Lumen House Logo"
-                    class="w-25 h-12 rounded-md shadow-sm" />
-            </a>
+    <div id="header-placeholder"></div>
 
-            <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="what-we-do.html" class="nav-link">What We Do</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="contact.html" class="nav-link">Contact Us</a>
-            </nav>
 
-            <div class="hidden lg:flex items-center gap-6">
-                <a href="contact.html"
-                    class="px-5 py-2 rounded-full bg-ember text-ink font-medium hover:brightness-95 shadow-sm transition">Book
-                    Consultation</a>
-            </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="lg:hidden p-2 rounded-md" aria-label="Toggle menu" aria-expanded="false"
-                aria-controls="mobile-menu">
-                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
-                <span class="block w-6 h-0.5 bg-ink mb-1 rounded"></span>
-                <span class="block w-6 h-0.5 bg-ink rounded"></span>
-            </button>
-        </div>
-    </header>
 
-    <div id="menu-overlay" class="menu-overlay"></div>
-
-    <!-- Left-Side Menu Panel with staggered "lights on" items -->
-    <div id="menu-panel" class="menu-panel">
-        <div class="menu-header">
-            <span class="menu-logo">The Lumen House</span>
-        </div>
-        <div id="menu-close-btn" class="menu-close" aria-label="Close menu" role="button" tabindex="0">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </div>
-
-        <!-- Navigation links (animated one by one) -->
-        <nav class="flex flex-col">
-            <a href="index.html" class="menu-item">Home</a>
-            <a href="about.html" class="menu-item">About us</a>
-            <a href="what-we-do.html" class="menu-item">What we do</a>
-            <a href="projects.html" class="menu-item">Projects</a>
-            <a href="contact.html" class="menu-item">Contact Us</a>
-            <div class="menu-cta-item mt-6">
-                <a href="#contact"
-                    class="inline-block px-6 py-3 rounded-full border border-ember/40 text-ember text-sm font-medium hover:bg-ember hover:text-ink transition-all duration-300 w-full text-center">
-                    Book Consultation
-                </a>
-            </div>
-        </nav>
-
-        <!-- subtle menu footer (optional) -->
-        <div class="menu-footer">
-            <a href="https://www.instagram.com/the_lumen_house.8/" target="_blank" aria-label="Instagram"
-                class="flex items-center gap-3">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
-                </svg>
-            </a>
-            <a href="#" aria-label="LinkedIn" class="flex items-center gap-3">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
-                </svg>
-            </a>
-            <a href="https://wa.me/919986664243?text=Hello%20The%20Lumen%20House%20Team" target="_blank"
-                aria-label="WhatsApp" class="flex items-center gap-3">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
-                </svg>
-            </a>
-            <a href="mailto:The.lumen.house.8@gmail.com" aria-label="Email" class="flex items-center gap-3">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
-                </svg>
-            </a>
-        </div>
-    </div>
 
     <main class="site-content pt-20">
 
         <!-- Page Header -->
-        <section class="relative py-24 md:py-32 overflow-hidden bg-ink">
-            <div class="absolute inset-0 opacity-10">
-                <img src="https://picsum.photos/seed/projects-hero/1920/1080" alt="" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/90 to-ink/70"></div>
+        <section class="relative py-28 md:py-36 overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://www.heraled.com/store/images/4673755811651847103.jpg" alt="Lighting interior"
+                    class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-ink/80"></div>
             </div>
-            <div class="relative max-w-7xl mx-auto px-6 lg:px-12 text-center">
-                <h1 class="font-display text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight mb-6 text-white">
-                    Sectors We Serve
+            <div class="relative max-w-7xl mx-auto px-6 lg:px-12 text-center z-10">
+                <div class="inline-flex items-center gap-3 mb-6">
+                    <div class="w-12 h-[1px] bg-ember"></div>
+                    <p class="text-ember text-sm font-bold uppercase tracking-[0.2em]">What We Do</p>
+                    <div class="w-12 h-[1px] bg-ember"></div>
+                </div>
+                <h1
+                    class="font-display text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight mb-6 text-[#ffffff]">
+                    Sectors We <span class="text-ember italic">Serve</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-[#d1d5db] max-w-3xl mx-auto leading-relaxed">
                     We deliver bespoke lighting solutions across a diverse range of architectural environments.
                 </p>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="py-32 bg-charcoal/30">
+        <section id="services" class="py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div class="max-w-2xl">
-                        <h3 class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">Services</h3>
-                        <h2 class="font-display text-4xl lg:text-5xl tracking-tight">Comprehensive lighting design.</h2>
+                        <p class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">
+                            <i class="fas fa-cogs mr-2"></i> Services
+                        </p>
+                        <h2 class="font-display text-4xl lg:text-5xl tracking-tight text-ink">Comprehensive lighting
+                            design.</h2>
                     </div>
-                    <p class="text-gray-400 max-w-md">
+                    <p class="text-gray-700 max-w-md">
                         From initial concepts to final commissioning, we provide end-to-end lighting solutions.
                     </p>
                 </div>
@@ -771,18 +672,18 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Service 1 -->
                     <article
-                        class="group fly-up p-8 rounded-3xl bg-charcoal border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        class="group fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300">
                         <div
-                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 flex items-center justify-center mb-8 transition-colors text-ember">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="font-display text-2xl mb-4 text-ember group-hover:text-ember transition-colors">
+                        <h4 class="font-display text-2xl mb-4 text-ink">
                             Architectural Lighting</h4>
-                        <p class="text-gray-500 leading-relaxed mb-6">
+                        <p class="text-gray-700 leading-relaxed mb-6">
                             Integrated lighting plans that enhance structural elements and create seamless flow
                             throughout residential and commercial spaces.
                         </p>
@@ -797,18 +698,18 @@
 
                     <!-- Service 2 -->
                     <article
-                        class="group fly-up p-8 rounded-3xl bg-charcoal border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        class="group fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300">
                         <div
-                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 flex items-center justify-center mb-8 transition-colors text-ember">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="font-display text-2xl mb-4 text-ember group-hover:text-ember transition-colors">
+                        <h4 class="font-display text-2xl mb-4 text-ink">
                             Custom Fixtures</h4>
-                        <p class="text-gray-500 leading-relaxed mb-6">
+                        <p class="text-gray-700 leading-relaxed mb-6">
                             Bespoke design and manufacturing of one-of-a-kind luminaries using premium materials like
                             bronze, alabaster, and hand-blown glass.
                         </p>
@@ -823,17 +724,17 @@
 
                     <!-- Service 3 -->
                     <article
-                        class="group fly-up p-8 rounded-3xl bg-charcoal border border-white/5 hover:border-ember/50 transition-all duration-500 hover:-translate-y-2">
+                        class="group fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300">
                         <div
-                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-ember group-hover:text-ink transition-colors text-ember">
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 flex items-center justify-center mb-8 transition-colors text-ember">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h4 class="font-display text-2xl text-ember mb-4 group-hover:text-ember transition-colors">Smart
+                        <h4 class="font-display text-2xl text-ink mb-4">Smart
                             Control</h4>
-                        <p class="text-gray-500 leading-relaxed mb-6">
+                        <p class="text-gray-700 leading-relaxed mb-6">
                             Advanced lighting control systems (Lutron, Crestron) that automate scenes, optimize energy
                             usage, and simplify interaction.
                         </p>
@@ -850,12 +751,17 @@
         </section>
 
         <!-- Services Grid -->
-        <section id="services-grid" class="py-32 bg-ink">
+        <section id="services-grid" class="py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
-                <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-8">
-                    <h2 class="font-display text-4xl lg:text-5xl tracking-tight text-white">What We Do</h2>
+                <div class="flex items-end justify-between mb-16 border-b border-black/5 pb-8">
+                    <div>
+                        <p class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-3">
+                            <i class="fas fa-th-large mr-2"></i> Portfolio
+                        </p>
+                        <h2 class="font-display text-4xl lg:text-5xl tracking-tight text-ink">What We Do</h2>
+                    </div>
                     <a href="#contact"
-                        class="hidden md:block text-sm font-medium text-gray-400 hover:text-ember transition-colors">Start
+                        class="hidden md:block text-sm font-medium text-gray-700 hover:text-ember transition-colors">Start
                         a Project &rarr;</a>
                 </div>
 
@@ -906,7 +812,7 @@
                                 <h4 class="sr-only">Infrastructure</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -937,7 +843,7 @@
                                 <h4 class="sr-only">Health Care</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -968,7 +874,7 @@
                                 <h4 class="sr-only">Retail & Office</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1000,7 +906,7 @@
                                 <h4 class="sr-only">Outdoor Landscape</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1031,7 +937,7 @@
                                 <h4 class="sr-only">Outdoor – Urban</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1062,7 +968,7 @@
                                 <h4 class="sr-only">Outdoor – Façade</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1093,7 +999,7 @@
                                 <h4 class="sr-only">Museum & Galleries</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1125,7 +1031,7 @@
                                 <h4 class="sr-only">Private Residences</h4>
                             </div>
                             <div
-                                class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-ink transition-all">
+                                class="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:text-white transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1138,312 +1044,275 @@
         </section>
 
         <!-- Lighting design approach -->
-        <section id="lighting-approach" class="py-24 bg-charcoal/30">
+        <section id="lighting-approach" class="py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
-                <header class="mb-12 text-center">
-                    <p class="text-black text-sm font-bold uppercase tracking-[0.2em] mb-3">Framework</p>
-                    <h2 class="font-display text-4xl lg:text-5xl text-white font-light">Lighting design approach</h2>
+                <header class="text-center mb-16">
+                    <p class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">
+                        <i class="fas fa-compass mr-2"></i> Framework
+                    </p>
+                    <h2 class="font-display text-4xl lg:text-5xl text-ink mb-6">Lighting Design Approach</h2>
+                    <div class="max-w-3xl mx-auto mb-8">
+                        <blockquote class="font-display text-2xl md:text-3xl text-ink/70 italic leading-relaxed">
+                            "We believe light is the fourth dimension of architecture."
+                        </blockquote>
+                    </div>
+                    <div class="w-20 h-0.5 bg-ember mx-auto"></div>
                 </header>
 
-                <!-- Core belief -->
-                <div class="max-w-3xl mx-auto text-center mb-16">
-                    <blockquote
-                        class="font-display text-2xl md:text-3xl text-white font-light italic leading-relaxed px-4">
-                        "We believe light is the fourth dimension of architecture."
-                    </blockquote>
-                </div>
-
-                <div class="text-center mb-12">
-                    <div class="w-20 h-0.5 bg-ember mx-auto"></div>
-                </div>
-
-                <!-- Services Grid (Theme-matched) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div class="grid sm:grid-cols-2 gap-8">
 
                     <!-- 1. Understand Vision -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
                             <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M9.75 17h4.5M12 3a5 5 0 00-3 9v1a3 3 0 003 3 3 3 0 003-3v-1a5 5 0 00-3-9z">
-                                    </path>
-                                </svg>
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-lightbulb text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="svc-title text-xl mb-2">Understand Vision</h3>
-                                <p class="svc-desc leading-relaxed">Align lighting with design intent & client goals</p>
+                                <h3 class="text-ink text-lg font-display mb-2">Understand Vision</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Align lighting with design intent &
+                                    client goals</p>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- 2. Functional Needs -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
                             <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-check-circle text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="svc-title text-xl mb-2">Functional Needs</h3>
-                                <p class="svc-desc leading-relaxed">Ensure lux levels, comfort & compliance</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 3. Conceptual Strategy -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M3 7l9-4 9 4-9 4-9-4zM3 17l9 4 9-4"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Conceptual Strategy</h3>
-                                <p class="svc-desc leading-relaxed">Layer ambient, task & accent lighting</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 4. Technology Selection -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M12 8v4l3 3"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Technology Selection</h3>
-                                <p class="svc-desc leading-relaxed">Efficient, aesthetic & sustainable fixtures</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 5. Controls & Flexibility -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M4 6h16M4 12h10M4 18h7"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Controls & Flexibility</h3>
-                                <p class="svc-desc leading-relaxed">Smart controls & adaptable scenes, drivers, dimming.
+                                <h3 class="text-ink text-lg font-display mb-2">Functional Needs</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Ensure lux levels, comfort & compliance
                                 </p>
                             </div>
                         </div>
-                    </article>
+                    </div>
+
+                    <!-- 3. Conceptual Strategy -->
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-layer-group text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-ink text-lg font-display mb-2">Conceptual Strategy</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Layer ambient, task & accent lighting
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Technology Selection -->
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-microchip text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-ink text-lg font-display mb-2">Technology Selection</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Efficient, aesthetic & sustainable
+                                    fixtures</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Controls & Flexibility -->
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-sliders-h text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-ink text-lg font-display mb-2">Controls & Flexibility</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Smart controls & adaptable scenes,
+                                    drivers, dimming</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- 6. Integration -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
                             <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M3 21v-8a4 4 0 014-4h10a4 4 0 014 4v8"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M8 7V3m8 4V3"></path>
-                                </svg>
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-puzzle-piece text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="svc-title text-xl mb-2">Integration</h3>
-                                <p class="svc-desc leading-relaxed">Seamless coordination with architecture</p>
+                                <h3 class="text-ink text-lg font-display mb-2">Integration</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Seamless coordination with architecture
+                                </p>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- 7. Human-Centric -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
                             <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M17 20h5v-2a4 4 0 00-3-3.87"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M9 20H4v-2a4 4 0 013-3.87"></path>
-                                    <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="1.5"></circle>
-                                </svg>
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-heart text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="svc-title text-xl mb-2">Human-Centric</h3>
-                                <p class="svc-desc leading-relaxed">Wellbeing, circadian rhythm & comfort</p>
+                                <h3 class="text-ink text-lg font-display mb-2">Human-Centric</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Wellbeing, circadian rhythm & comfort
+                                </p>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- 8. Sustainability -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
                             <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2v7">
-                                    </path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M5 12a7 7 0 0014 0c0-3.866-3.134-7-7-7"></path>
-                                </svg>
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-leaf text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="svc-title text-xl mb-2">Sustainability</h3>
-                                <p class="svc-desc leading-relaxed">Support energy efficiency & green goals</p>
+                                <h3 class="text-ink text-lg font-display mb-2">Sustainability</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Support energy efficiency & green goals
+                                </p>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- 9. Visualization -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
                             <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0 icon-wrap">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="3" y="4" width="18" height="12" rx="2" ry="2" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="1.5"></rect>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 20h8">
-                                    </path>
-                                </svg>
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-desktop text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="svc-title text-xl mb-2">Visualization</h3>
-                                <p class="svc-desc leading-relaxed">Renders, simulations & mock-ups</p>
+                                <h3 class="text-ink text-lg font-display mb-2">Visualization</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Renders, simulations & mock-ups</p>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- 10. Quality Control -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
+                    <div
+                        class="fly-up bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div class="flex gap-5 items-start">
                             <div
-                                class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-ember shrink-0">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M21 21l-6-6"></path>
-                                    <circle cx="11" cy="11" r="6" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="1.5"></circle>
-                                </svg>
+                                class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-ember flex items-center justify-center shrink-0 transition-colors duration-300">
+                                <i class="fas fa-search text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="svc-title text-xl mb-2">Quality Control</h3>
-                                <p class="svc-desc leading-relaxed">Supervise installation & commissioning</p>
+                                <h3 class="text-ink text-lg font-display mb-2">Quality Control</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed">Supervise installation & commissioning
+                                </p>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- Lighting design approach -->
-        <section id="lighting-approach" class="py-24 bg-charcoal/30">
+        <section class="py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
-                <div class="text-center mb-12">
-                    <div class="w-25 h-0.5 bg-ember mx-auto"></div>
+                <div class="text-center mb-16">
+                    <p class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-4">
+                        <i class="fas fa-drafting-compass mr-2"></i> Deliverables
+                    </p>
+                    <h2 class="font-display text-4xl lg:text-5xl text-ink mb-6">What We Deliver</h2>
+                    <p class="text-gray-700 text-lg max-w-3xl mx-auto leading-relaxed">
+                        From initial concepts to final documentation, every deliverable is crafted with precision to
+                        ensure seamless execution.
+                    </p>
                 </div>
 
-                <!-- Services Grid (Theme-matched) -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                    <!-- 1. Design concepts -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div class="svc-num">01</div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Design Concepts</h3>
-                                <p class="svc-desc leading-relaxed">Balanced lighting strategies that integrate
-                                    aesthetic intent with precise functional performance, shaping atmosphere and spatial
-                                    experience.</p>
-                            </div>
+                    <!-- 1. Design Concepts -->
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+                            01
                         </div>
-                    </article>
+                        <h3 class="text-ink text-xl font-display mb-3">Design Concepts</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed">Balanced lighting strategies that integrate
+                            aesthetic intent with precise functional performance, shaping atmosphere and spatial
+                            experience.</p>
+                    </div>
 
-                    <!-- 2. Lux studies -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div class="svc-num">02</div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Lux Studies</h3>
-                                <p class="svc-desc leading-relaxed">Detailed illuminance modeling and compliance
-                                    verification to achieve optimal visual comfort and meet international standards.</p>
-                            </div>
+                    <!-- 2. Lux Studies -->
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+                            02
                         </div>
-                    </article>
+                        <h3 class="text-ink text-xl font-display mb-3">Lux Studies</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed">Detailed illuminance modeling and compliance
+                            verification to achieve optimal visual comfort and meet international standards.</p>
+                    </div>
 
-                    <!-- 3. Lighting energy audit -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div class="svc-num">03</div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Lighting Energy Audit</h3>
-                                <p class="svc-desc leading-relaxed">Comprehensive assessment of existing systems with
-                                    recommendations to enhance efficiency, reduce consumption, and lower lifecycle
-                                    costs.</p>
-                            </div>
+                    <!-- 3. Lighting Energy Audit -->
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+                            03
                         </div>
-                    </article>
+                        <h3 class="text-ink text-xl font-display mb-3">Lighting Energy Audit</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed">Comprehensive assessment of existing systems
+                            with recommendations to enhance efficiency, reduce consumption, and lower lifecycle costs.
+                        </p>
+                    </div>
 
-                    <!-- 4. Lighting layouts -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div class="svc-num">04</div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Lighting Layouts</h3>
-                                <p class="svc-desc leading-relaxed">Coordinated technical drawings including plans,
-                                    sections, and elevations for accurate specification and seamless integration.</p>
-                            </div>
+                    <!-- 4. Lighting Layouts -->
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+                            04
                         </div>
-                    </article>
+                        <h3 class="text-ink text-xl font-display mb-3">Lighting Layouts</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed">Coordinated technical drawings including plans,
+                            sections, and elevations for accurate specification and seamless integration.</p>
+                    </div>
 
                     <!-- 5. 3D Rendering -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div class="svc-num">05</div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">3D Rendering & Visualization</h3>
-                                <p class="svc-desc leading-relaxed">Photorealistic renderings and mock-ups to
-                                    communicate design intent clearly and support informed client decisions.</p>
-                            </div>
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+                            05
                         </div>
-                    </article>
+                        <h3 class="text-ink text-xl font-display mb-3">3D Rendering & Visualization</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed">Photorealistic renderings and mock-ups to
+                            communicate design intent clearly and support informed client decisions.</p>
+                    </div>
 
-                    <!-- 6. Luminaire schedules -->
-                    <article class="group clean-reveal svc-card-light p-8 rounded-3xl transition-all duration-500">
-                        <div class="flex gap-6 items-start">
-                            <div class="svc-num">06</div>
-                            <div>
-                                <h3 class="svc-title text-xl mb-2">Luminaire Schedules & Specifications</h3>
-                                <p class="svc-desc leading-relaxed">Precise documentation of fixtures, controls, and
-                                    performance data to ensure accurate procurement and installation.</p>
-                            </div>
+                    <!-- 6. Luminaire Schedules -->
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+                            06
                         </div>
-                    </article>
+                        <h3 class="text-ink text-xl font-display mb-3">Luminaire Schedules & Specifications</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed">Precise documentation of fixtures, controls,
+                            and performance data to ensure accurate procurement and installation.</p>
+                    </div>
 
                 </div>
             </div>
@@ -1451,112 +1320,7 @@
     </main>
 
     <!-- Footer -->
-        <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div>
-                    <img src="Assets/The-Lumen-House.svg" alt="The Lumen House" class="h-9 w-auto mb-4 opacity-[0.85]">
-                    <p class="footer-desc">
-                        Crafting architectural lighting experiences and bespoke design solutions. We shape ambiance and
-                        elevate spaces with technical precision and creative vision.
-                    </p>
-                    <div class="footer-social-icons">
-                        <a href="https://www.instagram.com/the_lumen_house.8/" class="footer-social"
-                            aria-label="Instagram" target="_blank">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 007.2 12 4.8 4.8 0 0012 16.8 4.8 4.8 0 0016.8 12 4.8 4.8 0 0012 7.2zm0 2A2.8 2.8 0 0114.8 12 2.8 2.8 0 0112 14.8 2.8 2.8 0 019.2 12 2.8 2.8 0 0112 9.2zm4.8-3.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="footer-social" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M4.98 3.5a2.5 2.5 0 11-.01 5.01A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-.9 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z" />
-                            </svg>
-                        </a>
-                        <a href="https://wa.me/919986664243" class="footer-social" aria-label="WhatsApp"
-                            target="_blank">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.4 0 .04 5.36.04 12c0 2.12.55 4.18 1.6 6L0 24l6.2-1.62A11.96 11.96 0 0012.04 24C18.68 24 24.04 18.64 24.04 12c0-3.2-1.25-6.22-3.52-8.52zM12.04 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.22-3.68.96.98-3.6-.24-.38A9.94 9.94 0 012.04 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.42-7.44c-.3-.16-1.76-.86-2.04-.96-.28-.1-.48-.16-.68.16-.2.3-.78.96-.96 1.16-.18.2-.36.22-.66.08-.3-.16-1.28-.46-2.44-1.46-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.14-.62.14-.14.3-.36.44-.54.14-.18.18-.3.28-.5.1-.2.04-.38-.02-.54-.06-.16-.68-1.64-.94-2.24-.24-.58-.48-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.54s1.08 2.96 1.24 3.16c.16.2 2.14 3.26 5.2 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.08 1.76-.72 2-1.42.24-.7.24-1.3.16-1.42-.08-.12-.28-.2-.58-.36z" />
-                            </svg>
-                        </a>
-                        <a href="mailto:The.lumen.house.8@gmail.com" class="footer-social" aria-label="Email">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="footer-col-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="what-we-do.html">What We Do</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer-col-title">Studio</h4>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="footer-contact-text-title">Address</div>
-                            <div class="footer-contact-text-value">Shirur Park link road, above Focus mart, Akshay
-                                Colony, Karnataka 580031</div>
-                        </div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.93 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.85 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="footer-contact-text-title">Phone</div>
-                            <div class="footer-contact-text-value">+91 99866 64243</div>
-                            <div class="footer-contact-text-value">+91 74067 50233</div>
-                        </div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="footer-contact-text-title">Email</div>
-                            <div class="footer-contact-text-value">The.lumen.house.8@gmail.com</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom bar -->
-            <div class="footer-bottom">
-                <p style="margin:0;">© 2026 The Lumen House. All Rights Reserved.</p>
-                <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                    <a href="terms-conditions.html">Terms &amp; Conditions</a>
-                    <a href="disclaimer.html">Disclaimer</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script>
         // Navbar scroll behavior
@@ -1605,6 +1369,8 @@
             items.forEach(it => io.observe(it));
         })();
     </script>
+    <!-- Universal header/footer loader + menu/scroll init -->
+    <script src="components.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Lumen House | Grand Opening</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ═══════════════════════════════════════════
+           CSS CUSTOM PROPERTIES
+        ═══════════════════════════════════════════ */
+        :root {
+            --gold-primary: #D4A373;
+            --gold-bright: #FFD700;
+            --gold-light: #E8C89D;
+            --gold-deep: #B8860B;
+            --obsidian: #030303;
+            --charcoal: #0A0A0C;
+            --pearl: #F8F6F3;
+            --warm: #F5EBE0;
+            --ribbon-red: #B91C1C;
+            --ribbon-red-light: #DC2626;
+            --ribbon-red-dark: #7F1D1D;
+            --ribbon-satin: linear-gradient(180deg, #EF4444 0%, #B91C1C 30%, #991B1B 50%, #DC2626 70%, #EF4444 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--obsidian);
+            color: var(--pearl);
+            cursor: default;
+        }
+
+        ::selection {
+            background: var(--gold-primary);
+            color: var(--obsidian);
+        }
+
+        /* ═══════════════════════════════════════════
+           CELEBRATION FULL-SCREEN CONTAINER
+        ═══════════════════════════════════════════ */
+        .ceremony-container {
+            position: fixed;
+            inset: 0;
+            background: var(--obsidian);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Ambient background gradients */
+        .ambient-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(212, 163, 115, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(212, 163, 115, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 20%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Subtle texture overlay */
+        .texture-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        /* ═══════════════════════════════════════════
+           SPOTLIGHT BEAMS
+        ═══════════════════════════════════════════ */
+        .spotlight-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .spotlight-container.active {
+            opacity: 1;
+        }
+
+        .spotlight {
+            position: absolute;
+            bottom: -20%;
+            width: 300px;
+            height: 160vh;
+            background: linear-gradient(to top,
+                    rgba(255, 215, 0, 0.08) 0%,
+                    rgba(255, 215, 0, 0.03) 30%,
+                    transparent 70%);
+            transform-origin: bottom center;
+            filter: blur(30px);
+        }
+
+        .spotlight:nth-child(1) {
+            left: 5%;
+            animation: spotlightSweep1 8s ease-in-out infinite;
+        }
+
+        .spotlight:nth-child(2) {
+            right: 5%;
+            animation: spotlightSweep2 9s ease-in-out infinite;
+        }
+
+        .spotlight:nth-child(3) {
+            left: 30%;
+            animation: spotlightSweep3 7s ease-in-out infinite;
+        }
+
+        .spotlight:nth-child(4) {
+            right: 30%;
+            animation: spotlightSweep4 10s ease-in-out infinite;
+        }
+
+        @keyframes spotlightSweep1 {
+
+            0%,
+            100% {
+                transform: rotate(-15deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+
+        @keyframes spotlightSweep2 {
+
+            0%,
+            100% {
+                transform: rotate(15deg);
+            }
+
+            50% {
+                transform: rotate(-10deg);
+            }
+        }
+
+        @keyframes spotlightSweep3 {
+
+            0%,
+            100% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(12deg);
+            }
+        }
+
+        @keyframes spotlightSweep4 {
+
+            0%,
+            100% {
+                transform: rotate(8deg);
+            }
+
+            50% {
+                transform: rotate(-12deg);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           GOLDEN RIBBON
+        ═══════════════════════════════════════════ */
+        .ribbon-stage {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .ribbon-stage.visible {
+            opacity: 1;
+        }
+
+        .ribbon-wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* The actual ribbon */
+        .ribbon-band {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 42px;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+
+        .ribbon-left,
+        .ribbon-right {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(180deg,
+                    #EF4444 0%,
+                    #DC2626 20%,
+                    #B91C1C 40%,
+                    #991B1B 50%,
+                    #B91C1C 60%,
+                    #DC2626 80%,
+                    #EF4444 100%);
+            box-shadow:
+                0 2px 20px rgba(185, 28, 28, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .ribbon-left {
+            left: 0;
+            border-radius: 0 0 0 4px;
+            transform-origin: left center;
+        }
+
+        .ribbon-right {
+            right: 0;
+            border-radius: 0 4px 0 0;
+            transform-origin: right center;
+        }
+
+        /* Satin sheen effect */
+        .ribbon-left::before,
+        .ribbon-right::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.08) 40%,
+                    rgba(255, 255, 255, 0.15) 50%,
+                    rgba(255, 255, 255, 0.08) 60%,
+                    transparent 100%);
+            animation: sheenMove 3s ease-in-out infinite;
+        }
+
+        @keyframes sheenMove {
+
+            0%,
+            100% {
+                transform: translateX(-30%);
+            }
+
+            50% {
+                transform: translateX(30%);
+            }
+        }
+
+        /* Golden edge stripe */
+        .ribbon-left::after,
+        .ribbon-right::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    transparent 5%,
+                    rgba(255, 215, 0, 0.6) 20%,
+                    rgba(255, 215, 0, 0.8) 50%,
+                    rgba(255, 215, 0, 0.6) 80%,
+                    transparent 95%);
+        }
+
+        .ribbon-left::after {
+            top: 3px;
+        }
+
+        .ribbon-right::after {
+            bottom: 3px;
+        }
+
+        /* Cut state */
+        .ribbon-band.cut .ribbon-left {
+            transform: translateX(-15%) rotate(-12deg) scaleX(0.9);
+            opacity: 0;
+            transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease 0.3s;
+        }
+
+        .ribbon-band.cut .ribbon-right {
+            transform: translateX(15%) rotate(12deg) scaleX(0.9);
+            opacity: 0;
+            transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease 0.3s;
+        }
+
+        /* Ribbon Posts/Stands */
+        .ribbon-post {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 120px;
+            z-index: 5;
+        }
+
+        .ribbon-post-left {
+            left: -4px;
+        }
+
+        .ribbon-post-right {
+            right: -4px;
+        }
+
+        .ribbon-post .post-bar {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #D4A373 0%, #B8860B 50%, #D4A373 100%);
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(212, 163, 115, 0.3);
+        }
+
+        .ribbon-post .post-cap {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, #FFD700 30%, #B8860B 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .ribbon-post .post-base {
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 8px;
+            background: linear-gradient(180deg, #D4A373, #8B6914);
+            border-radius: 3px;
+        }
+
+        /* ═══════════════════════════════════════════
+           SCISSORS
+        ═══════════════════════════════════════════ */
+        .scissors-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            width: 120px;
+            height: 120px;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            cursor: pointer;
+        }
+
+        .scissors-container.visible {
+            opacity: 1;
+        }
+
+        .scissors-container.cutting {
+            pointer-events: none;
+        }
+
+        .scissors-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .scissors-container:hover .scissors-svg {
+            transform: scale(1.1);
+        }
+
+        .scissors-blade-top,
+        .scissors-blade-bottom {
+            fill: none;
+            stroke: #FFD700;
+            stroke-width: 3;
+            stroke-linecap: round;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: 60px 60px;
+        }
+
+        .scissors-handle-top,
+        .scissors-handle-bottom {
+            fill: none;
+            stroke: #D4A373;
+            stroke-width: 3.5;
+            stroke-linecap: round;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: 60px 60px;
+        }
+
+        .scissors-container.cutting .scissors-blade-top,
+        .scissors-container.cutting .scissors-handle-top {
+            transform: rotate(-20deg);
+        }
+
+        .scissors-container.cutting .scissors-blade-bottom,
+        .scissors-container.cutting .scissors-handle-bottom {
+            transform: rotate(20deg);
+        }
+
+        .scissors-pivot {
+            fill: #FFD700;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+        }
+
+        /* Scissors pulse glow */
+        .scissors-glow {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+            animation: scissorsGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes scissorsGlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        /* Click prompt */
+        .click-prompt {
+            position: absolute;
+            bottom: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            opacity: 0;
+            animation: promptPulse 2.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes promptPulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(3px);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           BRAND REVEAL (after cut)
+        ═══════════════════════════════════════════ */
+        .brand-reveal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+            text-align: center;
+            pointer-events: none;
+            user-select: none;
+            opacity: 0;
+        }
+
+        .brand-reveal.active {
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .brand-gem-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            opacity: 0;
+        }
+
+        .brand-reveal.active .brand-gem-row {
+            animation: brandFadeUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .brand-gem {
+            width: 6px;
+            height: 6px;
+            background: var(--gold-bright);
+            transform: rotate(45deg);
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+        }
+
+        .brand-gem-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+
+        .brand-prefix {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(11px, 1.5vw, 16px);
+            font-weight: 300;
+            letter-spacing: 0.6em;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            margin-bottom: 6px;
+            opacity: 0;
+        }
+
+        .brand-reveal.active .brand-prefix {
+            animation: brandFadeUp 0.7s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .brand-title-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(38px, 7vw, 90px);
+            font-weight: 600;
+            color: var(--gold-primary);
+            letter-spacing: 0.08em;
+            line-height: 1;
+            text-shadow:
+                0 0 60px rgba(212, 163, 115, 0.6),
+                0 0 120px rgba(212, 163, 115, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .brand-letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            filter: blur(8px);
+        }
+
+        .brand-reveal.active .brand-letter {
+            animation: grandLetterReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: calc(0.5s + var(--letter-index) * 0.08s);
+        }
+
+        .brand-gap {
+            width: clamp(14px, 2vw, 28px);
+            display: inline-block;
+        }
+
+        .brand-divider-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 20px auto;
+            opacity: 0;
+        }
+
+        .brand-reveal.active .brand-divider-wrap {
+            animation: brandFadeUp 0.8s ease forwards;
+            animation-delay: 1.6s;
+        }
+
+        .brand-divider-line {
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+        }
+
+        .brand-reveal.active .brand-divider-line {
+            animation: dividerExpand 1s ease forwards;
+            animation-delay: 1.7s;
+        }
+
+        .brand-divider-diamond {
+            width: 5px;
+            height: 5px;
+            background: var(--gold-bright);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .brand-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(13px, 1.6vw, 18px);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.12em;
+            color: rgba(245, 235, 224, 0.7);
+            opacity: 0;
+            margin-top: 6px;
+        }
+
+        .brand-reveal.active .brand-tagline {
+            animation: brandFadeUp 0.8s ease forwards;
+            animation-delay: 1.9s;
+        }
+
+        .brand-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(12px, 1.2vw, 15px);
+            font-weight: 300;
+            letter-spacing: 0.35em;
+            color: rgba(212, 163, 115, 0.45);
+            margin-top: 20px;
+            opacity: 0;
+        }
+
+        .brand-reveal.active .brand-year {
+            animation: brandFadeUp 0.7s ease forwards;
+            animation-delay: 2.2s;
+        }
+
+        /* ═══════════════════════════════════════════
+           ENTERING MESSAGE
+        ═══════════════════════════════════════════ */
+        .entering-message {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .entering-message.visible {
+            animation: fadeSlideUp 0.8s ease forwards;
+        }
+
+        .entering-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(212, 163, 115, 0.6);
+        }
+
+        .entering-bar {
+            width: 120px;
+            height: 2px;
+            background: rgba(212, 163, 115, 0.15);
+            margin: 12px auto;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .entering-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright));
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
+
+        /* ═══════════════════════════════════════════
+           CANVAS (fireworks, confetti, particles)
+        ═══════════════════════════════════════════ */
+        .celebration-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        /* ═══════════════════════════════════════════
+           SKIP BUTTON
+        ═══════════════════════════════════════════ */
+        .skip-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 100;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(212, 163, 115, 0.55);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 163, 115, 0.15);
+            padding: 10px 22px;
+            cursor: pointer;
+            border-radius: 2px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skip-btn.visible {
+            opacity: 1;
+        }
+
+        .skip-btn:hover {
+            color: var(--gold-primary);
+            border-color: rgba(212, 163, 115, 0.4);
+            background: rgba(212, 163, 115, 0.08);
+        }
+
+        /* ═══════════════════════════════════════════
+           GOLDEN FLASH OVERLAY
+        ═══════════════════════════════════════════ */
+        .golden-flash {
+            position: fixed;
+            inset: 0;
+            z-index: 25;
+            pointer-events: none;
+            opacity: 0;
+            background: radial-gradient(circle at 50% 50%,
+                    rgba(255, 215, 0, 0.4) 0%,
+                    rgba(212, 163, 115, 0.15) 40%,
+                    transparent 70%);
+        }
+
+        .golden-flash.flash {
+            animation: goldenFlashAnim 1.2s ease-out forwards;
+        }
+
+        @keyframes goldenFlashAnim {
+            0% {
+                opacity: 1;
+                transform: scale(0.8);
+            }
+
+            30% {
+                opacity: 0.8;
+                transform: scale(1.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(2.5);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           TRANSITION OVERLAY TO INDEX
+        ═══════════════════════════════════════════ */
+        .transition-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: var(--obsidian);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.5s ease;
+        }
+
+        .transition-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ═══════════════════════════════════════════
+           KEYFRAMES
+        ═══════════════════════════════════════════ */
+        /* For elements already centered (brand-reveal children) */
+        @keyframes brandFadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* For elements using left:50% + translateX(-50%) centering */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(12px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes grandLetterReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.8);
+                filter: blur(8px);
+            }
+
+            50% {
+                filter: blur(2px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes dividerExpand {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 80px;
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           STAR FIELD
+        ═══════════════════════════════════════════ */
+        .star-field {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.1;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .ribbon-wrapper {
+                width: 94%;
+            }
+
+            .scissors-container {
+                width: 90px;
+                height: 90px;
+            }
+
+            .ribbon-band {
+                height: 32px;
+            }
+
+            .ribbon-post {
+                height: 90px;
+            }
+
+            .click-prompt {
+                font-size: 9px;
+                bottom: -38px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scissors-container {
+                width: 70px;
+                height: 70px;
+            }
+
+            .ribbon-band {
+                height: 26px;
+            }
+
+            .ribbon-post {
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CEREMONY CONTAINER -->
+    <div class="ceremony-container" id="ceremonyContainer">
+        <div class="ambient-bg"></div>
+        <div class="texture-overlay"></div>
+
+        <!-- Star Field (generated via JS) -->
+        <div class="star-field" id="starField"></div>
+
+        <!-- Spotlight Beams -->
+        <div class="spotlight-container" id="spotlightContainer">
+            <div class="spotlight"></div>
+            <div class="spotlight"></div>
+            <div class="spotlight"></div>
+            <div class="spotlight"></div>
+        </div>
+
+        <!-- Golden Ribbon Stage -->
+        <div class="ribbon-stage" id="ribbonStage">
+            <div class="ribbon-wrapper">
+                <!-- Left Post -->
+                <div class="ribbon-post ribbon-post-left">
+                    <div class="post-cap"></div>
+                    <div class="post-bar"></div>
+                    <div class="post-base"></div>
+                </div>
+
+                <!-- Ribbon Band -->
+                <div class="ribbon-band" id="ribbonBand">
+                    <div class="ribbon-left"></div>
+                    <div class="ribbon-right"></div>
+                </div>
+
+                <!-- Right Post -->
+                <div class="ribbon-post ribbon-post-right">
+                    <div class="post-cap"></div>
+                    <div class="post-bar"></div>
+                    <div class="post-base"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scissors -->
+        <div class="scissors-container" id="scissorsContainer">
+            <div class="scissors-glow"></div>
+            <svg class="scissors-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Top Blade -->
+                <path class="scissors-blade-top" d="M60 60 L15 30 L10 28" />
+                <path class="scissors-handle-top" d="M60 60 L95 35 Q105 28 100 22 Q95 16 85 22 L75 30 L60 60" />
+                <!-- Bottom Blade -->
+                <path class="scissors-blade-bottom" d="M60 60 L15 90 L10 92" />
+                <path class="scissors-handle-bottom" d="M60 60 L95 85 Q105 92 100 98 Q95 104 85 98 L75 90 L60 60" />
+                <!-- Pivot -->
+                <circle class="scissors-pivot" cx="60" cy="60" r="5" />
+            </svg>
+            <div class="click-prompt">Click to Cut the Ribbon</div>
+        </div>
+
+        <!-- Brand Reveal -->
+        <div class="brand-reveal" id="brandReveal">
+            <div class="brand-gem-row">
+                <div class="brand-gem-line"></div>
+                <div class="brand-gem"></div>
+                <div class="brand-gem-line"></div>
+            </div>
+            <div class="brand-prefix">The</div>
+            <div class="brand-title-main">
+                <span class="brand-letter" style="--letter-index: 0">L</span>
+                <span class="brand-letter" style="--letter-index: 1">U</span>
+                <span class="brand-letter" style="--letter-index: 2">M</span>
+                <span class="brand-letter" style="--letter-index: 3">E</span>
+                <span class="brand-letter" style="--letter-index: 4">N</span>
+                <span class="brand-gap"></span>
+                <span class="brand-letter" style="--letter-index: 5">H</span>
+                <span class="brand-letter" style="--letter-index: 6">O</span>
+                <span class="brand-letter" style="--letter-index: 7">U</span>
+                <span class="brand-letter" style="--letter-index: 8">S</span>
+                <span class="brand-letter" style="--letter-index: 9">E</span>
+            </div>
+            <div class="brand-divider-wrap">
+                <div class="brand-divider-line"></div>
+                <div class="brand-divider-diamond"></div>
+                <div class="brand-divider-line"></div>
+            </div>
+            <div class="brand-tagline">The beauty of lights in Architecture...</div>
+        </div>
+    </div>
+
+    <!-- Golden Flash -->
+    <div class="golden-flash" id="goldenFlash"></div>
+
+    <!-- Canvas for fireworks & particles -->
+    <canvas class="celebration-canvas" id="celebCanvas"></canvas>
+
+    <!-- Transition Overlay -->
+    <div class="transition-overlay" id="transitionOverlay"></div>
+
+    <!-- Entering message -->
+    <div class="entering-message" id="enteringMessage">
+        <div class="entering-text">Entering The Lumen House</div>
+        <div class="entering-bar">
+            <div class="entering-bar-fill" id="enteringBarFill"></div>
+        </div>
+    </div>
+
+    <!-- Skip Button -->
+    <!-- <button class="skip-btn" id="skipBtn" aria-label="Skip to Website">Skip</button> -->
+
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- GRAND CELEBRATION SCRIPT -->
+    <!-- ═══════════════════════════════════════════ -->
+    <script>
+        (function () {
+            'use strict';
+
+            // ─── Generate Star Field ───
+            const starField = document.getElementById('starField');
+            for (let i = 0; i < 60; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--duration', (2 + Math.random() * 4) + 's');
+                star.style.setProperty('--delay', (Math.random() * 3) + 's');
+                star.style.width = (1 + Math.random() * 2) + 'px';
+                star.style.height = star.style.width;
+                starField.appendChild(star);
+            }
+
+            // ─── Canvas Setup ───
+            const canvas = document.getElementById('celebCanvas');
+            const ctx = canvas.getContext('2d');
+            let W = 0, H = 0;
+
+            function resize() {
+                W = canvas.width = window.innerWidth;
+                H = canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            // ─── Palettes ───
+            const PALETTES = [
+                ['#FFD700', '#FFCA28', '#FF8F00', '#FFF9C4'],
+                ['#D4A373', '#C58E5B', '#F5EBE0', '#FFD180'],
+                ['#FF5722', '#FF7043', '#FFAB40', '#FF8A65'],
+                ['#03A9F4', '#00BCD4', '#80D8FF', '#B3E5FC'],
+                ['#AB47BC', '#CE93D8', '#E040FB', '#F3E5F5'],
+                ['#66BB6A', '#A5D6A7', '#69F0AE', '#B9F6CA'],
+                ['#FFFFFF', '#E0E0E0', '#F5F5F5', '#BDBDBD'],
+                ['#F44336', '#EF5350', '#FF8A80', '#FFCDD2'],
+                ['#FF9800', '#FFB74D', '#FFE0B2', '#FFF3E0']
+            ];
+
+            const CONFETTI_COLORS = [
+                '#D4A373', '#FFD700', '#FF5722', '#03A9F4', '#AB47BC',
+                '#66BB6A', '#FF4081', '#FFF176', '#F5EBE0', '#FFAB40',
+                '#80D8FF', '#CE93D8', '#69F0AE', '#FF8A65', '#FFFFFF',
+                '#EF5350', '#FFB74D', '#7C4DFF'
+            ];
+
+            const rand = (min, max) => min + Math.random() * (max - min);
+            const randInt = (min, max) => Math.floor(rand(min, max + 1));
+            const TAU = Math.PI * 2;
+
+            // ─── Particle Classes ───
+            class Spark {
+                constructor(x, y, vx, vy, color, type) {
+                    this.x = x; this.y = y;
+                    this.vx = vx; this.vy = vy;
+                    this.color = color;
+                    this.type = type;
+                    this.life = 1;
+                    this.trail = [];
+
+                    if (type === 'chrysanthemum') {
+                        this.drag = 0.992; this.grav = 0.065;
+                        this.decay = 0.009 + rand(0, 0.004);
+                        this.size = 2.4; this.trailLen = 14;
+                    } else if (type === 'willow') {
+                        this.drag = 0.968; this.grav = 0.22;
+                        this.decay = 0.010 + rand(0, 0.004);
+                        this.size = 1.8; this.trailLen = 10;
+                    } else if (type === 'crossette') {
+                        this.drag = 0.982; this.grav = 0.09;
+                        this.decay = 0.012 + rand(0, 0.005);
+                        this.size = 2.2; this.trailLen = 8;
+                        this.splitAt = 0.55 + rand(0, 0.15);
+                        this.hasSplit = false;
+                    } else {
+                        this.drag = 0.983; this.grav = 0.09;
+                        this.decay = 0.013 + rand(0, 0.005);
+                        this.size = 2.2; this.trailLen = 8;
+                    }
+                }
+
+                update() {
+                    this.trail.push({ x: this.x, y: this.y, life: this.life });
+                    if (this.trail.length > this.trailLen) this.trail.shift();
+                    this.vx *= this.drag;
+                    this.vy *= this.drag;
+                    this.vy += this.grav;
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.life -= this.decay;
+
+                    // Crossette split
+                    if (this.type === 'crossette' && !this.hasSplit && this.life < this.splitAt) {
+                        this.hasSplit = true;
+                        for (let i = 0; i < 4; i++) {
+                            const a = (i / 4) * TAU + rand(-0.3, 0.3);
+                            const spd = rand(2, 4);
+                            sparks.push(new Spark(this.x, this.y, Math.cos(a) * spd, Math.sin(a) * spd, this.color, 'peony'));
+                        }
+                    }
+                }
+
+                draw() {
+                    if (this.life <= 0) return;
+                    ctx.save();
+                    for (let i = 0; i < this.trail.length; i++) {
+                        const t = this.trail[i];
+                        const frac = i / this.trail.length;
+                        ctx.beginPath();
+                        ctx.arc(t.x, t.y, this.size * frac * 0.5, 0, TAU);
+                        ctx.fillStyle = this.color;
+                        ctx.globalAlpha = Math.max(0, t.life) * 0.2 * frac;
+                        ctx.fill();
+                    }
+                    ctx.globalAlpha = Math.max(0, this.life);
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, TAU);
+                    ctx.fillStyle = this.color;
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = this.life > 0.6 ? 12 : 5;
+                    ctx.fill();
+                    if (this.life > 0.7) {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size * 0.4, 0, TAU);
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.shadowBlur = 0;
+                        ctx.globalAlpha = this.life * 0.6;
+                        ctx.fill();
+                    }
+                    ctx.restore();
+                }
+            }
+
+            class ShockWave {
+                constructor(x, y, color) {
+                    this.x = x; this.y = y;
+                    this.color = color;
+                    this.r = 3;
+                    this.maxR = rand(60, 130);
+                    this.life = 1;
+                }
+                update() {
+                    this.r += (this.maxR - this.r) * 0.14;
+                    this.life -= 0.04;
+                }
+                draw() {
+                    if (this.life <= 0) return;
+                    ctx.save();
+                    ctx.globalAlpha = this.life * 0.2;
+                    ctx.strokeStyle = this.color;
+                    ctx.lineWidth = 1.5;
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = 6;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.r, 0, TAU);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+
+            class Confetti {
+                constructor(fromX, fromY) {
+                    this.x = fromX !== undefined ? fromX : rand(0, W);
+                    this.y = fromY !== undefined ? fromY : rand(-40, -10);
+                    this.color = CONFETTI_COLORS[randInt(0, CONFETTI_COLORS.length - 1)];
+                    this.w = rand(5, 12);
+                    this.h = rand(3, 7);
+                    this.vx = rand(-3, 3);
+                    this.vy = fromY !== undefined ? rand(-6, -1) : rand(1.5, 3.5);
+                    this.angle = rand(0, TAU);
+                    this.aVel = rand(-0.15, 0.15);
+                    this.phase = rand(0, TAU);
+                    this.life = 1;
+                    this.decay = rand(0.002, 0.004);
+                }
+                update() {
+                    this.phase += 0.05;
+                    this.x += this.vx + Math.sin(this.phase) * 1.5;
+                    this.vy = Math.min(this.vy + 0.04, 5);
+                    this.vy *= 0.992;
+                    this.y += this.vy;
+                    this.angle += this.aVel;
+                    this.life -= this.decay;
+                }
+                draw() {
+                    if (this.life <= 0) return;
+                    ctx.save();
+                    ctx.globalAlpha = Math.max(0, this.life);
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.angle);
+                    const tumble = Math.abs(Math.cos(this.phase * 0.75));
+                    ctx.scale(1, Math.max(0.1, tumble));
+                    ctx.fillStyle = this.color;
+                    // Mix of rectangles and circles
+                    if (this.w > 8) {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, this.w / 2, 0, TAU);
+                        ctx.fill();
+                    } else {
+                        ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+                    }
+                    if (tumble > 0.5) {
+                        ctx.fillStyle = 'rgba(255,255,255,0.25)';
+                        ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h * 0.35);
+                    }
+                    ctx.restore();
+                }
+            }
+
+            class GoldenRing {
+                constructor(x, y) {
+                    this.x = x; this.y = y;
+                    this.r = 5;
+                    this.maxR = rand(80, 200);
+                    this.life = 1;
+                    this.lineWidth = rand(1, 3);
+                }
+                update() {
+                    this.r += (this.maxR - this.r) * 0.06;
+                    this.life -= 0.018;
+                }
+                draw() {
+                    if (this.life <= 0) return;
+                    ctx.save();
+                    ctx.globalAlpha = this.life * 0.3;
+                    ctx.strokeStyle = '#FFD700';
+                    ctx.lineWidth = this.lineWidth;
+                    ctx.shadowColor = '#FFD700';
+                    ctx.shadowBlur = 10;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.r, 0, TAU);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+
+            class Rocket {
+                constructor(targetX, targetY) {
+                    this.palette = PALETTES[randInt(0, PALETTES.length - 1)];
+                    this.burstType = ['peony', 'chrysanthemum', 'willow', 'crossette'][randInt(0, 3)];
+                    this.x = targetX !== undefined ? targetX + rand(-80, 80) : rand(W * 0.1, W * 0.9);
+                    this.y = H + 5;
+                    this.tx = targetX !== undefined ? targetX : rand(W * 0.1, W * 0.9);
+                    this.ty = targetY !== undefined ? targetY : rand(H * 0.06, H * 0.38);
+                    const dist = Math.hypot(this.tx - this.x, this.ty - this.y);
+                    const speed = rand(15, 22);
+                    this.vx = (this.tx - this.x) / dist * speed;
+                    this.vy = (this.ty - this.y) / dist * speed;
+                    this.trail = [];
+                    this.dead = false;
+                    this.boomed = false;
+                }
+
+                update() {
+                    this.trail.push({ x: this.x, y: this.y });
+                    if (this.trail.length > 20) this.trail.shift();
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.vy += 0.18;
+
+                    if (!this.boomed && (this.vy >= 0 || this.y <= this.ty)) {
+                        this.boomed = true;
+                        this.explode();
+                        setTimeout(() => { this.dead = true; }, 80);
+                    }
+                }
+
+                explode() {
+                    const px = this.x, py = this.y;
+                    const pal = this.palette;
+                    const bt = this.burstType;
+
+                    shockwaves.push(new ShockWave(px, py, pal[0]));
+                    shockwaves.push(new ShockWave(px, py, pal[2]));
+
+                    const count = bt === 'chrysanthemum' ? 130 : bt === 'crossette' ? 50 : 100;
+
+                    if (bt === 'chrysanthemum') {
+                        for (let i = 0; i < count; i++) {
+                            const a = (i / count) * TAU + rand(-0.05, 0.05);
+                            const spd = rand(3, 9);
+                            sparks.push(new Spark(px, py, Math.cos(a) * spd, Math.sin(a) * spd, pal[i % pal.length], 'chrysanthemum'));
+                        }
+                    } else if (bt === 'willow') {
+                        for (let i = 0; i < count; i++) {
+                            const a = rand(0, TAU);
+                            const spd = rand(1.5, 6);
+                            sparks.push(new Spark(px, py, Math.cos(a) * spd, Math.sin(a) * spd - rand(0.5, 2), pal[i % pal.length], 'willow'));
+                        }
+                    } else if (bt === 'crossette') {
+                        for (let i = 0; i < count; i++) {
+                            const a = rand(0, TAU);
+                            const spd = rand(3, 7);
+                            sparks.push(new Spark(px, py, Math.cos(a) * spd, Math.sin(a) * spd, pal[i % pal.length], 'crossette'));
+                        }
+                    } else {
+                        for (let i = 0; i < count; i++) {
+                            const a = rand(0, TAU);
+                            const spd = rand(2, 9);
+                            sparks.push(new Spark(px, py, Math.cos(a) * spd, Math.sin(a) * spd, pal[i % pal.length], 'peony'));
+                        }
+                        for (let i = 0; i < 25; i++) {
+                            const a = (i / 25) * TAU;
+                            const spd = rand(1, 3);
+                            sparks.push(new Spark(px, py, Math.cos(a) * spd, Math.sin(a) * spd, '#FFFFFF', 'peony'));
+                        }
+                    }
+                }
+
+                draw() {
+                    if (this.boomed) return;
+                    const c = this.palette[0];
+                    for (let i = 0; i < this.trail.length; i++) {
+                        const t = this.trail[i];
+                        const frac = i / this.trail.length;
+                        ctx.beginPath();
+                        ctx.arc(t.x, t.y, 1.8 * frac, 0, TAU);
+                        ctx.fillStyle = c;
+                        ctx.globalAlpha = 0.4 * frac;
+                        ctx.shadowColor = c;
+                        ctx.shadowBlur = 5;
+                        ctx.fill();
+                    }
+                    ctx.globalAlpha = 1;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 2.2, 0, TAU);
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.shadowColor = '#FFFFFF';
+                    ctx.shadowBlur = 16;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            // ─── State ───
+            let sparks = [], rockets = [], confettis = [], shockwaves = [], goldenRings = [];
+            let fireworksRunning = false;
+            let ribbonCut = false;
+            let animFrameId = null;
+            const MAX_SPARKS = 1200;
+            const MAX_CONFETTI = 350;
+
+            // ─── DOM Elements ───
+            const scissorsContainer = document.getElementById('scissorsContainer');
+            const ribbonBand = document.getElementById('ribbonBand');
+            const ribbonStage = document.getElementById('ribbonStage');
+            const spotlightContainer = document.getElementById('spotlightContainer');
+            const brandReveal = document.getElementById('brandReveal');
+            const goldenFlash = document.getElementById('goldenFlash');
+            const skipBtn = document.getElementById('skipBtn');
+            const transitionOverlay = document.getElementById('transitionOverlay');
+            const enteringMessage = document.getElementById('enteringMessage');
+            const enteringBarFill = document.getElementById('enteringBarFill');
+
+            // ─── Phase 1: Show ribbon + scissors ───
+            setTimeout(() => {
+                spotlightContainer.classList.add('active');
+            }, 300);
+
+            setTimeout(() => {
+                ribbonStage.classList.add('visible');
+            }, 800);
+
+            setTimeout(() => {
+                scissorsContainer.classList.add('visible');
+            }, 1500);
+
+            setTimeout(() => {
+                skipBtn.classList.add('visible');
+            }, 2500);
+
+            // ─── Scissors Click → Cut Ribbon ───
+            scissorsContainer.addEventListener('click', performCut);
+
+            function performCut() {
+                if (ribbonCut) return;
+                ribbonCut = true;
+
+                // Scissors cutting animation
+                scissorsContainer.classList.add('cutting');
+
+                // Cut the ribbon after brief delay
+                setTimeout(() => {
+                    ribbonBand.classList.add('cut');
+
+                    // Golden flash
+                    goldenFlash.classList.add('flash');
+
+                    // Spawn ribbon fragment confetti from cut point
+                    const cx = W / 2, cy = H / 2;
+                    for (let i = 0; i < 80; i++) {
+                        confettis.push(new Confetti(cx + rand(-60, 60), cy + rand(-30, 30)));
+                    }
+
+                    // Golden rings from center
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            goldenRings.push(new GoldenRing(cx, cy));
+                        }, i * 200);
+                    }
+
+                    // Start grand fireworks!
+                    fireworksRunning = true;
+                    launchGrandFinale();
+                    loop();
+                }, 350);
+
+                // Fade out scissors
+                setTimeout(() => {
+                    scissorsContainer.style.opacity = '0';
+                    scissorsContainer.style.pointerEvents = 'none';
+                }, 600);
+
+                // Fade out ribbon stage
+                setTimeout(() => {
+                    ribbonStage.style.transition = 'opacity 1.2s ease';
+                    ribbonStage.style.opacity = '0';
+                }, 1800);
+
+                // Show brand reveal
+                setTimeout(() => {
+                    brandReveal.classList.add('active');
+                }, 2200);
+            }
+
+            // ─── Grand Finale Launch Schedule ───
+            let finaleTimers = [];
+            function launchGrandFinale() {
+                const schedule = [
+                    // Initial burst - 3 simultaneous
+                    { t: 0, n: 3 },
+                    // Building up
+                    { t: 400, n: 2 },
+                    { t: 800, n: 3 },
+                    { t: 1200, n: 2 },
+                    { t: 1600, n: 4 },
+                    // Mid show
+                    { t: 2100, n: 3 },
+                    { t: 2500, n: 2 },
+                    { t: 2900, n: 4 },
+                    { t: 3300, n: 3 },
+                    // Grand crescendo
+                    { t: 3700, n: 4 },
+                    { t: 3900, n: 3 },
+                    { t: 4100, n: 5 },
+                    { t: 4300, n: 4 },
+                    { t: 4500, n: 6 },
+                    // Massive finale burst
+                    { t: 4800, n: 5 },
+                    { t: 5000, n: 6 },
+                    { t: 5200, n: 5 },
+                    { t: 5400, n: 4 },
+                    { t: 5700, n: 3 },
+                    { t: 6000, n: 2 },
+                    // Trailing shots
+                    { t: 6500, n: 2 },
+                    { t: 7000, n: 1 },
+                ];
+
+                schedule.forEach(item => {
+                    const timer = setTimeout(() => {
+                        if (!fireworksRunning) return;
+                        for (let i = 0; i < item.n; i++) {
+                            rockets.push(new Rocket());
+                        }
+                    }, item.t);
+                    finaleTimers.push(timer);
+                });
+
+                // Confetti waves
+                let confettiInterval = setInterval(() => {
+                    if (!fireworksRunning) { clearInterval(confettiInterval); return; }
+                    if (confettis.length < MAX_CONFETTI) {
+                        for (let i = 0; i < 25; i++) {
+                            confettis.push(new Confetti());
+                        }
+                    }
+                }, 250);
+                finaleTimers.push(confettiInterval);
+
+                // Start transition to index.html after celebration
+                setTimeout(() => {
+                    beginTransition();
+                }, 8000);
+            }
+
+            // ─── Transition to Index ───
+            function beginTransition() {
+                // Show entering message
+                enteringMessage.classList.add('visible');
+
+                // Animate progress bar
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += 2;
+                    if (progress > 100) progress = 100;
+                    enteringBarFill.style.width = progress + '%';
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+                    }
+                }, 60);
+
+                // Begin fade-out
+                setTimeout(() => {
+                    // Fade everything out
+                    transitionOverlay.classList.add('active');
+
+                    // Navigate to index
+                    setTimeout(() => {
+                        window.location.replace('index.html?ceremony=done');
+                    }, 1600);
+                }, 3200);
+            }
+
+            // ─── Skip Button ───
+            skipBtn.addEventListener('click', () => {
+                fireworksRunning = false;
+                finaleTimers.forEach(t => clearTimeout(t));
+                transitionOverlay.classList.add('active');
+                setTimeout(() => {
+                    window.location.replace('index.html?ceremony=done');
+                }, 800);
+            });
+
+            // ─── Main Render Loop ───
+            function loop() {
+                if (!fireworksRunning) {
+                    if (animFrameId) cancelAnimationFrame(animFrameId);
+                    return;
+                }
+
+                ctx.clearRect(0, 0, W, H);
+
+                // Draw layers
+                goldenRings = goldenRings.filter(r => { r.update(); r.draw(); return r.life > 0; });
+                shockwaves = shockwaves.filter(s => { s.update(); s.draw(); return s.life > 0; });
+                rockets = rockets.filter(r => { if (!r.boomed) r.update(); if (!r.boomed) r.draw(); return !r.dead; });
+
+                if (sparks.length > MAX_SPARKS) sparks.splice(0, sparks.length - MAX_SPARKS);
+                sparks = sparks.filter(s => { s.update(); s.draw(); return s.life > 0 && s.y < H + 100; });
+                confettis = confettis.filter(c => { c.update(); c.draw(); return c.life > 0 && c.y < H + 80; });
+
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+
+                animFrameId = requestAnimationFrame(loop);
+            }
+
+        })();
+    </script>
+</body>
+
+</html>
