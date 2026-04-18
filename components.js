@@ -1,20 +1,7 @@
-/**
- * The Lumen House — Universal Component Loader
- * Loads header.html and footer.html into placeholder elements,
- * then initializes the mobile menu and navbar scroll behaviour.
- *
- * Usage: add these two elements anywhere in your page body:
- *   <div id="header-placeholder"></div>   (before <main>)
- *   <div id="footer-placeholder"></div>   (after </main>)
- * Then include this script at the bottom of <body>:
- *   <script src="components.js"></script>
- */
+
 
 (function () {
-    /**
-     * Fetch an HTML fragment and inject it into a placeholder element.
-     * Returns a Promise that resolves once the HTML is in the DOM.
-     */
+    
     function loadComponent(id, url) {
         const el = document.getElementById(id);
         if (!el) return Promise.resolve();
@@ -23,7 +10,7 @@
             .then(function (html) { el.innerHTML = html; });
     }
 
-    /** Initialize the mobile side-menu (hamburger open/close/escape). */
+    
     function initMobileMenu() {
         var menuBtn = document.getElementById('menu-btn');
         var menuPanel = document.getElementById('menu-panel');
@@ -79,7 +66,7 @@
         });
     }
 
-    /** Navbar scroll effect — adds shadow/border when scrolled past 50px. */
+    
     function initNavbarScroll() {
         var navbar = document.getElementById('navbar');
         if (!navbar) return;
@@ -94,7 +81,7 @@
         });
     }
 
-    /** Footer "light toggle" interaction (if present on the page). */
+    
     function initFooterLightToggle() {
         var footer = document.getElementById('contact');
         var lightButtons = document.querySelectorAll('[data-light-toggle="true"]');
@@ -110,7 +97,7 @@
         });
     }
 
-    // ── Bootstrap ──
+    
     Promise.all([
         loadComponent('header-placeholder', 'header.html'),
         loadComponent('footer-placeholder', 'footer.html')

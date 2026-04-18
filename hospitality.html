@@ -55,11 +55,11 @@
 
 <body class="bg-ink text-white font-body selection:bg-ember/30">
 
-    <!-- Header (Consistent with main pages) -->
+    
     <div id="header-placeholder"></div>
 
     <main>
-        <!-- Dedicated Sector Hero -->
+        
         <section class="relative h-[80vh] flex items-end overflow-hidden">
             <img src="C:\Users\Yuvaraj\.gemini\antigravity\brain\90ad35ee-1073-4280-b560-102dc368a0b7\hospitality_lighting_1_1774260322002.png"
                 alt="Hospitality Lighting" class="absolute inset-0 w-full h-full object-cover">
@@ -78,7 +78,7 @@
             </div>
         </section>
 
-        <!-- Content Section -->
+        
         <section class="py-32 bg-ink">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-20 items-start mb-32">
@@ -130,7 +130,7 @@
                     </div>
                 </div>
 
-                <!-- Type specific Projects/Images -->
+                
                 <div class="grid md:grid-cols-2 gap-12 pt-20 border-t border-white/10">
                     <div class="reveal-up group">
                         <div class="aspect-[16/10] overflow-hidden rounded-2xl mb-6">
@@ -152,7 +152,7 @@
                     </div>
                 </div>
 
-                <!-- Photo Gallery Section -->
+                
                 <div class="mt-32 reveal-up">
                     <div class="flex items-end justify-between mb-12">
                         <div>
@@ -164,9 +164,9 @@
                             and details from our hospitality portfolio.</p>
                     </div>
 
-                    <!-- Dynamic Gallery Grid -->
+                    
                     <div id="hospitality-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <!-- Custom uploaded images will appear here -->
+                        
                     </div>
 
                     <div id="no-images-msg"
@@ -194,12 +194,12 @@
         </section>
     </main>
 
-    <!-- Footer (Consistent) -->
+    
     <div id="footer-placeholder"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Reveal elements on scroll
+            
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -210,7 +210,7 @@
 
             document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
 
-            // Photo Gallery Logic
+            
             const gallery = document.getElementById('hospitality-gallery');
             const noImagesMsg = document.getElementById('no-images-msg');
             const category = 'hospitality';
@@ -226,7 +226,7 @@
                         const div = document.createElement('div');
                         div.className = 'group relative aspect-square overflow-hidden rounded-xl border border-white/5 reveal-up';
 
-                        // Handle both string (legacy) and object (with caption)
+                        
                         const imgData = typeof imgObj === 'string' ? imgObj : imgObj.src;
                         const imgCaption = typeof imgObj === 'string' ? 'Lumen House Detail' : (imgObj.caption || 'Lumen House Detail');
 
@@ -248,7 +248,7 @@
             loadGallery();
         });
 
-        // Navbar blur on scroll
+        
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -258,7 +258,7 @@
             }
         });
     </script>
-    <!-- Universal header/footer loader + menu/scroll init -->
+    
     <script src="components.js"></script>
 </body>
 

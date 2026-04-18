@@ -19,7 +19,6 @@
         rel="stylesheet" />
 
     <style>
-        /* Theme Body Styling */
         body {
             background-color: #050505;
             color: #ffffff;
@@ -59,7 +58,7 @@
             border-color: rgba(31, 27, 22, 0.12) !important;
         }
 
-        /* Form Styles */
+
         .form-input {
             width: 100%;
             background: #F9F5F0;
@@ -92,7 +91,7 @@
             padding-right: 42px;
         }
 
-        /* Fly-up reveal */
+
         .fly-up {
             opacity: 0;
             transform: translateY(28px);
@@ -105,7 +104,7 @@
             transform: translateY(0);
         }
 
-        /* Scrollbar */
+
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -119,7 +118,7 @@
             border-radius: 3px;
         }
 
-        /* Responsive grid */
+
         @media (max-width: 1023px) {
             .contact-grid {
                 grid-template-columns: 1fr !important;
@@ -137,12 +136,12 @@
 
 <body class="bg-ink selection:bg-ember selection:text-ink light-theme font-body">
 
-    <!-- Header -->
+
     <div id="header-placeholder"></div>
 
     <main class="site-content pt-20">
 
-        <!-- Hero Banner -->
+
         <section class="relative py-28 md:py-36 overflow-hidden">
             <div class="absolute inset-0">
                 <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80"
@@ -166,16 +165,16 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+
         <section class="py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
                 <div class="contact-grid"
                     style="display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; align-items:start;">
 
-                    <!-- Left Column — Contact Info -->
+
                     <div>
-                        <!-- Section Header -->
+
                         <div class="mb-10 fly-up">
                             <p class="text-ember text-sm font-bold uppercase tracking-[0.2em] mb-3">
                                 <i class="fas fa-envelope mr-2"></i> Get In Touch
@@ -188,10 +187,10 @@
                             </p>
                         </div>
 
-                        <!-- Contact Cards -->
+
                         <div class="flex flex-col gap-4 mb-10">
 
-                            <!-- Email -->
+
                             <a href="mailto:The.lumen.house.8@gmail.com"
                                 class="fly-up bg-white shadow-sm border border-black/5 p-5 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group flex gap-4 items-start no-underline">
                                 <div
@@ -206,7 +205,7 @@
                                 </div>
                             </a>
 
-                            <!-- Phone -->
+
                             <a href="tel:+919986664243"
                                 class="fly-up bg-white shadow-sm border border-black/5 p-5 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group flex gap-4 items-start no-underline">
                                 <div
@@ -223,7 +222,7 @@
                                 </div>
                             </a>
 
-                            <!-- Address -->
+
                             <div
                                 class="fly-up bg-white shadow-sm border border-black/5 p-5 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group flex gap-4 items-start">
                                 <div
@@ -238,7 +237,7 @@
                                 </div>
                             </div>
 
-                            <!-- Hours -->
+
                             <div
                                 class="fly-up bg-white shadow-sm border border-black/5 p-5 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group flex gap-4 items-start">
                                 <div
@@ -254,7 +253,7 @@
                             </div>
                         </div>
 
-                        <!-- Social Links -->
+
                         <div class="fly-up">
                             <p class="text-xs font-bold uppercase tracking-[0.14em] text-gray-400 mb-4">Follow Our
                                 Journey</p>
@@ -279,7 +278,7 @@
                         </div>
                     </div>
 
-                    <!-- Right Column — Form -->
+
                     <div class="fly-up bg-white border border-black/5 rounded-2xl p-8 lg:p-10 shadow-sm">
 
                         <div class="mb-8">
@@ -366,7 +365,7 @@
             </div>
         </section>
 
-        <!-- Map Section -->
+
         <section class="pb-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="flex flex-col md:flex-row items-end justify-between mb-8 gap-4">
@@ -394,12 +393,12 @@
         </section>
     </main>
 
-    <!-- Footer -->
+
     <div id="footer-placeholder"></div>
 
-    <!-- Scripts -->
+
     <script>
-        // IntersectionObserver: fly-up reveal
+
         (function () {
             const items = document.querySelectorAll('.fly-up');
             if (!items.length) return;
@@ -418,8 +417,8 @@
             items.forEach(it => io.observe(it));
         })();
 
-        // Google Sheets Form Submit Handler
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbywdO2jj3lSnJem6fztqj1nx1OI31FsHaGLjD5ni8O_BL7L5TkGNPaQUrMGWQhwsYPsGQ/exec'; // ⚠️ REPLACE THIS with your Apps Script Web App URL
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbywdO2jj3lSnJem6fztqj1nx1OI31FsHaGLjD5ni8O_BL7L5TkGNPaQUrMGWQhwsYPsGQ/exec';
         const form = document.forms['contact-form'];
         const submitBtn = document.getElementById('submit-btn');
         const btnText = document.getElementById('btn-text');
@@ -427,7 +426,7 @@
         form.addEventListener('submit', e => {
             e.preventDefault();
 
-            // Basic validation
+
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             if (!name || !email) {
@@ -435,17 +434,17 @@
                 return;
             }
 
-            // Show loading state
+
             const originalBtnHtml = btnText.innerHTML;
             btnText.innerHTML = "Submitting...";
             submitBtn.style.opacity = '0.7';
             submitBtn.style.pointerEvents = 'none';
 
-            // Send POST request to Google Apps Script
+
             fetch(scriptURL, {
                 method: 'POST',
                 body: new FormData(form),
-                mode: 'no-cors' // Bypasses CORS policy checks typical with Google Scripts
+                mode: 'no-cors'
             })
                 .then(response => {
                     form.style.display = 'none';
@@ -454,7 +453,7 @@
                 .catch(error => {
                     console.error('Error!', error.message);
                     alert('Something went wrong. Please try again or contact us directly via email.');
-                    // Reset button state on failure
+
                     btnText.innerHTML = originalBtnHtml;
                     submitBtn.style.opacity = '1';
                     submitBtn.style.pointerEvents = 'auto';
@@ -462,7 +461,7 @@
         });
     </script>
 
-    <!-- Universal header/footer loader + menu/scroll init -->
+
     <script src="components.js"></script>
 </body>
 

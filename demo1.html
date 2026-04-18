@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Lumen House | Grand Opening</title>
 
-    <!-- Google Fonts -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,9 +14,7 @@
         rel="stylesheet" />
 
     <style>
-        /* ═══════════════════════════════════════════
-           CSS CUSTOM PROPERTIES
-        ═══════════════════════════════════════════ */
+        
         :root {
             --gold-primary: #D4A373;
             --gold-bright: #FFD700;
@@ -57,9 +55,7 @@
             color: var(--obsidian);
         }
 
-        /* ═══════════════════════════════════════════
-           CELEBRATION FULL-SCREEN CONTAINER
-        ═══════════════════════════════════════════ */
+        
         .ceremony-container {
             position: fixed;
             inset: 0;
@@ -68,7 +64,7 @@
             overflow: hidden;
         }
 
-        /* Ambient background gradients */
+        
         .ambient-bg {
             position: absolute;
             inset: 0;
@@ -79,7 +75,7 @@
             pointer-events: none;
         }
 
-        /* Subtle texture overlay */
+        
         .texture-overlay {
             position: absolute;
             inset: 0;
@@ -89,9 +85,7 @@
             mix-blend-mode: overlay;
         }
 
-        /* ═══════════════════════════════════════════
-           SPOTLIGHT BEAMS
-        ═══════════════════════════════════════════ */
+        
         .spotlight-container {
             position: absolute;
             inset: 0;
@@ -185,9 +179,7 @@
             }
         }
 
-        /* ═══════════════════════════════════════════
-           GOLDEN RIBBON
-        ═══════════════════════════════════════════ */
+        
         .ribbon-stage {
             position: absolute;
             top: 50%;
@@ -216,7 +208,7 @@
             align-items: center;
         }
 
-        /* The actual ribbon */
+        
         .ribbon-band {
             position: absolute;
             top: 50%;
@@ -260,7 +252,7 @@
             transform-origin: right center;
         }
 
-        /* Satin sheen effect */
+        
         .ribbon-left::before,
         .ribbon-right::before {
             content: '';
@@ -287,7 +279,7 @@
             }
         }
 
-        /* Golden edge stripe */
+        
         .ribbon-left::after,
         .ribbon-right::after {
             content: '';
@@ -311,7 +303,7 @@
             bottom: 3px;
         }
 
-        /* Cut state */
+        
         .ribbon-band.cut .ribbon-left {
             transform: translateX(-15%) rotate(-12deg) scaleX(0.9);
             opacity: 0;
@@ -324,7 +316,7 @@
             transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease 0.3s;
         }
 
-        /* Ribbon Posts/Stands */
+        
         .ribbon-post {
             position: absolute;
             top: 50%;
@@ -373,9 +365,7 @@
             border-radius: 3px;
         }
 
-        /* ═══════════════════════════════════════════
-           SCISSORS
-        ═══════════════════════════════════════════ */
+        
         .scissors-container {
             position: absolute;
             top: 50%;
@@ -443,7 +433,7 @@
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
         }
 
-        /* Scissors pulse glow */
+        
         .scissors-glow {
             position: absolute;
             inset: -20px;
@@ -466,7 +456,7 @@
             }
         }
 
-        /* Click prompt */
+        
         .click-prompt {
             position: absolute;
             bottom: -45px;
@@ -498,9 +488,7 @@
             }
         }
 
-        /* ═══════════════════════════════════════════
-           BRAND REVEAL (after cut)
-        ═══════════════════════════════════════════ */
+        
         .brand-reveal {
             position: absolute;
             top: 50%;
@@ -659,9 +647,7 @@
             animation-delay: 2.2s;
         }
 
-        /* ═══════════════════════════════════════════
-           ENTERING MESSAGE
-        ═══════════════════════════════════════════ */
+        
         .entering-message {
             position: fixed;
             bottom: 60px;
@@ -703,9 +689,7 @@
             transition: width 0.1s linear;
         }
 
-        /* ═══════════════════════════════════════════
-           CANVAS (fireworks, confetti, particles)
-        ═══════════════════════════════════════════ */
+        
         .celebration-canvas {
             position: fixed;
             inset: 0;
@@ -715,9 +699,7 @@
             pointer-events: none;
         }
 
-        /* ═══════════════════════════════════════════
-           SKIP BUTTON
-        ═══════════════════════════════════════════ */
+        
         .skip-btn {
             position: fixed;
             bottom: 28px;
@@ -749,9 +731,7 @@
             background: rgba(212, 163, 115, 0.08);
         }
 
-        /* ═══════════════════════════════════════════
-           GOLDEN FLASH OVERLAY
-        ═══════════════════════════════════════════ */
+        
         .golden-flash {
             position: fixed;
             inset: 0;
@@ -785,9 +765,7 @@
             }
         }
 
-        /* ═══════════════════════════════════════════
-           TRANSITION OVERLAY TO INDEX
-        ═══════════════════════════════════════════ */
+        
         .transition-overlay {
             position: fixed;
             inset: 0;
@@ -803,10 +781,8 @@
             pointer-events: all;
         }
 
-        /* ═══════════════════════════════════════════
-           KEYFRAMES
-        ═══════════════════════════════════════════ */
-        /* For elements already centered (brand-reveal children) */
+        
+        
         @keyframes brandFadeUp {
             0% {
                 opacity: 0;
@@ -819,7 +795,7 @@
             }
         }
 
-        /* For elements using left:50% + translateX(-50%) centering */
+        
         @keyframes fadeSlideUp {
             0% {
                 opacity: 0;
@@ -860,9 +836,7 @@
             }
         }
 
-        /* ═══════════════════════════════════════════
-           STAR FIELD
-        ═══════════════════════════════════════════ */
+        
         .star-field {
             position: absolute;
             inset: 0;
@@ -893,9 +867,7 @@
             }
         }
 
-        /* ═══════════════════════════════════════════
-           RESPONSIVE
-        ═══════════════════════════════════════════ */
+        
         @media (max-width: 768px) {
             .ribbon-wrapper {
                 width: 94%;
@@ -939,15 +911,15 @@
 
 <body>
 
-    <!-- CEREMONY CONTAINER -->
+    
     <div class="ceremony-container" id="ceremonyContainer">
         <div class="ambient-bg"></div>
         <div class="texture-overlay"></div>
 
-        <!-- Star Field (generated via JS) -->
+        
         <div class="star-field" id="starField"></div>
 
-        <!-- Spotlight Beams -->
+        
         <div class="spotlight-container" id="spotlightContainer">
             <div class="spotlight"></div>
             <div class="spotlight"></div>
@@ -955,23 +927,23 @@
             <div class="spotlight"></div>
         </div>
 
-        <!-- Golden Ribbon Stage -->
+        
         <div class="ribbon-stage" id="ribbonStage">
             <div class="ribbon-wrapper">
-                <!-- Left Post -->
+                
                 <div class="ribbon-post ribbon-post-left">
                     <div class="post-cap"></div>
                     <div class="post-bar"></div>
                     <div class="post-base"></div>
                 </div>
 
-                <!-- Ribbon Band -->
+                
                 <div class="ribbon-band" id="ribbonBand">
                     <div class="ribbon-left"></div>
                     <div class="ribbon-right"></div>
                 </div>
 
-                <!-- Right Post -->
+                
                 <div class="ribbon-post ribbon-post-right">
                     <div class="post-cap"></div>
                     <div class="post-bar"></div>
@@ -980,23 +952,23 @@
             </div>
         </div>
 
-        <!-- Scissors -->
+        
         <div class="scissors-container" id="scissorsContainer">
             <div class="scissors-glow"></div>
             <svg class="scissors-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Top Blade -->
+                
                 <path class="scissors-blade-top" d="M60 60 L15 30 L10 28" />
                 <path class="scissors-handle-top" d="M60 60 L95 35 Q105 28 100 22 Q95 16 85 22 L75 30 L60 60" />
-                <!-- Bottom Blade -->
+                
                 <path class="scissors-blade-bottom" d="M60 60 L15 90 L10 92" />
                 <path class="scissors-handle-bottom" d="M60 60 L95 85 Q105 92 100 98 Q95 104 85 98 L75 90 L60 60" />
-                <!-- Pivot -->
+                
                 <circle class="scissors-pivot" cx="60" cy="60" r="5" />
             </svg>
             <div class="click-prompt">Click to Cut the Ribbon</div>
         </div>
 
-        <!-- Brand Reveal -->
+        
         <div class="brand-reveal" id="brandReveal">
             <div class="brand-gem-row">
                 <div class="brand-gem-line"></div>
@@ -1026,16 +998,16 @@
         </div>
     </div>
 
-    <!-- Golden Flash -->
+    
     <div class="golden-flash" id="goldenFlash"></div>
 
-    <!-- Canvas for fireworks & particles -->
+    
     <canvas class="celebration-canvas" id="celebCanvas"></canvas>
 
-    <!-- Transition Overlay -->
+    
     <div class="transition-overlay" id="transitionOverlay"></div>
 
-    <!-- Entering message -->
+    
     <div class="entering-message" id="enteringMessage">
         <div class="entering-text">Entering The Lumen House</div>
         <div class="entering-bar">
@@ -1043,18 +1015,18 @@
         </div>
     </div>
 
-    <!-- Skip Button -->
-    <!-- <button class="skip-btn" id="skipBtn" aria-label="Skip to Website">Skip</button> -->
+    
+    
 
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- GRAND CELEBRATION SCRIPT -->
-    <!-- ═══════════════════════════════════════════ -->
+    
+    
+    
     <script>
         (function () {
             'use strict';
 
-            // ─── Generate Star Field ───
+            
             const starField = document.getElementById('starField');
             for (let i = 0; i < 60; i++) {
                 const star = document.createElement('div');
@@ -1068,7 +1040,7 @@
                 starField.appendChild(star);
             }
 
-            // ─── Canvas Setup ───
+            
             const canvas = document.getElementById('celebCanvas');
             const ctx = canvas.getContext('2d');
             let W = 0, H = 0;
@@ -1080,7 +1052,7 @@
             resize();
             window.addEventListener('resize', resize);
 
-            // ─── Palettes ───
+            
             const PALETTES = [
                 ['#FFD700', '#FFCA28', '#FF8F00', '#FFF9C4'],
                 ['#D4A373', '#C58E5B', '#F5EBE0', '#FFD180'],
@@ -1104,7 +1076,7 @@
             const randInt = (min, max) => Math.floor(rand(min, max + 1));
             const TAU = Math.PI * 2;
 
-            // ─── Particle Classes ───
+            
             class Spark {
                 constructor(x, y, vx, vy, color, type) {
                     this.x = x; this.y = y;
@@ -1145,7 +1117,7 @@
                     this.y += this.vy;
                     this.life -= this.decay;
 
-                    // Crossette split
+                    
                     if (this.type === 'crossette' && !this.hasSplit && this.life < this.splitAt) {
                         this.hasSplit = true;
                         for (let i = 0; i < 4; i++) {
@@ -1247,7 +1219,7 @@
                     const tumble = Math.abs(Math.cos(this.phase * 0.75));
                     ctx.scale(1, Math.max(0.1, tumble));
                     ctx.fillStyle = this.color;
-                    // Mix of rectangles and circles
+                    
                     if (this.w > 8) {
                         ctx.beginPath();
                         ctx.arc(0, 0, this.w / 2, 0, TAU);
@@ -1388,7 +1360,7 @@
                 }
             }
 
-            // ─── State ───
+            
             let sparks = [], rockets = [], confettis = [], shockwaves = [], goldenRings = [];
             let fireworksRunning = false;
             let ribbonCut = false;
@@ -1396,7 +1368,7 @@
             const MAX_SPARKS = 1200;
             const MAX_CONFETTI = 350;
 
-            // ─── DOM Elements ───
+            
             const scissorsContainer = document.getElementById('scissorsContainer');
             const ribbonBand = document.getElementById('ribbonBand');
             const ribbonStage = document.getElementById('ribbonStage');
@@ -1408,7 +1380,7 @@
             const enteringMessage = document.getElementById('enteringMessage');
             const enteringBarFill = document.getElementById('enteringBarFill');
 
-            // ─── Phase 1: Show ribbon + scissors ───
+            
             setTimeout(() => {
                 spotlightContainer.classList.add('active');
             }, 300);
@@ -1425,90 +1397,90 @@
                 skipBtn.classList.add('visible');
             }, 2500);
 
-            // ─── Scissors Click → Cut Ribbon ───
+            
             scissorsContainer.addEventListener('click', performCut);
 
             function performCut() {
                 if (ribbonCut) return;
                 ribbonCut = true;
 
-                // Scissors cutting animation
+                
                 scissorsContainer.classList.add('cutting');
 
-                // Cut the ribbon after brief delay
+                
                 setTimeout(() => {
                     ribbonBand.classList.add('cut');
 
-                    // Golden flash
+                    
                     goldenFlash.classList.add('flash');
 
-                    // Spawn ribbon fragment confetti from cut point
+                    
                     const cx = W / 2, cy = H / 2;
                     for (let i = 0; i < 80; i++) {
                         confettis.push(new Confetti(cx + rand(-60, 60), cy + rand(-30, 30)));
                     }
 
-                    // Golden rings from center
+                    
                     for (let i = 0; i < 5; i++) {
                         setTimeout(() => {
                             goldenRings.push(new GoldenRing(cx, cy));
                         }, i * 200);
                     }
 
-                    // Start grand fireworks!
+                    
                     fireworksRunning = true;
                     launchGrandFinale();
                     loop();
                 }, 350);
 
-                // Fade out scissors
+                
                 setTimeout(() => {
                     scissorsContainer.style.opacity = '0';
                     scissorsContainer.style.pointerEvents = 'none';
                 }, 600);
 
-                // Fade out ribbon stage
+                
                 setTimeout(() => {
                     ribbonStage.style.transition = 'opacity 1.2s ease';
                     ribbonStage.style.opacity = '0';
                 }, 1800);
 
-                // Show brand reveal
+                
                 setTimeout(() => {
                     brandReveal.classList.add('active');
                 }, 2200);
             }
 
-            // ─── Grand Finale Launch Schedule ───
+            
             let finaleTimers = [];
             function launchGrandFinale() {
                 const schedule = [
-                    // Initial burst - 3 simultaneous
+                    
                     { t: 0, n: 3 },
-                    // Building up
+                    
                     { t: 400, n: 2 },
                     { t: 800, n: 3 },
                     { t: 1200, n: 2 },
                     { t: 1600, n: 4 },
-                    // Mid show
+                    
                     { t: 2100, n: 3 },
                     { t: 2500, n: 2 },
                     { t: 2900, n: 4 },
                     { t: 3300, n: 3 },
-                    // Grand crescendo
+                    
                     { t: 3700, n: 4 },
                     { t: 3900, n: 3 },
                     { t: 4100, n: 5 },
                     { t: 4300, n: 4 },
                     { t: 4500, n: 6 },
-                    // Massive finale burst
+                    
                     { t: 4800, n: 5 },
                     { t: 5000, n: 6 },
                     { t: 5200, n: 5 },
                     { t: 5400, n: 4 },
                     { t: 5700, n: 3 },
                     { t: 6000, n: 2 },
-                    // Trailing shots
+                    
                     { t: 6500, n: 2 },
                     { t: 7000, n: 1 },
                 ];
@@ -1523,7 +1495,7 @@
                     finaleTimers.push(timer);
                 });
 
-                // Confetti waves
+                
                 let confettiInterval = setInterval(() => {
                     if (!fireworksRunning) { clearInterval(confettiInterval); return; }
                     if (confettis.length < MAX_CONFETTI) {
@@ -1534,18 +1506,18 @@
                 }, 250);
                 finaleTimers.push(confettiInterval);
 
-                // Start transition to index.html after celebration
+                
                 setTimeout(() => {
                     beginTransition();
                 }, 8000);
             }
 
-            // ─── Transition to Index ───
+            
             function beginTransition() {
-                // Show entering message
+                
                 enteringMessage.classList.add('visible');
 
-                // Animate progress bar
+                
                 let progress = 0;
                 const progressInterval = setInterval(() => {
                     progress += 2;
@@ -1556,19 +1528,19 @@
                     }
                 }, 60);
 
-                // Begin fade-out
+                
                 setTimeout(() => {
-                    // Fade everything out
+                    
                     transitionOverlay.classList.add('active');
 
-                    // Navigate to index
+                    
                     setTimeout(() => {
                         window.location.replace('index.html?ceremony=done');
                     }, 1600);
                 }, 3200);
             }
 
-            // ─── Skip Button ───
+            
             skipBtn.addEventListener('click', () => {
                 fireworksRunning = false;
                 finaleTimers.forEach(t => clearTimeout(t));
@@ -1578,7 +1550,7 @@
                 }, 800);
             });
 
-            // ─── Main Render Loop ───
+            
             function loop() {
                 if (!fireworksRunning) {
                     if (animFrameId) cancelAnimationFrame(animFrameId);
@@ -1587,7 +1559,7 @@
 
                 ctx.clearRect(0, 0, W, H);
 
-                // Draw layers
+                
                 goldenRings = goldenRings.filter(r => { r.update(); r.draw(); return r.life > 0; });
                 shockwaves = shockwaves.filter(s => { s.update(); s.draw(); return s.life > 0; });
                 rockets = rockets.filter(r => { if (!r.boomed) r.update(); if (!r.boomed) r.draw(); return !r.dead; });

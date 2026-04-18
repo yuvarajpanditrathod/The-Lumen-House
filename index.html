@@ -5,15 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Lumen House | Lighting Studio</title>
-    <script>
-        // Trigger grand opening celebration on visit or refresh
+    <!-- <script>
+        
         if (!window.location.search.includes('ceremony=done')) {
             window.location.replace('demo1.html');
         } else {
-            // Clean the URL so a manual page refresh replays the celebration
+            
             window.history.replaceState({}, document.title, window.location.pathname);
         }
-    </script>
+    </script> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -35,27 +35,36 @@
         <section class="min-h-screen relative overflow-hidden">
             <div class="carousel absolute inset-0">
                 <div class="carousel-track">
-                    <img class="active" src="https://www.heraled.com/store/images/4673755811651847103.jpg"
-                        alt="Lighting interior 1" loading="eager" />
-                    <img src="https://www.jaquar.com/images/thumbs/0051591_image7.jpeg" alt="Lighting interior 2"
-                        loading="lazy" />
-                    <img src="https://upwardlighting.com/wp-content/uploads/2023/08/facades-lighting-interactive-1024x562.jpg"
-                        alt="Lighting interior 3" loading="lazy" />
-                    <img src="https://oclights.com/wp-content/uploads/2019/05/IMG_1804.jpg" alt="Lighting interior 4"
-                        loading="lazy" />
-                    <img src="https://lightfunc.org/wp-content/uploads/2023/07/000.-Entrance-lobby.jpg"
-                        alt="Lighting interior 5" loading="lazy" />
-                    <img src="https://nirvanalighting.in/wp-content/uploads/2025/09/what-are-facade-lighting-solutions.jpg"
-                        alt="Lighting interior 7" loading="lazy" />
+                    <img class="active"
+                        src="https://images.unsplash.com/photo-1513519247388-19345420d4c7?q=80&w=2070&auto=format&fit=crop"
+                        alt="Luxury architectural lighting" loading="eager" />
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=2070&auto=format&fit=crop"
+                        alt="Hotel lobby lighting" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1513467655676-561b7d489a88?q=80&w=2072&auto=format&fit=crop"
+                        alt="Modern facade lighting" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=1974&auto=format&fit=crop"
+                        alt="Interior mood lighting" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop"
+                        alt="Office lighting design" loading="lazy" />
                 </div>
             </div>
             <div class="absolute inset-0 bg-transparent"></div>
         </section>
 
+        <!-- Brand Quote Section -->
+        <section class="py-20 bg-ink relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center relative z-10">
+                <p class="font-display text-3xl lg:text-5xl text-white font-light italic leading-relaxed">
+                    “We don’t design lighting…<br>
+                    <span class="text-ember">We design what people think they see.”</span>
+                </p>
+            </div>
+        </section>
 
-        <!-- New About & Philosophy Section -->
+
+
         <section id="about-philosophy" class="relative bg-ink overflow-hidden z-10">
-            <!-- 1. Intro Banner -->
+
             <div class="pt-32 pb-16 relative">
                 <div
                     class="absolute top-1/4 left-1/4 w-96 h-96 bg-ember/10 rounded-full blur-[100px] pointer-events-none">
@@ -91,15 +100,12 @@
                                 class="absolute inset-0 bg-ember/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                             <div class="absolute left-0 top-0 w-1 h-full bg-ember"></div>
-                            <h4 class="font-display text-2xl text-white mb-4 relative z-10">Why You Should Hire Us</h4>
-                            <p class="text-ember text-lg font-display italic mb-4 relative z-10">"Lighting is emotional,
-                                but to make it beautiful you have to get technical."</p>
+                            <h4 class="font-display text-2xl text-white mb-4 relative z-10">Our Commitment</h4>
+                            <p class="text-ember text-lg font-display italic mb-4 relative z-10">"Precision meets
+                                Passion."</p>
                             <p class="text-gray-400 text-sm leading-relaxed relative z-10 mb-4">
-                                Good lighting isn’t guesswork. It involves beam angles, driver compatibility, dimming
-                                protocols, sustainability, efficiency, colour rendering, and control strategy.
-                            </p>
-                            <p class="text-gray-400 font-medium text-sm relative z-10">
-                                Lighting isn’t the final layer, it’s the most essential part of the project.
+                                At The Lumen House, we treat light as the most essential material in architecture. Every
+                                beam angle and color temperature is calculated to perfect your vision.
                             </p>
                         </div>
                     </div>
@@ -107,40 +113,33 @@
                     <div class="space-y-8 section-hidden" id="ap-reality">
                         <div
                             class="bg-charcoal border border-white/5 rounded-3xl p-10 relative overflow-hidden group hover:border-white/10 transition-colors">
-                            <div
-                                class="absolute top-0 right-0 w-32 h-32 bg-ember/5 rounded-full blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                            </div>
-
-                            <h5 class="text-white font-display text-2xl mb-4">The Reality</h5>
-                            <p class="text-gray-400 font-light mb-8 leading-relaxed">Most lighting layouts are not
-                                designed, they are just installed. Electricians install, but they are not lighting
-                                designers.</p>
+                            <h5 class="text-white font-display text-2xl mb-4">Professional Synergy</h5>
+                            <p class="text-gray-400 font-light mb-8 leading-relaxed">
+                                We partner with skilled electricians to bring our designs to life. While electricians
+                                handle the installation, we provide the complete line of fixtures and technical
+                                expertise to ensure excellence.
+                            </p>
 
                             <div class="mb-8 p-6 bg-ink rounded-2xl border border-white/5">
-                                <p class="text-white text-sm font-medium mb-5 uppercase tracking-[0.15em]">Typical Poor
-                                    Setups:</p>
+                                <p class="text-white text-sm font-medium mb-5 uppercase tracking-[0.15em]">The Complete
+                                    Line:</p>
                                 <ul class="text-gray-400 text-sm space-y-4">
-                                    <li class="flex items-start gap-4"><span class="text-ember mt-1"><i
-                                                class="fas fa-times text-xs"></i></span> Grid of downlights</li>
-                                    <li class="flex items-start gap-4"><span class="text-ember mt-1"><i
-                                                class="fas fa-times text-xs"></i></span> One pendant in the centre</li>
-                                    <li class="flex items-start gap-4"><span class="text-ember mt-1"><i
-                                                class="fas fa-times text-xs"></i></span> Maybe a spotlight</li>
+                                    <li class="flex items-center gap-4"><span class="text-ember mt-1"><i
+                                                class="fas fa-check text-xs"></i></span> Architecture & Facade</li>
+                                    <li class="flex items-center gap-4"><span class="text-ember mt-1"><i
+                                                class="fas fa-check text-xs"></i></span> Bespoke Fixtures</li>
+                                    <li class="flex items-center gap-4"><span class="text-ember mt-1"><i
+                                                class="fas fa-check text-xs"></i></span> Smart Control Integration</li>
                                 </ul>
-                            </div>
-
-                            <div
-                                class="inline-flex items-center gap-3 text-white text-sm font-medium bg-ink px-5 py-3 rounded-full border border-white/10">
-                                <div class="w-1.5 h-1.5 rounded-full bg-ember"></div>
-                                Result: lighting that works — but not for you.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
 
             <div class="py-32 relative bg-charcoal bg-cover bg-center bg-fixed"
-                style="background-image: url('https://upwardlighting.com/wp-content/uploads/2023/08/facades-lighting-interactive-1024x562.jpg');">
+                style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop');">
                 <div class="absolute inset-0 bg-ink/85 backdrop-blur-md"></div>
 
                 <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 section-hidden" id="ap-philosophy">
@@ -151,7 +150,7 @@
                         </svg>
 
                         <h3 class="font-display text-4xl lg:text-6xl text-[#ffffff] italic mb-10 leading-[1.2]">
-                            "Bad lighting is like bad customer service."
+                            "Light is both art and science"
                         </h3>
 
                         <div class="space-y-6 text-[#e5e7eb] text-lg lg:text-xl font-light leading-relaxed max-w-3xl">
@@ -433,54 +432,75 @@
 
                 <div class="grid lg:grid-cols-3 gap-8">
 
-                    <!-- 01 -->
-                    <div class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
                             01
                         </div>
                         <h4 class="text-ink text-xl font-display mb-4">Human Needs &amp; Comfort</h4>
                         <p class="text-gray-700 text-sm mb-6 leading-relaxed">
-                            Improves visibility, task performance, and visual comfort while supporting mood and wellbeing.
+                            Improves visibility, task performance, and visual comfort while supporting mood and
+                            wellbeing.
                         </p>
                         <ul class="space-y-3 text-gray-700 text-sm">
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Visibility & Task Performance</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Visual Comfort</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Mood & Atmosphere</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Health & Wellbeing</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Visibility & Task Performance</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Visual Comfort</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Mood & Atmosphere</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Health & Wellbeing</li>
                         </ul>
                     </div>
 
-                    <!-- 02 -->
-                    <div class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
                             02
                         </div>
                         <h4 class="text-ink text-xl font-display mb-4">Architectural Integration</h4>
                         <p class="text-gray-700 text-sm mb-6 leading-relaxed">
-                            Enhances form, material expression, and daylight coordination to support the overarching design intent.
+                            Enhances form, material expression, and daylight coordination to support the overarching
+                            design intent.
                         </p>
                         <ul class="space-y-3 text-gray-700 text-sm">
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Form & Composition</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Material Expression</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Codes & Standards</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Daylight Integration</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Form & Composition</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Material Expression</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Codes & Standards</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Daylight Integration</li>
                         </ul>
                     </div>
 
-                    <!-- 03 -->
-                    <div class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
+
+                    <div
+                        class="bg-white shadow-sm border border-black/5 p-8 rounded-2xl hover:border-ember/30 hover:shadow-md transition-all duration-300 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:border-ember/30 group-hover:bg-ember/5 text-gray-400 group-hover:text-ember flex items-center justify-center font-display text-xl mb-6 transition-colors duration-300">
                             03
                         </div>
                         <h4 class="text-ink text-xl font-display mb-4">Operational &amp; Economic Value</h4>
                         <p class="text-gray-700 text-sm mb-6 leading-relaxed">
-                            Reduces lifecycle costs through highly efficient systems, smart controls, and maintainable design.
+                            Reduces lifecycle costs through highly efficient systems, smart controls, and maintainable
+                            design.
                         </p>
                         <ul class="space-y-3 text-gray-700 text-sm">
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Smart Controls & Auto</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Predictable Maintenance</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Lower Enviro Impact</li>
-                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-ember rounded-full"></span>Lifecycle ROI</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Smart Controls & Auto</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Predictable Maintenance</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Lower Enviro Impact</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="w-1.5 h-1.5 bg-ember rounded-full"></span>Lifecycle ROI</li>
                         </ul>
                     </div>
 

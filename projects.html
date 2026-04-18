@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Projects | The Lumen House - Portfolio</title>
 
-    <!-- SEO Meta Tags -->
+
     <meta name="description" content="A curated selection of our finest lighting design work across the globe." />
     <link rel="canonical" href="https://www.thelumenhouse.com/projects" />
 
-    <!-- Open Graph -->
+
     <meta property="og:title" content="Projects | The Lumen House" />
     <meta property="og:description"
         content="A curated selection of our finest lighting design work across the globe." />
     <meta property="og:type" content="website" />
 
-    <!-- Fonts & Tailwind -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,7 +29,6 @@
         rel="stylesheet" />
 
     <style>
-        /* Filter Menu Styles */
         .filter-menu-container::-webkit-scrollbar {
             display: none;
         }
@@ -49,7 +48,7 @@
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        /* Hover-reveal details for service cards */
+
         .sector-details {
             position: absolute;
             left: 0;
@@ -106,7 +105,7 @@
             border: 0;
         }
 
-        /* Hover title centered over image */
+
         .hover-title {
             position: absolute;
             inset: 0;
@@ -133,7 +132,7 @@
             transform: translateY(0);
         }
 
-        /* Fly-up reveal */
+
         .fly-up {
             opacity: 0;
             transform: translateY(28px);
@@ -146,7 +145,7 @@
             transform: translateY(0);
         }
 
-        /* Clean professional reveal: subtler, faster, with slight scale */
+
         .clean-reveal {
             opacity: 0;
             transform: translateY(18px) scale(.995);
@@ -159,14 +158,14 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Hover lift for clean reveal cards */
+
         .group:hover .clean-reveal,
         .group:focus-within .clean-reveal {
             transform: translateY(-4px) scale(1.002);
             transition-duration: 360ms;
         }
 
-        /* Bottom-left 'spot' light effect (appears on hover and when in-view) */
+
         .group.clean-reveal {
             position: relative;
             overflow: hidden;
@@ -189,7 +188,7 @@
             mix-blend-mode: screen;
         }
 
-        /* visible when hovered or when element has been revealed */
+
         .group.clean-reveal:hover::before,
         .group.clean-reveal.in-view::before {
             opacity: 1;
@@ -203,10 +202,10 @@
             }
         }
 
-        /* Light card style to match provided image */
+
         .svc-card-light {
             background: #fbf8f4;
-            /* warm off-white */
+
             border: 1px solid rgba(31, 27, 22, 0.06);
             box-shadow: 0 8px 18px rgba(4, 6, 8, 0.06);
             color: #1f1b16;
@@ -237,7 +236,7 @@
             box-shadow: 0 20px 40px rgba(11, 15, 20, 0.06), 0 6px 22px rgba(212, 163, 115, 0.04);
         }
 
-        /* Icon styling and hover glow for a cleaner, professional look */
+
         .svc-card-light .icon-wrap {
             width: 48px;
             height: 48px;
@@ -267,7 +266,7 @@
             transform: translateY(-1px) scale(1.02);
         }
 
-        /* Tweak title/desc for clarity on these cards */
+
         .svc-card-light .svc-title {
             color: #0f1724;
             font-weight: 700;
@@ -284,7 +283,7 @@
             }
         }
 
-        /* Card media blur */
+
         .card-media {
             transition: transform .32s ease, filter .32s ease;
             display: block;
@@ -296,7 +295,7 @@
             transform: scale(1.02);
         }
 
-        /* Light card style to match provided image */
+
         .svc-card-light {
             background: linear-gradient(180deg, rgba(255, 252, 247, 0.96) 0%, rgba(255, 250, 244, 0.96) 100%);
             border: 1px solid rgba(0, 0, 0, 0.04);
@@ -327,7 +326,7 @@
             margin-top: 6px;
         }
 
-        /* Clean reveal animation */
+
         .clean-reveal {
             transform: translateY(12px) scale(.998);
             opacity: 0;
@@ -340,7 +339,7 @@
             opacity: 1;
         }
 
-        /* Bottom-left soft spotlight */
+
         .group.clean-reveal::before {
             content: "";
             position: absolute;
@@ -383,10 +382,10 @@
 
     </div>
 
-    <!-- Main Content -->
+
     <main class="pt-20">
 
-        <!-- Static Hero -->
+
         <section class="relative py-24 md:py-32 overflow-hidden bg-ink">
             <div class="absolute inset-0 opacity-10">
                 <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/90 to-ink/70"></div>
@@ -404,7 +403,7 @@
         </section>
 
 
-        <!-- Projects Grid -->
+
         <section id="services-grid" class="py-32 bg-ink">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-8">
@@ -413,7 +412,7 @@
                         class="hidden md:block text-sm font-medium text-gray-400 hover:text-ember transition-colors">Start
                         a Project &rarr;</a>
                 </div>
-                <!-- Filter Menu -->
+
                 <div class="filter-menu-container flex flex-wrap pb-6 mb-10 gap-3 justify-center"
                     style="-webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
                     <button
@@ -460,7 +459,7 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        // Simple Navbar interaction to add blur/shadow on scroll
+
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -472,7 +471,7 @@
             }
         });
 
-        // Footer light toggle
+
         const footer = document.getElementById('contact');
         const lightButtons = document.querySelectorAll('[data-light-toggle="true"]');
         lightButtons.forEach((button) => {
@@ -487,16 +486,16 @@
             });
         });
 
-        // IntersectionObserver: reveal elements (supports both legacy .fly-up and new .clean-reveal)
+
         (function () {
             const items = document.querySelectorAll('.fly-up, .clean-reveal');
             if (!items.length) return;
             const io = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // stagger based on position in the list for a clean, professional cascade
+
                         const index = Array.from(items).indexOf(entry.target);
-                        const delay = Math.min(index * 90, 450); // cap delay so it stays snappy
+                        const delay = Math.min(index * 90, 450);
                         setTimeout(() => {
                             entry.target.classList.add('in-view');
                         }, delay);
@@ -507,12 +506,12 @@
             items.forEach(it => io.observe(it));
         })();
 
-        // Portfolio Filtering Logic - Dynamic Rendering from LocalStorage
+
         document.addEventListener('DOMContentLoaded', () => {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const grid = document.getElementById('portfolio-grid');
 
-            // Hardcoded defaults if nothing is uploaded yet
+
             const defaultImages = {
                 'hospitality': [{ src: 'https://picsum.photos/seed/hospitality-sector/800/600', caption: 'Hospitality Center' }],
                 'infrastructure': [{ src: 'https://picsum.photos/seed/infrastructure-light/800/600', caption: 'Infrastructure Link' }],
@@ -526,17 +525,17 @@
             };
 
             function renderGrid(filter) {
-                // Clear grid
+
                 grid.innerHTML = '';
 
                 if (filter === 'all') {
-                    // Inject static user-defined categories template
+
                     grid.className = "grid md:grid-cols-2 gap-x-8 gap-y-16";
                     const template = document.getElementById('all-category-template');
                     if (template) {
                         grid.innerHTML = template.innerHTML;
 
-                        // Re-trigger reveal animations for static elements
+
                         const newItems = grid.querySelectorAll('.fly-up, .clean-reveal');
                         if (newItems.length > 0 && window.IntersectionObserver) {
                             const itemsArr = Array.from(newItems);
@@ -559,21 +558,21 @@
                     return;
                 }
 
-                // Grid for specific categories: 3 image in line
+
                 grid.className = "grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 mt-4";
 
-                // Fetch saved data for specific categories
+
                 const storedData = localStorage.getItem('lumen-house-gallery');
                 let galleryData = storedData ? JSON.parse(storedData) : null;
 
-                // If completely empty, use defaults for specific tabs
+
                 if (!galleryData || Object.keys(galleryData).length === 0) {
                     galleryData = defaultImages;
                 }
 
                 let itemsToRender = [];
 
-                // Specific category fetch
+
                 if (galleryData[filter]) {
                     galleryData[filter].forEach(img => {
                         itemsToRender.push({ ...img, category: filter });
@@ -585,13 +584,13 @@
                     return;
                 }
 
-                // Render clean blocks (no heavy filters, clean image + caption below)
+
                 itemsToRender.forEach((item, index) => {
                     const card = document.createElement('div');
-                    card.className = `group cursor-pointer portfolio-item`; // Clean wrapper without offset
+                    card.className = `group cursor-pointer portfolio-item`;
                     card.setAttribute('data-category', item.category);
 
-                    // Simple inline style to animate entrance
+
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
                     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -607,7 +606,7 @@
                     `;
                     grid.appendChild(card);
 
-                    // Trigger reflow & entrance animation
+
                     setTimeout(() => {
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
@@ -615,7 +614,7 @@
                 });
             }
 
-            // Initial render
+
             renderGrid('all');
 
             filterBtns.forEach(btn => {
@@ -634,7 +633,7 @@
         });
     </script>
     <template id="all-category-template" style="display:none;">
-        <!-- 1. HOSPITALITY -->
+
         <div class="group cursor-pointer fly-up">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -658,7 +657,7 @@
             </div>
         </div>
 
-        <!-- 2. INFRASTRUCTURE -->
+
         <div class="group cursor-pointer fly-up md:mt-16">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -689,7 +688,7 @@
             </div>
         </div>
 
-        <!-- 3. HEALTH CARE -->
+
         <div class="group cursor-pointer fly-up">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -720,7 +719,7 @@
             </div>
         </div>
 
-        <!-- 4. RETAIL OFFICE -->
+
         <div class="group cursor-pointer fly-up md:mt-16">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -751,7 +750,7 @@
             </div>
         </div>
 
-        <!-- 5. OUTDOOR LANDSCAPE -->
+
         <div class="group cursor-pointer fly-up">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -782,7 +781,7 @@
             </div>
         </div>
 
-        <!-- 6. OUTDOOR – URBAN -->
+
         <div class="group cursor-pointer fly-up md:mt-16">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -813,7 +812,7 @@
             </div>
         </div>
 
-        <!-- 7. OUTDOOR – FAÇADE -->
+
         <div class="group cursor-pointer fly-up">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -844,7 +843,7 @@
             </div>
         </div>
 
-        <!-- 8. MUSEUM & GALLERIES -->
+
         <div class="group cursor-pointer fly-up md:mt-16">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -875,7 +874,7 @@
             </div>
         </div>
 
-        <!-- 9. PRIVATE RESIDENCES -->
+
         <div class="group cursor-pointer fly-up">
             <div class="overflow-hidden rounded-2xl mb-6 relative">
                 <div
@@ -907,7 +906,7 @@
         </div>
     </template>
 
-    <!-- Universal header/footer loader + menu/scroll init -->
+
     <script src="components.js"></script>
 </body>
 

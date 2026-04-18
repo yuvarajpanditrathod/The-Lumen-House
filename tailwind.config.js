@@ -1,5 +1,5 @@
-// The Lumen House — Shared Tailwind Configuration
-// Used across all pages via: <script src="tailwind.config.js"></script>
+
+
 
 tailwind.config = {
     theme: {
