@@ -906,6 +906,89 @@
                 height: 70px;
             }
         }
+
+        /* Video overlay + caption styles */
+        .video-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 300;
+            background: rgba(2,2,2,0.78);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .video-container {
+            width: min(1100px, 94%);
+            max-width: 1100px;
+            margin: 24px;
+            text-align: center;
+            color: var(--pearl);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 */
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(2,2,2,0.6), 0 6px 18px rgba(0,0,0,0.5);
+        }
+
+        #player {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* local video element should fill wrapper */
+        #localPlayer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: black;
+        }
+
+        .video-close {
+            display: none;
+        }
+
+        .video-caption {
+            margin-top: 18px;
+            opacity: 0;
+            transform: translateY(10px) scale(0.98);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+
+        .video-caption.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .caption-decor {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.28em;
+            color: rgba(212,163,115,0.8);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .caption-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 3.8vw, 48px);
+            color: var(--gold-primary);
+            letter-spacing: 0.02em;
+            text-shadow: 0 6px 30px rgba(212,163,115,0.18);
+        }
     </style>
 </head>
 
@@ -1007,6 +1090,27 @@
     
     <div class="transition-overlay" id="transitionOverlay"></div>
 
+    <!-- Video overlay shown before the ceremony and cannot be skipped -->
+    <div id="videoOverlay" class="video-overlay" aria-hidden="true">
+        <div class="video-container">
+            <div class="video-wrapper" id="videoWrapper">
+                <video id="localPlayer" playsinline preload="auto" crossorigin="anonymous">
+                    <source src="Assets/Ganesh-Intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-caption" id="videoCaption" aria-hidden="true">
+                <div class="caption-decor">With the blessings of</div>
+                <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:10px;">
+                    <span style="width:56px; height:1px; background:linear-gradient(90deg, transparent, var(--gold-primary), transparent);"></span>
+                    <span style="width:7px; height:7px; background:var(--gold-bright); transform:rotate(45deg); box-shadow:0 0 10px rgba(255,215,0,0.55);"></span>
+                    <span style="width:56px; height:1px; background:linear-gradient(90deg, transparent, var(--gold-primary), transparent);"></span>
+                </div>
+                <div class="caption-name">Desur Sir</div>
+            </div>
+        </div>
+    </div>
+
     
     <div class="entering-message" id="enteringMessage">
         <div class="entering-text">Entering The Lumen House</div>
@@ -1015,13 +1119,6 @@
         </div>
     </div>
 
-    
-    
-
-
-    
-    
-    
     <script>
         (function () {
             'use strict';
@@ -1375,27 +1472,17 @@
             const spotlightContainer = document.getElementById('spotlightContainer');
             const brandReveal = document.getElementById('brandReveal');
             const goldenFlash = document.getElementById('goldenFlash');
-            const skipBtn = document.getElementById('skipBtn');
             const transitionOverlay = document.getElementById('transitionOverlay');
             const enteringMessage = document.getElementById('enteringMessage');
             const enteringBarFill = document.getElementById('enteringBarFill');
 
             
-            setTimeout(() => {
-                spotlightContainer.classList.add('active');
-            }, 300);
-
-            setTimeout(() => {
-                ribbonStage.classList.add('visible');
-            }, 800);
-
-            setTimeout(() => {
-                scissorsContainer.classList.add('visible');
-            }, 1500);
-
-            setTimeout(() => {
-                skipBtn.classList.add('visible');
-            }, 2500);
+            // Ceremony startup is deferred until after the intro video
+            function startCeremony() {
+                setTimeout(() => { spotlightContainer.classList.add('active'); }, 300);
+                setTimeout(() => { ribbonStage.classList.add('visible'); }, 800);
+                setTimeout(() => { scissorsContainer.classList.add('visible'); }, 1500);
+            }
 
             
             scissorsContainer.addEventListener('click', performCut);
@@ -1514,10 +1601,8 @@
 
             
             function beginTransition() {
-                
                 enteringMessage.classList.add('visible');
 
-                
                 let progress = 0;
                 const progressInterval = setInterval(() => {
                     progress += 2;
@@ -1528,27 +1613,114 @@
                     }
                 }, 60);
 
-                
                 setTimeout(() => {
-                    
                     transitionOverlay.classList.add('active');
 
-                    
-                    setTimeout(() => {
-                        window.location.replace('index.html?ceremony=done');
-                    }, 1600);
+                        setTimeout(() => {
+                            window.location.replace('index.html?ceremony=done');
+                        }, 1600);
                 }, 3200);
             }
 
-            
-            skipBtn.addEventListener('click', () => {
-                fireworksRunning = false;
-                finaleTimers.forEach(t => clearTimeout(t));
-                transitionOverlay.classList.add('active');
+            // --- Local MP4 video + caption sequence ---
+            const videoOverlay = document.getElementById('videoOverlay');
+            const videoCaption = document.getElementById('videoCaption');
+            const videoHint = document.getElementById('videoHint');
+            const localPlayer = document.getElementById('localPlayer');
+            let ceremonyStarted = false;
+            let videoStarted = false;
+
+            function showVideoSequence() {
+                if (!videoOverlay) return window.location.replace('index.html?ceremony=done');
+                videoOverlay.style.pointerEvents = 'auto';
+                videoOverlay.style.opacity = '1';
+                videoOverlay.setAttribute('aria-hidden', 'false');
+
+                if (videoHint) videoHint.textContent = 'Tap the video to begin with sound';
+
+                if (localPlayer) {
+                    try {
+                        localPlayer.currentTime = 0;
+                        localPlayer.muted = false;
+                        localPlayer.volume = 1;
+
+                        localPlayer.addEventListener('ended', () => {
+                            showCaptionThenStartCeremony();
+                        }, { once: true });
+
+                        localPlayer.addEventListener('error', () => {
+                            if (!ceremonyStarted) startCeremony();
+                        }, { once: true });
+
+                        const playAttempt = localPlayer.play();
+                        if (playAttempt && playAttempt.catch) {
+                            playAttempt.catch(() => {
+                                // browsers may block sound autoplay; keep the overlay visible and wait for a click
+                                localPlayer.muted = true;
+                                if (videoHint) videoHint.textContent = 'Tap the video to start';
+                            });
+                        }
+                    } catch (e) {
+                        if (videoHint) videoHint.textContent = 'Tap the video to start';
+                    }
+                }
+            }
+
+            function showCaptionThenStartCeremony() {
+                if (ceremonyStarted) return;
+                ceremonyStarted = true;
+                try { if (localPlayer && !localPlayer.paused) localPlayer.pause(); } catch (e) {}
+                const videoWrapper = document.getElementById('videoWrapper');
+                if (videoWrapper) {
+                    videoWrapper.style.transition = 'opacity 0.8s ease';
+                    videoWrapper.style.opacity = '0';
+                }
+
                 setTimeout(() => {
-                    window.location.replace('index.html?ceremony=done');
+                    if (videoWrapper) videoWrapper.style.display = 'none';
+                    if (videoCaption) {
+                        videoCaption.setAttribute('aria-hidden', 'false');
+                        videoCaption.classList.add('visible');
+                    }
                 }, 800);
-            });
+
+                // after short caption display, hide overlay and start ceremony
+                setTimeout(() => {
+                    if (videoOverlay) {
+                        videoOverlay.style.opacity = '0';
+                        videoOverlay.style.pointerEvents = 'none';
+                        videoOverlay.setAttribute('aria-hidden', 'true');
+                    }
+                    startCeremony();
+                }, 2600);
+            }
+
+            function startVideoWithSound() {
+                if (!localPlayer || videoStarted) return;
+                videoStarted = true;
+                try {
+                    localPlayer.muted = false;
+                    localPlayer.volume = 1;
+                    const playAttempt = localPlayer.play();
+                    if (playAttempt && playAttempt.catch) {
+                        playAttempt.catch(() => {
+                            localPlayer.muted = true;
+                            localPlayer.play().catch(() => {});
+                            if (videoHint) videoHint.textContent = 'Playback started muted; sound depends on browser settings';
+                        });
+                    }
+                    if (videoHint) videoHint.textContent = 'Playing...';
+                } catch (e) {
+                    if (videoHint) videoHint.textContent = 'Tap the video to start';
+                }
+            }
+
+            if (videoOverlay) {
+                videoOverlay.addEventListener('click', startVideoWithSound);
+            }
+
+            // Show intro video overlay immediately (video runs before ceremony)
+            try { showVideoSequence(); } catch (e) {}
 
             
             function loop() {

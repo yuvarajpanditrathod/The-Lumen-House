@@ -36,15 +36,15 @@
             <div class="carousel absolute inset-0">
                 <div class="carousel-track">
                     <img class="active"
-                        src="https://images.unsplash.com/photo-1513519247388-19345420d4c7?q=80&w=2070&auto=format&fit=crop"
+                        src="Assets/1.png"
                         alt="Luxury architectural lighting" loading="eager" />
-                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=2070&auto=format&fit=crop"
+                    <img src="Assets/2.png"
                         alt="Hotel lobby lighting" loading="lazy" />
-                    <img src="https://images.unsplash.com/photo-1513467655676-561b7d489a88?q=80&w=2072&auto=format&fit=crop"
+                    <img src="Assets/3.png"
                         alt="Modern facade lighting" loading="lazy" />
-                    <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=1974&auto=format&fit=crop"
+                    <img src="Assets/4.png"
                         alt="Interior mood lighting" loading="lazy" />
-                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop"
+                    <img src="Assets/5.png"
                         alt="Office lighting design" loading="lazy" />
                 </div>
             </div>
@@ -552,6 +552,49 @@
                 const el = document.getElementById(id);
                 if (el) io.observe(el);
             });
+        })();
+    </script>
+    <script>
+        (function () {
+            const slides = Array.from(document.querySelectorAll('.carousel-track img'));
+            if (slides.length < 2) return;
+
+            let activeIndex = Math.max(0, slides.findIndex(slide => slide.classList.contains('active')));
+            if (activeIndex === -1) activeIndex = 0;
+
+            let timerId;
+
+            function showSlide(nextIndex) {
+                slides[activeIndex].classList.remove('active');
+                activeIndex = nextIndex;
+                slides[activeIndex].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide((activeIndex + 1) % slides.length);
+            }
+
+            function startAutoplay() {
+                stopAutoplay();
+                timerId = window.setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoplay() {
+                if (timerId) {
+                    window.clearInterval(timerId);
+                    timerId = undefined;
+                }
+            }
+
+            const carousel = document.querySelector('.carousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+            }
+
+            window.addEventListener('focus', startAutoplay);
+            window.addEventListener('blur', stopAutoplay);
+            window.addEventListener('load', startAutoplay);
         })();
     </script>
     <script src="components.js"></script>
