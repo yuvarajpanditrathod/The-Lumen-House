@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Lumen House | Grand Opening</title>
 
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +14,6 @@
         rel="stylesheet" />
 
     <style>
-        
         :root {
             --gold-primary: #D4A373;
             --gold-bright: #FFD700;
@@ -55,7 +54,7 @@
             color: var(--obsidian);
         }
 
-        
+
         .ceremony-container {
             position: fixed;
             inset: 0;
@@ -64,7 +63,7 @@
             overflow: hidden;
         }
 
-        
+
         .ambient-bg {
             position: absolute;
             inset: 0;
@@ -75,7 +74,7 @@
             pointer-events: none;
         }
 
-        
+
         .texture-overlay {
             position: absolute;
             inset: 0;
@@ -85,7 +84,7 @@
             mix-blend-mode: overlay;
         }
 
-        
+
         .spotlight-container {
             position: absolute;
             inset: 0;
@@ -179,7 +178,7 @@
             }
         }
 
-        
+
         .ribbon-stage {
             position: absolute;
             top: 50%;
@@ -208,7 +207,7 @@
             align-items: center;
         }
 
-        
+
         .ribbon-band {
             position: absolute;
             top: 50%;
@@ -252,7 +251,7 @@
             transform-origin: right center;
         }
 
-        
+
         .ribbon-left::before,
         .ribbon-right::before {
             content: '';
@@ -279,7 +278,7 @@
             }
         }
 
-        
+
         .ribbon-left::after,
         .ribbon-right::after {
             content: '';
@@ -303,7 +302,7 @@
             bottom: 3px;
         }
 
-        
+
         .ribbon-band.cut .ribbon-left {
             transform: translateX(-15%) rotate(-12deg) scaleX(0.9);
             opacity: 0;
@@ -316,7 +315,7 @@
             transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease 0.3s;
         }
 
-        
+
         .ribbon-post {
             position: absolute;
             top: 50%;
@@ -365,7 +364,7 @@
             border-radius: 3px;
         }
 
-        
+
         .scissors-container {
             position: absolute;
             top: 50%;
@@ -433,7 +432,7 @@
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
         }
 
-        
+
         .scissors-glow {
             position: absolute;
             inset: -20px;
@@ -456,7 +455,7 @@
             }
         }
 
-        
+
         .click-prompt {
             position: absolute;
             bottom: -45px;
@@ -488,7 +487,7 @@
             }
         }
 
-        
+
         .brand-reveal {
             position: absolute;
             top: 50%;
@@ -647,7 +646,7 @@
             animation-delay: 2.2s;
         }
 
-        
+
         .entering-message {
             position: fixed;
             bottom: 60px;
@@ -689,7 +688,7 @@
             transition: width 0.1s linear;
         }
 
-        
+
         .celebration-canvas {
             position: fixed;
             inset: 0;
@@ -699,7 +698,7 @@
             pointer-events: none;
         }
 
-        
+
         .skip-btn {
             position: fixed;
             bottom: 28px;
@@ -731,7 +730,7 @@
             background: rgba(212, 163, 115, 0.08);
         }
 
-        
+
         .golden-flash {
             position: fixed;
             inset: 0;
@@ -765,7 +764,7 @@
             }
         }
 
-        
+
         .transition-overlay {
             position: fixed;
             inset: 0;
@@ -781,8 +780,8 @@
             pointer-events: all;
         }
 
-        
-        
+
+
         @keyframes brandFadeUp {
             0% {
                 opacity: 0;
@@ -795,7 +794,7 @@
             }
         }
 
-        
+
         @keyframes fadeSlideUp {
             0% {
                 opacity: 0;
@@ -836,7 +835,7 @@
             }
         }
 
-        
+
         .star-field {
             position: absolute;
             inset: 0;
@@ -867,7 +866,7 @@
             }
         }
 
-        
+
         @media (max-width: 768px) {
             .ribbon-wrapper {
                 width: 94%;
@@ -915,7 +914,7 @@
             align-items: center;
             justify-content: center;
             z-index: 300;
-            background: rgba(2,2,2,0.78);
+            background: rgba(2, 2, 2, 0.78);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.35s ease;
@@ -932,11 +931,12 @@
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
+            /* 16:9 */
             background: #000;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(2,2,2,0.6), 0 6px 18px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(2, 2, 2, 0.6), 0 6px 18px rgba(0, 0, 0, 0.5);
         }
 
         #player {
@@ -977,7 +977,7 @@
             font-family: 'Inter', sans-serif;
             font-size: 13px;
             letter-spacing: 0.28em;
-            color: rgba(212,163,115,0.8);
+            color: rgba(212, 163, 115, 0.8);
             text-transform: uppercase;
             margin-bottom: 8px;
         }
@@ -987,22 +987,22 @@
             font-size: clamp(28px, 3.8vw, 48px);
             color: var(--gold-primary);
             letter-spacing: 0.02em;
-            text-shadow: 0 6px 30px rgba(212,163,115,0.18);
+            text-shadow: 0 6px 30px rgba(212, 163, 115, 0.18);
         }
     </style>
 </head>
 
 <body>
 
-    
+
     <div class="ceremony-container" id="ceremonyContainer">
         <div class="ambient-bg"></div>
         <div class="texture-overlay"></div>
 
-        
+
         <div class="star-field" id="starField"></div>
 
-        
+
         <div class="spotlight-container" id="spotlightContainer">
             <div class="spotlight"></div>
             <div class="spotlight"></div>
@@ -1010,23 +1010,23 @@
             <div class="spotlight"></div>
         </div>
 
-        
+
         <div class="ribbon-stage" id="ribbonStage">
             <div class="ribbon-wrapper">
-                
+
                 <div class="ribbon-post ribbon-post-left">
                     <div class="post-cap"></div>
                     <div class="post-bar"></div>
                     <div class="post-base"></div>
                 </div>
 
-                
+
                 <div class="ribbon-band" id="ribbonBand">
                     <div class="ribbon-left"></div>
                     <div class="ribbon-right"></div>
                 </div>
 
-                
+
                 <div class="ribbon-post ribbon-post-right">
                     <div class="post-cap"></div>
                     <div class="post-bar"></div>
@@ -1035,23 +1035,23 @@
             </div>
         </div>
 
-        
+
         <div class="scissors-container" id="scissorsContainer">
             <div class="scissors-glow"></div>
             <svg class="scissors-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                
+
                 <path class="scissors-blade-top" d="M60 60 L15 30 L10 28" />
                 <path class="scissors-handle-top" d="M60 60 L95 35 Q105 28 100 22 Q95 16 85 22 L75 30 L60 60" />
-                
+
                 <path class="scissors-blade-bottom" d="M60 60 L15 90 L10 92" />
                 <path class="scissors-handle-bottom" d="M60 60 L95 85 Q105 92 100 98 Q95 104 85 98 L75 90 L60 60" />
-                
+
                 <circle class="scissors-pivot" cx="60" cy="60" r="5" />
             </svg>
             <div class="click-prompt">Click to Cut the Ribbon</div>
         </div>
 
-        
+
         <div class="brand-reveal" id="brandReveal">
             <div class="brand-gem-row">
                 <div class="brand-gem-line"></div>
@@ -1081,37 +1081,28 @@
         </div>
     </div>
 
-    
+
     <div class="golden-flash" id="goldenFlash"></div>
 
-    
+
     <canvas class="celebration-canvas" id="celebCanvas"></canvas>
 
-    
+
     <div class="transition-overlay" id="transitionOverlay"></div>
 
     <!-- Video overlay shown before the ceremony and cannot be skipped -->
     <div id="videoOverlay" class="video-overlay" aria-hidden="true">
         <div class="video-container">
             <div class="video-wrapper" id="videoWrapper">
-                <video id="localPlayer" playsinline preload="auto" crossorigin="anonymous">
+                <video id="localPlayer" playsinline preload="auto" crossorigin="anonymous" autoplay muted>
                     <source src="Assets/Ganesh-Intro.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="video-caption" id="videoCaption" aria-hidden="true">
-                <div class="caption-decor">With the blessings of</div>
-                <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:10px;">
-                    <span style="width:56px; height:1px; background:linear-gradient(90deg, transparent, var(--gold-primary), transparent);"></span>
-                    <span style="width:7px; height:7px; background:var(--gold-bright); transform:rotate(45deg); box-shadow:0 0 10px rgba(255,215,0,0.55);"></span>
-                    <span style="width:56px; height:1px; background:linear-gradient(90deg, transparent, var(--gold-primary), transparent);"></span>
-                </div>
-                <div class="caption-name">Desur Sir</div>
-            </div>
         </div>
     </div>
 
-    
+
     <div class="entering-message" id="enteringMessage">
         <div class="entering-text">Entering The Lumen House</div>
         <div class="entering-bar">
@@ -1123,7 +1114,7 @@
         (function () {
             'use strict';
 
-            
+
             const starField = document.getElementById('starField');
             for (let i = 0; i < 60; i++) {
                 const star = document.createElement('div');
@@ -1137,7 +1128,7 @@
                 starField.appendChild(star);
             }
 
-            
+
             const canvas = document.getElementById('celebCanvas');
             const ctx = canvas.getContext('2d');
             let W = 0, H = 0;
@@ -1149,7 +1140,7 @@
             resize();
             window.addEventListener('resize', resize);
 
-            
+
             const PALETTES = [
                 ['#FFD700', '#FFCA28', '#FF8F00', '#FFF9C4'],
                 ['#D4A373', '#C58E5B', '#F5EBE0', '#FFD180'],
@@ -1173,7 +1164,7 @@
             const randInt = (min, max) => Math.floor(rand(min, max + 1));
             const TAU = Math.PI * 2;
 
-            
+
             class Spark {
                 constructor(x, y, vx, vy, color, type) {
                     this.x = x; this.y = y;
@@ -1214,7 +1205,7 @@
                     this.y += this.vy;
                     this.life -= this.decay;
 
-                    
+
                     if (this.type === 'crossette' && !this.hasSplit && this.life < this.splitAt) {
                         this.hasSplit = true;
                         for (let i = 0; i < 4; i++) {
@@ -1316,7 +1307,7 @@
                     const tumble = Math.abs(Math.cos(this.phase * 0.75));
                     ctx.scale(1, Math.max(0.1, tumble));
                     ctx.fillStyle = this.color;
-                    
+
                     if (this.w > 8) {
                         ctx.beginPath();
                         ctx.arc(0, 0, this.w / 2, 0, TAU);
@@ -1457,7 +1448,7 @@
                 }
             }
 
-            
+
             let sparks = [], rockets = [], confettis = [], shockwaves = [], goldenRings = [];
             let fireworksRunning = false;
             let ribbonCut = false;
@@ -1465,7 +1456,7 @@
             const MAX_SPARKS = 1200;
             const MAX_CONFETTI = 350;
 
-            
+
             const scissorsContainer = document.getElementById('scissorsContainer');
             const ribbonBand = document.getElementById('ribbonBand');
             const ribbonStage = document.getElementById('ribbonStage');
@@ -1476,7 +1467,7 @@
             const enteringMessage = document.getElementById('enteringMessage');
             const enteringBarFill = document.getElementById('enteringBarFill');
 
-            
+
             // Ceremony startup is deferred until after the intro video
             function startCeremony() {
                 setTimeout(() => { spotlightContainer.classList.add('active'); }, 300);
@@ -1484,90 +1475,90 @@
                 setTimeout(() => { scissorsContainer.classList.add('visible'); }, 1500);
             }
 
-            
+
             scissorsContainer.addEventListener('click', performCut);
 
             function performCut() {
                 if (ribbonCut) return;
                 ribbonCut = true;
 
-                
+
                 scissorsContainer.classList.add('cutting');
 
-                
+
                 setTimeout(() => {
                     ribbonBand.classList.add('cut');
 
-                    
+
                     goldenFlash.classList.add('flash');
 
-                    
+
                     const cx = W / 2, cy = H / 2;
                     for (let i = 0; i < 80; i++) {
                         confettis.push(new Confetti(cx + rand(-60, 60), cy + rand(-30, 30)));
                     }
 
-                    
+
                     for (let i = 0; i < 5; i++) {
                         setTimeout(() => {
                             goldenRings.push(new GoldenRing(cx, cy));
                         }, i * 200);
                     }
 
-                    
+
                     fireworksRunning = true;
                     launchGrandFinale();
                     loop();
                 }, 350);
 
-                
+
                 setTimeout(() => {
                     scissorsContainer.style.opacity = '0';
                     scissorsContainer.style.pointerEvents = 'none';
                 }, 600);
 
-                
+
                 setTimeout(() => {
                     ribbonStage.style.transition = 'opacity 1.2s ease';
                     ribbonStage.style.opacity = '0';
                 }, 1800);
 
-                
+
                 setTimeout(() => {
                     brandReveal.classList.add('active');
                 }, 2200);
             }
 
-            
+
             let finaleTimers = [];
             function launchGrandFinale() {
                 const schedule = [
-                    
+
                     { t: 0, n: 3 },
-                    
+
                     { t: 400, n: 2 },
                     { t: 800, n: 3 },
                     { t: 1200, n: 2 },
                     { t: 1600, n: 4 },
-                    
+
                     { t: 2100, n: 3 },
                     { t: 2500, n: 2 },
                     { t: 2900, n: 4 },
                     { t: 3300, n: 3 },
-                    
+
                     { t: 3700, n: 4 },
                     { t: 3900, n: 3 },
                     { t: 4100, n: 5 },
                     { t: 4300, n: 4 },
                     { t: 4500, n: 6 },
-                    
+
                     { t: 4800, n: 5 },
                     { t: 5000, n: 6 },
                     { t: 5200, n: 5 },
                     { t: 5400, n: 4 },
                     { t: 5700, n: 3 },
                     { t: 6000, n: 2 },
-                    
+
                     { t: 6500, n: 2 },
                     { t: 7000, n: 1 },
                 ];
@@ -1582,7 +1573,7 @@
                     finaleTimers.push(timer);
                 });
 
-                
+
                 let confettiInterval = setInterval(() => {
                     if (!fireworksRunning) { clearInterval(confettiInterval); return; }
                     if (confettis.length < MAX_CONFETTI) {
@@ -1593,13 +1584,13 @@
                 }, 250);
                 finaleTimers.push(confettiInterval);
 
-                
+
                 setTimeout(() => {
                     beginTransition();
                 }, 8000);
             }
 
-            
+
             function beginTransition() {
                 enteringMessage.classList.add('visible');
 
@@ -1616,19 +1607,16 @@
                 setTimeout(() => {
                     transitionOverlay.classList.add('active');
 
-                        setTimeout(() => {
-                            window.location.replace('index.html?ceremony=done');
-                        }, 1600);
+                    setTimeout(() => {
+                        window.location.replace('index.html?ceremony=done');
+                    }, 1600);
                 }, 3200);
             }
 
-            // --- Local MP4 video + caption sequence ---
+            // --- Local MP4 video sequence ---
             const videoOverlay = document.getElementById('videoOverlay');
-            const videoCaption = document.getElementById('videoCaption');
-            const videoHint = document.getElementById('videoHint');
             const localPlayer = document.getElementById('localPlayer');
             let ceremonyStarted = false;
-            let videoStarted = false;
 
             function showVideoSequence() {
                 if (!videoOverlay) return window.location.replace('index.html?ceremony=done');
@@ -1636,40 +1624,49 @@
                 videoOverlay.style.opacity = '1';
                 videoOverlay.setAttribute('aria-hidden', 'false');
 
-                if (videoHint) videoHint.textContent = 'Tap the video to begin with sound';
-
                 if (localPlayer) {
                     try {
                         localPlayer.currentTime = 0;
-                        localPlayer.muted = false;
-                        localPlayer.volume = 1;
+                        localPlayer.playbackRate = 1.7;
+
+                        // Ensure playback speed remains 1.7x on play start
+                        localPlayer.addEventListener('play', () => {
+                            localPlayer.playbackRate = 1.7;
+                        });
 
                         localPlayer.addEventListener('ended', () => {
-                            showCaptionThenStartCeremony();
+                            endVideoAndStartCeremony();
                         }, { once: true });
 
                         localPlayer.addEventListener('error', () => {
                             if (!ceremonyStarted) startCeremony();
                         }, { once: true });
 
+                        // Attempt to autoplay
+                        localPlayer.muted = false;
+                        localPlayer.volume = 1;
                         const playAttempt = localPlayer.play();
                         if (playAttempt && playAttempt.catch) {
                             playAttempt.catch(() => {
-                                // browsers may block sound autoplay; keep the overlay visible and wait for a click
+                                // Fallback to muted autoplay if browser blocks sound autoplay
                                 localPlayer.muted = true;
-                                if (videoHint) videoHint.textContent = 'Tap the video to start';
+                                localPlayer.play().catch(err => {
+                                    console.error("Autoplay failed:", err);
+                                    if (!ceremonyStarted) startCeremony();
+                                });
                             });
                         }
                     } catch (e) {
-                        if (videoHint) videoHint.textContent = 'Tap the video to start';
+                        console.error("Error starting video:", e);
+                        if (!ceremonyStarted) startCeremony();
                     }
                 }
             }
 
-            function showCaptionThenStartCeremony() {
+            function endVideoAndStartCeremony() {
                 if (ceremonyStarted) return;
                 ceremonyStarted = true;
-                try { if (localPlayer && !localPlayer.paused) localPlayer.pause(); } catch (e) {}
+                try { if (localPlayer && !localPlayer.paused) localPlayer.pause(); } catch (e) { }
                 const videoWrapper = document.getElementById('videoWrapper');
                 if (videoWrapper) {
                     videoWrapper.style.transition = 'opacity 0.8s ease';
@@ -1677,52 +1674,26 @@
                 }
 
                 setTimeout(() => {
-                    if (videoWrapper) videoWrapper.style.display = 'none';
-                    if (videoCaption) {
-                        videoCaption.setAttribute('aria-hidden', 'false');
-                        videoCaption.classList.add('visible');
-                    }
-                }, 800);
-
-                // after short caption display, hide overlay and start ceremony
-                setTimeout(() => {
                     if (videoOverlay) {
                         videoOverlay.style.opacity = '0';
                         videoOverlay.style.pointerEvents = 'none';
                         videoOverlay.setAttribute('aria-hidden', 'true');
                     }
                     startCeremony();
-                }, 2600);
+                }, 800);
             }
 
-            function startVideoWithSound() {
-                if (!localPlayer || videoStarted) return;
-                videoStarted = true;
-                try {
-                    localPlayer.muted = false;
-                    localPlayer.volume = 1;
-                    const playAttempt = localPlayer.play();
-                    if (playAttempt && playAttempt.catch) {
-                        playAttempt.catch(() => {
-                            localPlayer.muted = true;
-                            localPlayer.play().catch(() => {});
-                            if (videoHint) videoHint.textContent = 'Playback started muted; sound depends on browser settings';
-                        });
-                    }
-                    if (videoHint) videoHint.textContent = 'Playing...';
-                } catch (e) {
-                    if (videoHint) videoHint.textContent = 'Tap the video to start';
-                }
-            }
-
-            if (videoOverlay) {
-                videoOverlay.addEventListener('click', startVideoWithSound);
+            // Clicking the video overlay can unmute/mute it
+            if (videoOverlay && localPlayer) {
+                videoOverlay.addEventListener('click', () => {
+                    localPlayer.muted = !localPlayer.muted;
+                });
             }
 
             // Show intro video overlay immediately (video runs before ceremony)
-            try { showVideoSequence(); } catch (e) {}
+            try { showVideoSequence(); } catch (e) { }
 
-            
+
             function loop() {
                 if (!fireworksRunning) {
                     if (animFrameId) cancelAnimationFrame(animFrameId);
@@ -1731,7 +1702,7 @@
 
                 ctx.clearRect(0, 0, W, H);
 
-                
+
                 goldenRings = goldenRings.filter(r => { r.update(); r.draw(); return r.life > 0; });
                 shockwaves = shockwaves.filter(s => { s.update(); s.draw(); return s.life > 0; });
                 rockets = rockets.filter(r => { if (!r.boomed) r.update(); if (!r.boomed) r.draw(); return !r.dead; });
