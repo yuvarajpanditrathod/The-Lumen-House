@@ -97,7 +97,6 @@
         });
     }
 
-    
     Promise.all([
         loadComponent('header-placeholder', 'header.html'),
         loadComponent('footer-placeholder', 'footer.html')

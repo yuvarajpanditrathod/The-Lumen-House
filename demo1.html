@@ -1485,6 +1485,20 @@
 
                 scissorsContainer.classList.add('cutting');
 
+                // Play the grand opening song (played only on this page during ceremony)
+                try {
+                    // Pre-clear any old audio settings just in case
+                    localStorage.removeItem('audioPlaying');
+                    localStorage.removeItem('audioTime');
+
+                    const audio = new Audio('Heroes%20Theme.mp3');
+                    audio.volume = 0.8;
+                    window.ceremonyAudio = audio;
+                    audio.play().catch(e => console.error("Audio playback error:", e));
+                } catch (err) {
+                    console.error("Failed to start audio:", err);
+                }
+
 
                 setTimeout(() => {
                     ribbonBand.classList.add('cut');
@@ -1608,6 +1622,12 @@
                     transitionOverlay.classList.add('active');
 
                     setTimeout(() => {
+                        // Ensure all audio settings are removed so index page does not play music
+                        localStorage.removeItem('audioPlaying');
+                        localStorage.removeItem('audioTime');
+                        if (window.ceremonyAudio) {
+                            try { window.ceremonyAudio.pause(); } catch (e) { }
+                        }
                         window.location.replace('index.html?ceremony=done');
                     }, 1600);
                 }, 3200);
@@ -1642,18 +1662,14 @@
                             if (!ceremonyStarted) startCeremony();
                         }, { once: true });
 
-                        // Attempt to autoplay
+                        // Attempt to autoplay with audio (unmuted)
                         localPlayer.muted = false;
                         localPlayer.volume = 1;
                         const playAttempt = localPlayer.play();
                         if (playAttempt && playAttempt.catch) {
-                            playAttempt.catch(() => {
-                                // Fallback to muted autoplay if browser blocks sound autoplay
-                                localPlayer.muted = true;
-                                localPlayer.play().catch(err => {
-                                    console.error("Autoplay failed:", err);
-                                    if (!ceremonyStarted) startCeremony();
-                                });
+                            playAttempt.catch(err => {
+                                console.log("Unmuted autoplay blocked:", err);
+                                // If blocked, the user can click anywhere on the overlay to start unmuted playback
                             });
                         }
                     } catch (e) {
@@ -1683,10 +1699,14 @@
                 }, 800);
             }
 
-            // Clicking the video overlay can unmute/mute it
+            // Clicking the video overlay starts playing with audio if it was paused/blocked
             if (videoOverlay && localPlayer) {
                 videoOverlay.addEventListener('click', () => {
-                    localPlayer.muted = !localPlayer.muted;
+                    if (localPlayer.paused) {
+                        localPlayer.muted = false;
+                        localPlayer.volume = 1;
+                        localPlayer.play().catch(err => console.error("Play on click failed:", err));
+                    }
                 });
             }
 

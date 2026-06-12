@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Lumen House | Lighting Studio</title>
     <script>
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> d1505cd (Update project files)
-        if (!window.location.search.includes('ceremony=done')) {
+        // Check if the ceremony has already been completed
+        if (localStorage.getItem('ceremonyDone') !== 'true' && !window.location.search.includes('ceremony=done')) {
             window.location.replace('demo1.html');
         } else {
-
+            // Save the state if we just finished the ceremony
+            if (window.location.search.includes('ceremony=done')) {
+                localStorage.setItem('ceremonyDone', 'true');
+            }
             window.history.replaceState({}, document.title, window.location.pathname);
         }
     </script>
